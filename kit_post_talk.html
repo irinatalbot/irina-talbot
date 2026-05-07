@@ -1,0 +1,2335 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kit post-talk feedback - Radical Candor à la française</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Variables */
+    :root {
+      --T:       #A8472A;
+      --T-soft:  #C8624A;
+      --T-light: #F0D5CC;
+      --T-pale:  #FAF0EB;
+      --N:       #1A1A1A;
+      --N2:      #5A5148;
+      --N3:      #8C7D70;
+      --C:       #F0E8DA;
+      --C2:      #E5DAC6;
+      --C3:      #D8C8AB;
+      --W:       #FFFFFF;
+      --shadow:  0 2px 16px rgba(26,26,26,0.07);
+    }
+
+    /* Reset & base */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--C);
+      color: var(--N);
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--C);
+      border-bottom: 1px solid var(--C3);
+      padding: 0.75rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--N);
+      letter-spacing: 0.01em;
+    }
+
+    .nav-brand span { color: var(--T); }
+
+    .nav-menu {
+      display: flex;
+      gap: 0.25rem;
+      list-style: none;
+    }
+
+    .nav-menu a {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--N3);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.6rem;
+      border-radius: 3px;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .nav-menu a:hover {
+      color: var(--T);
+      background: var(--T-pale);
+    }
+
+    /* Layout */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem 6rem;
+    }
+
+    /* Section generique */
+    .kit-section {
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid var(--C2);
+    }
+
+    .kit-section:last-child { border-bottom: none; }
+
+    /* Eyebrow + titre */
+    .eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--N3);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--N);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--T);
+    }
+
+    .section-intro {
+      font-size: 0.95rem;
+      color: var(--N2);
+      margin-top: 0.75rem;
+      margin-bottom: 2rem;
+      max-width: 100%;
+      line-height: 1.65;
+    }
+
+    .section-intro.tight { margin-top: 0.35rem; }
+
+    /* Carte generique */
+    .card {
+      background: var(--W);
+      border-radius: 8px;
+      padding: 1.75rem 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .card-sm {
+      background: var(--W);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    /* S01 Couverture */
+    #s01 {
+      padding: 5rem 0 4rem;
+      border-bottom: 1px solid var(--C2);
+    }
+
+    .cover-eyebrow {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--N3);
+      margin-bottom: 1.5rem;
+    }
+
+    .cover-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      color: var(--N);
+      margin-bottom: 1rem;
+    }
+
+    .cover-subtitle {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+      color: var(--T);
+      margin-bottom: 2.5rem;
+      line-height: 1.3;
+    }
+
+    .cover-divider {
+      width: 48px;
+      height: 2px;
+      background: var(--T);
+      margin-bottom: 2rem;
+    }
+
+    .cover-meta {
+      font-size: 0.85rem;
+      color: var(--N3);
+      line-height: 1.8;
+    }
+
+    .cover-notice {
+      margin-top: 2.5rem;
+      padding: 1rem 1.5rem;
+      background: var(--T-pale);
+      border-left: 3px solid var(--T);
+      border-radius: 0 6px 6px 0;
+      font-size: 0.875rem;
+      color: var(--N2);
+      max-width: 560px;
+    }
+
+    /* S02 Mode d'emploi */
+    .entry-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .entry-card {
+      background: var(--W);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .entry-num {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--T);
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+
+    .entry-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--N2);
+      margin-bottom: 0.5rem;
+    }
+
+    .entry-desc {
+      font-size: 0.85rem;
+      color: var(--N3);
+      line-height: 1.55;
+    }
+
+    .kit-rule {
+      margin-top: 1.5rem;
+      padding: 1rem 1.5rem;
+      background: var(--C2);
+      border-radius: 6px;
+      font-size: 0.875rem;
+      color: var(--N2);
+    }
+
+    /* S03 Matrice 2x2 */
+    .matrix-wrap { margin-top: 1.5rem; }
+
+    .matrix-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--C3);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .matrix-axis-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--N3);
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .matrix-y-wrap {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-top: 1.5rem;
+    }
+
+    .matrix-y-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--N3);
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      white-space: nowrap;
+    }
+
+    .matrix-quadrant {
+      padding: 1.5rem;
+      background: var(--W);
+      min-height: 140px;
+    }
+
+    .matrix-quadrant.highlight { background: var(--T-light); }
+
+    .quadrant-label {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--N);
+      margin-bottom: 0.2rem;
+    }
+
+    .quadrant-label-fr {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--N3);
+      margin-bottom: 0.4rem;
+    }
+
+    .matrix-quadrant.highlight .quadrant-label { color: var(--T); }
+    .matrix-quadrant.highlight .quadrant-label-fr { color: var(--T-soft); }
+
+    .quadrant-desc {
+      font-size: 0.8rem;
+      color: var(--N2);
+      line-height: 1.5;
+    }
+
+    .matrix-axis-labels {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      margin-bottom: 0.25rem;
+    }
+
+    .axis-cell {
+      text-align: center;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--N3);
+      padding: 0.4rem;
+    }
+
+    .matrix-source {
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      color: var(--N3);
+      font-style: italic;
+    }
+
+    .matrix-question {
+      margin-top: 1.25rem;
+      padding: 0.875rem 1.25rem;
+      background: var(--T-pale);
+      border-left: 3px solid var(--T);
+      border-radius: 0 6px 6px 0;
+      font-size: 0.875rem;
+      color: var(--N2);
+      font-style: italic;
+    }
+
+    /* S04 Piege contextuel */
+    .context-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.875rem;
+      margin-top: 1.5rem;
+    }
+
+    .context-item {
+      background: var(--W);
+      border-radius: 6px;
+      padding: 1.125rem 1.25rem;
+      box-shadow: var(--shadow);
+      font-size: 0.875rem;
+      color: var(--N);
+      line-height: 1.5;
+    }
+
+    .context-item strong { color: var(--T); }
+
+    .context-note {
+      margin-top: 1.25rem;
+      padding: 1rem 1.5rem;
+      background: var(--C2);
+      border-radius: 6px;
+      font-size: 0.825rem;
+      color: var(--N2);
+      line-height: 1.6;
+    }
+
+    .context-system {
+      margin-top: 0.875rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--N);
+      padding: 0.875rem 1.25rem;
+      background: var(--T-light);
+      border-radius: 6px;
+    }
+
+    /* S05 Tableau comparatif */
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .comparison-table th {
+      padding: 0.875rem 1.25rem;
+      text-align: left;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: var(--C2);
+      color: var(--N2);
+    }
+
+    .comparison-table th.highlight-col {
+      background: var(--T);
+      color: var(--W);
+    }
+
+    .comparison-table td {
+      padding: 0.875rem 1.25rem;
+      font-size: 0.875rem;
+      color: var(--N);
+      background: var(--W);
+      vertical-align: top;
+      line-height: 1.5;
+      border-top: 1px solid var(--C2);
+    }
+
+    .comparison-table td.highlight-col {
+      background: var(--T-pale);
+      color: var(--N);
+      font-weight: 500;
+    }
+
+    .comparison-table td:first-child {
+      font-weight: 600;
+      color: var(--N2);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .quote-box {
+      margin-top: 1.25rem;
+      padding: 1.125rem 1.5rem;
+      background: var(--W);
+      border-left: 3px solid var(--T);
+      border-radius: 0 8px 8px 0;
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--N2);
+      line-height: 1.6;
+      box-shadow: var(--shadow);
+    }
+
+    .quote-attribution {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      font-style: normal;
+      color: var(--N3);
+      letter-spacing: 0.04em;
+    }
+
+    .note-small {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: var(--N3);
+      font-style: italic;
+    }
+
+    /* Encadre A retenir */
+    .retenir-box {
+      margin-top: 1.25rem;
+      padding: 1rem 1.5rem;
+      background: var(--T-pale);
+      border: 1px solid var(--T-light);
+      border-radius: 6px;
+      font-size: 0.875rem;
+      color: var(--N2);
+      line-height: 1.6;
+    }
+
+    .retenir-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--T);
+      margin-bottom: 0.5rem;
+    }
+
+    .retenir-text {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--N);
+      line-height: 1.45;
+    }
+
+    /* S06 Scenes */
+    .scene-list {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+    }
+
+    .scene-item {
+      background: var(--W);
+      border-radius: 6px;
+      padding: 1.125rem 1.5rem;
+      box-shadow: var(--shadow);
+      font-size: 0.875rem;
+      color: var(--N);
+      line-height: 1.55;
+    }
+
+    .scene-item::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--T);
+      margin-right: 0.75rem;
+      vertical-align: middle;
+    }
+
+    .question-block {
+      margin-top: 1.5rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--T-pale);
+      border-radius: 8px;
+    }
+
+    .question-block .q {
+      font-size: 0.9rem;
+      color: var(--N2);
+      margin-bottom: 0.5rem;
+    }
+
+    .question-block .a {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--T);
+      font-style: italic;
+    }
+
+    .conclusion-line {
+      margin-top: 1rem;
+      font-size: 0.875rem;
+      color: var(--N2);
+      padding: 0.875rem 1.25rem;
+      background: var(--C2);
+      border-radius: 6px;
+    }
+
+    /* S07 Feedback ascendant */
+    .two-blocks {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .block-left {
+      background: var(--C2);
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+
+    .block-right {
+      background: var(--T-light);
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+
+    .block-heading {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--N2);
+      margin-bottom: 1rem;
+    }
+
+    .block-right .block-heading { color: var(--T); }
+
+    .block-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .block-list li {
+      font-size: 0.85rem;
+      color: var(--N);
+      line-height: 1.5;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .block-list li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--T);
+      font-weight: 700;
+    }
+
+    .formulation-box {
+      margin-top: 1.25rem;
+      background: var(--W);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .formulation-heading {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--N3);
+      margin-bottom: 0.875rem;
+    }
+
+    .formulation-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem;
+    }
+
+    .formulation-list li {
+      font-size: 0.875rem;
+      color: var(--N);
+      font-style: italic;
+      line-height: 1.55;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .formulation-list li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--T);
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    /* S08 Parole collective */
+    .case-box {
+      margin-top: 1.5rem;
+      background: var(--W);
+      border-radius: 8px;
+      padding: 1.5rem 1.75rem;
+      box-shadow: var(--shadow);
+    }
+
+    .case-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--N3);
+      margin-bottom: 0.75rem;
+    }
+
+    .case-text {
+      font-size: 0.875rem;
+      color: var(--N);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+
+    .mechanism-label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--N2);
+      margin-top: 0.875rem;
+    }
+
+    .central-question {
+      margin-top: 1.5rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--T-light);
+      border-radius: 8px;
+    }
+
+    .central-question .q-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--T);
+      margin-bottom: 0.625rem;
+    }
+
+    .central-question .q-text {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--N);
+      line-height: 1.4;
+    }
+
+    .case-questions {
+      margin-top: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem;
+    }
+
+    .case-q-item {
+      font-size: 0.875rem;
+      color: var(--N2);
+      padding: 0.75rem 1rem;
+      background: var(--C2);
+      border-radius: 6px;
+      line-height: 1.5;
+    }
+
+    /* Protocol 4 etapes */
+    .protocol-steps {
+      margin-top: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem;
+    }
+
+    .protocol-step {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      background: var(--W);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      box-shadow: var(--shadow);
+    }
+
+    .protocol-step-num {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--T);
+      line-height: 1;
+      flex-shrink: 0;
+      min-width: 1.5rem;
+    }
+
+    .protocol-step-content {}
+
+    .protocol-step-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--N);
+      margin-bottom: 0.25rem;
+    }
+
+    .protocol-step-desc {
+      font-size: 0.83rem;
+      color: var(--N2);
+      line-height: 1.5;
+    }
+
+    /* S09 Canvas decision */
+    .canvas-punchline {
+      margin-top: 1.25rem;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--N2);
+      line-height: 1.45;
+      max-width: 600px;
+    }
+
+    .canvas-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+      box-shadow: var(--shadow);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .canvas-table th {
+      padding: 0.875rem 1rem;
+      background: var(--T);
+      color: var(--W);
+      text-align: left;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .canvas-table td {
+      padding: 0.875rem 1rem;
+      font-size: 0.825rem;
+      color: var(--N);
+      background: var(--W);
+      border-top: 1px solid var(--C2);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+
+    .canvas-table td:first-child {
+      font-weight: 600;
+      background: var(--T-pale);
+    }
+
+    .canvas-table td em {
+      font-style: italic;
+      color: var(--N3);
+    }
+
+    /* Mobile cards for S09 */
+    .canvas-cards {
+      display: none;
+      flex-direction: column;
+      gap: 0.875rem;
+      margin-top: 1.5rem;
+    }
+
+    .canvas-card {
+      background: var(--W);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .canvas-card-situation {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--N);
+      margin-bottom: 0.875rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--C2);
+    }
+
+    .canvas-card-row { margin-bottom: 0.5rem; }
+
+    .canvas-card-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--N3);
+      margin-bottom: 0.2rem;
+    }
+
+    .canvas-card-value {
+      font-size: 0.85rem;
+      color: var(--N);
+      line-height: 1.5;
+    }
+
+    .canvas-card-value em {
+      font-style: italic;
+      color: var(--N3);
+    }
+
+    .canvas-card-arbitrage {
+      margin-top: 0.75rem;
+      padding: 0.625rem 0.875rem;
+      background: var(--T-pale);
+      border-radius: 5px;
+      font-size: 0.85rem;
+      font-style: italic;
+      color: var(--T-soft);
+    }
+
+    .canvas-bottom-punchline {
+      margin-top: 1.25rem;
+      padding: 1rem 1.5rem;
+      background: var(--T);
+      color: var(--W);
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    /* S10 Resistances */
+    .resistance-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+      box-shadow: var(--shadow);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .resistance-table th {
+      padding: 0.875rem 1.125rem;
+      background: var(--C2);
+      color: var(--N2);
+      text-align: left;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .resistance-table th:last-child {
+      background: var(--T);
+      color: var(--W);
+    }
+
+    .resistance-table td {
+      padding: 0.875rem 1.125rem;
+      font-size: 0.845rem;
+      color: var(--N);
+      background: var(--W);
+      border-top: 1px solid var(--C2);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+
+    .resistance-table td:last-child {
+      background: var(--T-pale);
+      font-style: italic;
+      color: var(--N2);
+    }
+
+    /* Regle terracotta (pas noire) */
+    .resistance-rule {
+      margin-top: 1.25rem;
+      padding: 1rem 1.5rem;
+      background: var(--T);
+      color: var(--W);
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    /* S11 Cartes de phrases */
+    .phrase-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .phrase-card {
+      background: var(--W);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .phrase-card-num {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--T);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .phrase-card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--N);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      border-bottom: 1.5px solid var(--T-light);
+      padding-bottom: 0.625rem;
+    }
+
+    .phrase-card-pattern {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--N);
+      line-height: 1.45;
+    }
+
+    .phrase-card-example {
+      font-size: 0.825rem;
+      color: var(--N2);
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .phrase-card-usage {
+      font-size: 0.75rem;
+      color: var(--N3);
+      padding: 0.5rem 0.75rem;
+      background: var(--C2);
+      border-radius: 4px;
+      margin-top: auto;
+    }
+
+    .phrase-note {
+      margin-top: 1.25rem;
+      font-size: 0.875rem;
+      color: var(--N2);
+      font-style: italic;
+      text-align: center;
+    }
+
+    /* S12 Checklist */
+    .checklist {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: var(--W);
+      border-radius: 8px;
+      padding: 1.125rem 1.5rem;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+    }
+
+    /* Real checkboxes */
+    input.check-input {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--T);
+      border-radius: 3px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      cursor: pointer;
+      position: relative;
+      background: var(--W);
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    input.check-input:checked {
+      background: var(--T);
+      border-color: var(--T);
+    }
+
+    input.check-input:checked::after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 2px;
+      width: 6px;
+      height: 10px;
+      border: 2px solid var(--W);
+      border-top: none;
+      border-left: none;
+      transform: rotate(45deg);
+    }
+
+    label.check-label {
+      flex: 1;
+      cursor: pointer;
+      line-height: 1.5;
+    }
+
+    .check-keyword {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--T);
+      display: inline;
+    }
+
+    .check-text {
+      font-size: 0.875rem;
+      color: var(--N);
+      display: inline;
+    }
+
+    .checklist-rule {
+      margin-top: 1.25rem;
+      padding: 1.125rem 1.5rem;
+      background: var(--T);
+      color: var(--W);
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+
+    .checklist-usage {
+      margin-top: 1rem;
+      font-size: 0.82rem;
+      color: var(--N3);
+      text-align: center;
+      font-style: italic;
+    }
+
+    /* S13 Ritualiser */
+    .ritual-main {
+      margin-top: 1.5rem;
+      background: var(--T-pale);
+      border: 1.5px solid var(--T-light);
+      border-radius: 8px;
+      padding: 1.75rem 2rem;
+    }
+
+    .ritual-main-badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--T);
+      margin-bottom: 0.625rem;
+    }
+
+    .ritual-main-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--N);
+      margin-bottom: 0.875rem;
+    }
+
+    .ritual-main-desc {
+      font-size: 0.875rem;
+      color: var(--N2);
+      line-height: 1.6;
+      margin-bottom: 0.625rem;
+    }
+
+    .ritual-main-note {
+      font-size: 0.82rem;
+      color: var(--N3);
+      font-style: italic;
+    }
+
+    .ritual-variants {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .ritual-variant {
+      background: var(--C2);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+    }
+
+    .ritual-variant-badge {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--N3);
+      margin-bottom: 0.5rem;
+    }
+
+    .ritual-variant-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--N);
+      margin-bottom: 0.5rem;
+    }
+
+    .ritual-variant-desc {
+      font-size: 0.83rem;
+      color: var(--N2);
+      line-height: 1.55;
+    }
+
+    .ritual-warning {
+      margin-top: 1rem;
+      padding: 0.875rem 1.25rem;
+      background: var(--C2);
+      border-radius: 6px;
+      font-size: 0.82rem;
+      color: var(--N3);
+    }
+
+    .ritual-warning strong { color: var(--N2); }
+
+    /* S14 Plan semaine */
+    .plan-timeline {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .plan-step {
+      background: var(--W);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .plan-step::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--T);
+      border-radius: 8px 8px 0 0;
+    }
+
+    .plan-days {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--T);
+      margin-bottom: 0.5rem;
+    }
+
+    .plan-action {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--N);
+      margin-bottom: 0.875rem;
+    }
+
+    .plan-desc {
+      font-size: 0.845rem;
+      color: var(--N2);
+      line-height: 1.6;
+    }
+
+    .plan-final {
+      margin-top: 1.5rem;
+      padding: 1.125rem 1.5rem;
+      background: var(--C2);
+      border-radius: 6px;
+      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--N2);
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    /* S15 Cloture */
+    .closing-phrase {
+      margin-top: 1.75rem;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 700;
+      color: var(--N);
+      line-height: 1.2;
+    }
+
+    .closing-middle {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--N2);
+      line-height: 1.8;
+    }
+
+    .closing-quote {
+      margin-top: 1.5rem;
+      padding: 1.375rem 1.75rem;
+      background: var(--W);
+      border-left: 3px solid var(--T);
+      border-radius: 0 8px 8px 0;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--T);
+      line-height: 1.5;
+      box-shadow: var(--shadow);
+    }
+
+    .closing-note {
+      margin-top: 1rem;
+      font-size: 0.825rem;
+      color: var(--N2);
+      line-height: 1.65;
+    }
+
+    .closing-contact {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .contact-block {
+      background: var(--W);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-block-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--N3);
+      margin-bottom: 0.625rem;
+    }
+
+    .contact-block-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--N);
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-block-link {
+      font-size: 0.83rem;
+      color: var(--T);
+      text-decoration: none;
+      display: block;
+      margin-top: 0.2rem;
+    }
+
+    .contact-block-link:hover { text-decoration: underline; }
+
+    .resources-list {
+      font-size: 0.79rem;
+      color: var(--N2);
+      line-height: 1.85;
+    }
+
+    .resources-list cite { font-style: italic; }
+
+    .resources-list .ref-num {
+      font-weight: 700;
+      color: var(--T);
+      margin-right: 0.25rem;
+    }
+
+    /* Section numerotation */
+    .section-number {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--N3);
+      margin-bottom: 0.25rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      nav { padding: 0.625rem 1rem; }
+      .nav-menu { display: none; }
+      main { padding: 0 1rem 4rem; }
+      .kit-section { padding: 3rem 0 2rem; }
+
+      .entry-grid { grid-template-columns: 1fr; }
+      .two-blocks { grid-template-columns: 1fr; }
+      .context-grid { grid-template-columns: 1fr; }
+      .phrase-cards { grid-template-columns: 1fr; }
+      .plan-timeline { grid-template-columns: 1fr; }
+      .ritual-variants { grid-template-columns: 1fr; }
+      .closing-contact { grid-template-columns: 1fr; }
+
+      .canvas-table { display: none; }
+      .canvas-cards { display: flex; }
+
+      .resistance-table { display: none; }
+      .resistance-cards-mobile { display: flex !important; }
+
+      .comparison-table { display: none; }
+      .comparison-cards-mobile { display: flex !important; }
+
+      .section-title { font-size: 1.6rem; }
+      .cover-title { font-size: 2.2rem; }
+    }
+
+    /* Mobile-only tables fallback */
+    .resistance-cards-mobile,
+    .comparison-cards-mobile {
+      display: none;
+      flex-direction: column;
+      gap: 0.875rem;
+      margin-top: 1.5rem;
+    }
+
+    .mobile-card {
+      background: var(--W);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .mobile-card-title {
+      font-weight: 700;
+      color: var(--N);
+      font-size: 0.9rem;
+      margin-bottom: 0.875rem;
+      padding-bottom: 0.625rem;
+      border-bottom: 1px solid var(--C2);
+    }
+
+    .mobile-card-row {
+      margin-bottom: 0.5rem;
+      font-size: 0.85rem;
+    }
+
+    .mobile-card-row-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--N3);
+      margin-bottom: 0.2rem;
+    }
+
+    .mobile-card-row-value {
+      color: var(--N);
+      line-height: 1.5;
+    }
+
+    .mobile-card-row-value.highlighted {
+      color: var(--T);
+      font-weight: 500;
+    }
+
+    /* Print */
+    @media print {
+      nav { display: none; }
+      .kit-section { break-inside: avoid; page-break-inside: avoid; }
+      body { font-size: 12pt; }
+      .card, .card-sm { box-shadow: none; border: 1px solid #ddd; }
+      .canvas-table { font-size: 9pt; }
+      input.check-input { border: 2px solid #A8472A; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-brand">Kit post-talk · <span>Radical Candor</span></div>
+    <ul class="nav-menu">
+      <li><a href="#s03">Boussole</a></li>
+      <li><a href="#s07">Ascendant</a></li>
+      <li><a href="#s08">Recevoir</a></li>
+      <li><a href="#s10">Canvas</a></li>
+      <li><a href="#s12">Phrases</a></li>
+      <li><a href="#s13">Checklist</a></li>
+      <li><a href="#s15">Cette semaine</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- S01 · COUVERTURE -->
+    <section id="s01" class="kit-section">
+      <p class="cover-eyebrow">Kit post-talk · Agile Tour Rennes 2026</p>
+      <h1 class="cover-title">Kit feedback<br>Radical Candor<br>à la française</h1>
+      <p class="cover-subtitle">Dire les choses. Sans casser la relation.</p>
+      <div class="cover-divider"></div>
+      <div class="cover-meta">
+        Irina Talbot<br>
+        Agile Tour Rennes 2026
+      </div>
+      <div class="cover-notice">
+        À utiliser après le talk. 13 fiches-outils, immédiatement actionnables.<br>
+        Ce document peut être partagé, imprimé, utilisé en formation interne.
+      </div>
+    </section>
+
+    <!-- S02 · MODE D'EMPLOI -->
+    <section id="s02" class="kit-section">
+      <p class="eyebrow">Mode d'emploi</p>
+      <h2 class="section-title">Ce kit n'est pas un cours.<br><em>C'est un outil.</em></h2>
+      <p class="section-intro">Prenez ce qui vous sert maintenant. Les fiches sont numérotées de 01 à 13 et peuvent être lues dans n'importe quel ordre.</p>
+
+      <div class="entry-grid">
+        <div class="entry-card">
+          <div class="entry-num">Fiches 01-04</div>
+          <div class="entry-label">Comprendre les mécanismes</div>
+          <div class="entry-desc">Boussole, pièges contextuels, sandwich vs franchise bienveillante, Ruinous Empathy. Pourquoi le feedback coûte cher ici.</div>
+        </div>
+        <div class="entry-card">
+          <div class="entry-num">Fiches 05-09</div>
+          <div class="entry-label">Préparer et sécuriser une conversation</div>
+          <div class="entry-desc">Feedback ascendant, réception du feedback, parole collective, canvas décision, résistances.</div>
+        </div>
+        <div class="entry-card">
+          <div class="entry-num">Fiches 10-13</div>
+          <div class="entry-label">Pratiquer, ritualiser, ancrer</div>
+          <div class="entry-desc">Cartes de phrases, checklist 30 secondes, rituels d'équipe, plan de la semaine. Ce qui se fait, pas ce qui se pense.</div>
+        </div>
+      </div>
+
+      <div class="kit-rule">
+        Une idée par fiche. Prenez une fiche, testez-la. Revenez aux autres quand vous êtes prêt.
+      </div>
+    </section>
+
+    <!-- S03 · BOUSSOLE (Fiche-outil 01) -->
+    <section id="s03" class="kit-section">
+      <p class="eyebrow">Fiche-outil 01</p>
+      <h2 class="section-title">La boussole :<br><em>Care + Challenge</em></h2>
+      <p class="section-intro">Deux axes. Pas l'un sans l'autre. Le quadrant visé est en haut à droite.</p>
+
+      <div class="matrix-wrap">
+        <!-- Axe horizontal : Challenge faible a gauche, Challenge fort a droite -->
+        <div style="padding-left: 2.5rem; margin-bottom: 0.25rem;">
+          <div class="matrix-axis-labels">
+            <div class="axis-cell">Challenge faible ⟵</div>
+            <div class="axis-cell">⟶ Challenge fort</div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; align-items: stretch;">
+          <!-- Axe vertical : Care fort en haut, Care faible en bas -->
+          <div style="display: flex; flex-direction: column; justify-content: center; gap: 0;">
+            <div class="matrix-y-label">Care fort · Care faible</div>
+          </div>
+          <div style="flex: 1;">
+            <div class="matrix-grid">
+              <!-- Ligne haute : Care fort -->
+              <!-- Haut gauche : Care fort + Challenge faible = Ruinous Empathy -->
+              <div class="matrix-quadrant">
+                <div class="quadrant-label-fr">Empathie dévastatrice</div>
+                <div class="quadrant-label">Ruinous Empathy</div>
+                <div class="quadrant-desc">Vous tenez à la personne, donc vous ne dites rien. Le silence coûte.</div>
+              </div>
+              <!-- Haut droite : Care fort + Challenge fort = Radical Candor (cible) -->
+              <div class="matrix-quadrant highlight">
+                <div class="quadrant-label-fr">Franchise bienveillante ★</div>
+                <div class="quadrant-label">Radical Candor</div>
+                <div class="quadrant-desc">Vous tenez à la personne <em>et</em> vous lui dites la vérité. C'est ici.</div>
+              </div>
+              <!-- Ligne basse : Care faible -->
+              <!-- Bas gauche : Care faible + Challenge faible = Manipulative Insincerity -->
+              <div class="matrix-quadrant">
+                <div class="quadrant-label-fr">Double-jeu manipulateur</div>
+                <div class="quadrant-label">Manipulative Insincerity</div>
+                <div class="quadrant-desc">Vous ne dites rien d'utile et vous ne tenez pas à la personne.</div>
+              </div>
+              <!-- Bas droite : Care faible + Challenge fort = Obnoxious Aggression -->
+              <div class="matrix-quadrant">
+                <div class="quadrant-label-fr">Agressivité insupportable</div>
+                <div class="quadrant-label">Obnoxious Aggression</div>
+                <div class="quadrant-desc">Vous dites la vérité, mais sans attention réelle pour la personne.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="matrix-source">Source : Kim Scott, <cite>Radical Candor</cite> (2017). Noms français : convention de traduction courante en France.</p>
+
+      <div class="matrix-question">
+        Face à un feedback non donné : <strong>dans quel quadrant suis-je en train de me réfugier ?</strong>
+      </div>
+      <div class="context-note" style="margin-top: 1.25rem;">
+        <div class="retenir-label" style="margin-bottom: 0.5rem;">Ce que ce cadre n'autorise pas</div>
+        Radical Candor n'est pas « dire tout ce qu'on pense ».<br>
+        Ce n'est pas parler cash.<br>
+        Ce n'est pas humilier avec de bonnes intentions.<br>
+        Ce n'est pas un sandwich mieux emballé.<br><br>
+        Sans care, c'est de l'agressivité. Sans challenge, c'est de l'évitement.
+      </div>
+    </section>
+
+    <!-- S04 · PIEGE CONTEXTUEL (Fiche-outil 02) -->
+    <section id="s04" class="kit-section">
+      <p class="eyebrow">Fiche-outil 02</p>
+      <h2 class="section-title">Pourquoi se taire<br><em>peut sembler rationnel</em></h2>
+      <p class="section-intro">Le feedback n'est pas plus difficile en France par nature. Il est plus coûteux dans certains contextes.</p>
+
+      <div class="context-grid">
+        <div class="context-item">Le destinataire a le pouvoir d'<strong>évaluer votre carrière</strong>.</div>
+        <div class="context-item">Votre <strong>expertise</strong> est le seul actif que vous protégez.</div>
+        <div class="context-item">La <strong>relation client</strong> peut être compromise.</div>
+        <div class="context-item">La décision a déjà été prise et <strong>vendue en haut</strong>.</div>
+        <div class="context-item" style="grid-column: 1 / -1;">Parler seul expose à porter un message <strong>collectif</strong> sans soutien.</div>
+      </div>
+
+      <div class="context-system">
+        Ce n'est pas une question de personnalité. C'est une question de structure.
+      </div>
+
+      <div class="context-note">
+        <strong>Nuance utile :</strong> la France peut être très directe dans l'évaluation formelle. Ce qui coûte cher, c'est le feedback informel, hiérarchique ou transversal, surtout quand il remonte. Cette distinction vient de Erin Meyer (<cite>The Culture Map</cite>, 2014) : elle éclaire une tendance, elle ne détermine pas un destin.
+      </div>
+
+      <div class="matrix-question" style="margin-top: 1.25rem;">
+        Identifiez le blocage principal dans votre contexte avant de choisir une approche. La tactique change selon ce qui coûte.
+      </div>
+    </section>
+
+    <!-- S05 · SANDWICH VS RADICAL CANDOR (Fiche-outil 03) -->
+    <section id="s05" class="kit-section">
+      <p class="eyebrow">Fiche-outil 03</p>
+      <h2 class="section-title"><em>Le problème du sandwich :</em><br>la priorité se perd</h2>
+      <p class="section-intro">Le sandwich a une intention utile. Il devient problématique quand le message prioritaire est enterré entre deux compliments.</p>
+
+      <!-- Desktop table -->
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Feedback sandwich</th>
+            <th class="highlight-col">Radical Candor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Structure</td>
+            <td>Positif · Critique · Positif</td>
+            <td class="highlight-col">Clair, direct, orienté action</td>
+          </tr>
+          <tr>
+            <td>Pour qui</td>
+            <td>Soulage celui qui parle</td>
+            <td class="highlight-col">Aide celui qui reçoit</td>
+          </tr>
+          <tr>
+            <td>Résultat</td>
+            <td>La personne retient le compliment</td>
+            <td class="highlight-col">La personne sait quoi changer</td>
+          </tr>
+          <tr>
+            <td>Risque</td>
+            <td>Confusion sur les priorités</td>
+            <td class="highlight-col">Peut surprendre si la confiance est faible</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Mobile cards -->
+      <div class="comparison-cards-mobile">
+        <div class="mobile-card">
+          <div class="mobile-card-title">Feedback sandwich</div>
+          <div class="mobile-card-row">
+            <div class="mobile-card-row-label">Structure</div>
+            <div class="mobile-card-row-value">Positif · Critique · Positif</div>
+          </div>
+          <div class="mobile-card-row">
+            <div class="mobile-card-row-label">Pour qui</div>
+            <div class="mobile-card-row-value">Soulage celui qui parle</div>
+          </div>
+          <div class="mobile-card-row">
+            <div class="mobile-card-row-label">Résultat</div>
+            <div class="mobile-card-row-value">La personne retient le compliment</div>
+          </div>
+        </div>
+        <div class="mobile-card">
+          <div class="mobile-card-title" style="color: var(--T);">Radical Candor</div>
+          <div class="mobile-card-row">
+            <div class="mobile-card-row-label">Structure</div>
+            <div class="mobile-card-row-value highlighted">Clair, direct, orienté action</div>
+          </div>
+          <div class="mobile-card-row">
+            <div class="mobile-card-row-label">Pour qui</div>
+            <div class="mobile-card-row-value highlighted">Aide celui qui reçoit</div>
+          </div>
+          <div class="mobile-card-row">
+            <div class="mobile-card-row-label">Résultat</div>
+            <div class="mobile-card-row-value highlighted">La personne sait quoi changer</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="retenir-box">
+        <div class="retenir-label">À retenir</div>
+        <div class="retenir-text">Le sandwich donne bonne conscience à celui qui parle. Il donne rarement une priorité claire à celui qui reçoit.</div>
+      </div>
+      <p class="note-small">Quand un changement est attendu, la personne doit repartir avec une priorité claire. Le sandwich l'enterre.</p>
+    </section>
+
+    <!-- S06 · EMPATHIE DEVASTATRICE (Fiche-outil 04) -->
+    <section id="s06" class="kit-section">
+      <p class="eyebrow">Fiche-outil 04</p>
+      <h2 class="section-title">Ruinous Empathy :<br><em>quand la gentillesse coûte cher</em></h2>
+      <p class="section-intro tight">La bienveillance sans franchise protège souvent celui qui se tait.</p>
+      <p style="font-size: 0.875rem; color: var(--N2); margin-bottom: 0;">C'est souvent le refuge le plus confortable : on croit protéger l'autre, alors qu'on protège surtout le silence.</p>
+
+      <div class="quote-box" style="margin-top: 1.25rem;">
+        From the moment we open our mouths, we are taught that if you don't have anything nice to say, don't say anything at all.
+        <span class="quote-attribution">— Kim Scott, <cite>Radical Candor</cite></span>
+      </div>
+
+      <div class="scene-list">
+        <div class="scene-item">Un développeur rend une PR non maintenable. Vous ne dites rien parce qu'il est fragile en ce moment.</div>
+        <div class="scene-item">Un Scrum Master absorbe des urgences ajoutées après le sprint planning. L'équipe le voit, personne ne le dit officiellement.</div>
+        <div class="scene-item">Un manager change les priorités sans arbitrage. Le lead fait passer. Le sprint part en vrille.</div>
+      </div>
+
+      <div class="question-block">
+        <div class="q">La bonne question : en taisant ça, vous protégez qui ?</div>
+        <div class="a">La réponse honnête : vous.</div>
+      </div>
+
+      <div class="conclusion-line">
+        Taire un problème transfère le coût sur l'équipe, le projet, ou la personne elle-même, plus tard.
+      </div>
+
+      <div class="matrix-question" style="margin-top: 1rem;">
+        Si vous avez retenu un feedback « pour ne pas blesser » : quel est le coût de ce silence dans six mois ?
+      </div>
+    </section>
+
+    <!-- S07 · FEEDBACK ASCENDANT (Fiche-outil 05) -->
+    <section id="s07" class="kit-section">
+      <p class="eyebrow">Fiche-outil 05</p>
+      <h2 class="section-title">Quand le feedback<br><em>doit remonter</em></h2>
+      <p class="section-intro">Le feedback vers le haut coûte plus cher. Ce n'est pas une raison de ne pas le donner.</p>
+
+      <div class="two-blocks">
+        <div class="block-left">
+          <div class="block-heading">Pourquoi ça coûte plus cher</div>
+          <ul class="block-list">
+            <li>Celui qui reçoit a le pouvoir d'évaluer votre carrière</li>
+            <li>Parler pour l'équipe fait de vous le porteur visible d'un risque collectif</li>
+            <li>Si ça se passe mal, le risque retombe sur vous seul</li>
+          </ul>
+        </div>
+        <div class="block-right">
+          <div class="block-heading">Ce qui le rend possible</div>
+          <ul class="block-list">
+            <li>Créer le bon moment avant d'entrer dans le fond</li>
+            <li>Parler en impact observable, pas en reproche</li>
+            <li>Formuler comme une contribution à la décision, pas comme une contestation</li>
+            <li>Canal individuel quand le feedback concerne une personne. Canal collectif quand le sujet est une règle, une décision ou un arbitrage d'équipe.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="formulation-box">
+        <div class="formulation-heading">Formulations utiles</div>
+        <ul class="formulation-list">
+          <li>« J'ai un point important à te partager. Est-ce que c'est le bon moment maintenant, ou est-ce qu'on se cale 10 minutes aujourd'hui ? »</li>
+          <li>« Quand la priorité change après le planning, on perd en lisibilité sur ce qu'on peut vraiment livrer. »</li>
+          <li>« Je ne remets pas en cause l'objectif. Je signale que la méthode crée de l'instabilité. »</li>
+          <li>« Je te partage ça pour aider la décision, pas pour la compliquer. »</li>
+        </ul>
+      </div>
+
+      <div class="matrix-question" style="margin-top: 1.25rem;">
+        Avant de parler : <strong>est-ce que je formule un reproche ou une contribution à la décision ?</strong> Si c'est un reproche, reformulez d'abord.
+      </div>
+    </section>
+
+    <!-- S08 · RECEVOIR UN FEEDBACK (Fiche-outil 06) -->
+    <section id="s08" class="kit-section">
+      <p class="eyebrow">Fiche-outil 06</p>
+      <h2 class="section-title">Recevoir un feedback :<br><em>écouter avant de répondre</em></h2>
+      <p class="section-intro">Le feedback ascendant ne devient possible que si quelqu'un montre qu'il peut l'entendre.</p>
+
+      <div class="protocol-steps">
+        <div class="protocol-step">
+          <div class="protocol-step-num">1</div>
+          <div class="protocol-step-content">
+            <div class="protocol-step-title">Demander</div>
+            <div class="protocol-step-desc">« Qu'est-ce que je fais qui complique ton travail ? »</div>
+          </div>
+        </div>
+        <div class="protocol-step">
+          <div class="protocol-step-num">2</div>
+          <div class="protocol-step-content">
+            <div class="protocol-step-title">Encaisser</div>
+            <div class="protocol-step-desc">« Merci. Je vais y réfléchir. Je ne vais pas répondre tout de suite. »</div>
+          </div>
+        </div>
+        <div class="protocol-step">
+          <div class="protocol-step-num">3</div>
+          <div class="protocol-step-content">
+            <div class="protocol-step-title">Clarifier</div>
+            <div class="protocol-step-desc">« Tu peux me donner un exemple précis ? »</div>
+          </div>
+        </div>
+        <div class="protocol-step">
+          <div class="protocol-step-num">4</div>
+          <div class="protocol-step-content">
+            <div class="protocol-step-title">Boucler</div>
+            <div class="protocol-step-desc">« Voilà ce que je vais tester cette semaine. Et voilà ce que je ne peux pas encore changer. »</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="conclusion-line">
+        Demander du feedback puis se défendre pendant dix minutes, c'est apprendre à l'équipe qu'il vaut mieux se taire.
+      </div>
+    </section>
+
+    <!-- S09 · PAROLE COLLECTIVE (Fiche-outil 07) -->
+    <section id="s09" class="kit-section">
+      <p class="eyebrow">Fiche-outil 07</p>
+      <h2 class="section-title">Quand la parole collective<br><em>devient un risque individuel</em></h2>
+      <p class="section-intro">Dire une vérité partagée en silence peut faire de vous son porteur unique.</p>
+      <p style="font-size: 0.85rem; color: var(--N3); margin-bottom: 1.25rem; font-style: italic;">Sous-angle : le mécanisme du porte-parole involontaire</p>
+
+      <div class="case-box">
+        <div class="case-label">Cas terrain anonymisé</div>
+        <div class="case-text">
+          Une équipe constate un problème structurel dans la façon dont les décisions sont prises. Tout le monde le voit. Personne ne le dit officiellement. Une personne finit par le dire, en format structuré, au bon interlocuteur, au bon moment.
+        </div>
+        <div class="case-text">
+          Ce qui se passe ensuite : la prise de parole est associée à la personne, pas au problème. Elle peut être étiquetée comme « celle qui crée le problème ». Elle peut perdre du soutien informel. Elle peut s'exposer à des représailles subtiles. Elle peut devenir le visage individuel d'un sujet collectif.
+        </div>
+        <div class="mechanism-label">
+          Le mécanisme en jeu : ce n'est pas un problème de courage ou de formulation. C'est une question de conditions systémiques.
+        </div>
+      </div>
+
+      <div class="central-question">
+        <div class="q-label">Question centrale</div>
+        <div class="q-text">Quelles conditions rendent un feedback ascendant tenable quand le pouvoir d'évaluation est en face ?</div>
+      </div>
+
+      <div class="case-questions">
+        <div class="case-q-item">Quelles conditions auraient rendu cette parole plus tenable après coup ?</div>
+        <div class="case-q-item">Comment un collectif protège-t-il quelqu'un qui parle à sa place ?</div>
+        <div class="case-q-item">Que fait l'organisation de la parole une fois qu'elle est donnée ?</div>
+      </div>
+
+      <!-- Protocole 4 etapes actionnable -->
+      <div style="margin-top: 1.5rem;">
+        <p class="eyebrow" style="margin-bottom: 0.75rem;">Protocole avant de parler au nom d'un collectif</p>
+        <div class="protocol-steps">
+          <div class="protocol-step">
+            <div class="protocol-step-num">1</div>
+            <div class="protocol-step-content">
+              <div class="protocol-step-title">Vérifier le mandat</div>
+              <div class="protocol-step-desc">Est-ce que je parle en mon nom ou au nom du collectif ? Si c'est collectif, est-ce que les autres l'ont confirmé explicitement ?</div>
+            </div>
+          </div>
+          <div class="protocol-step">
+            <div class="protocol-step-num">2</div>
+            <div class="protocol-step-content">
+              <div class="protocol-step-title">Rendre le soutien visible</div>
+              <div class="protocol-step-desc">Qui est prêt à soutenir le message, avant et après ? Le soutien silencieux ne protège pas.</div>
+            </div>
+          </div>
+          <div class="protocol-step">
+            <div class="protocol-step-num">3</div>
+            <div class="protocol-step-content">
+              <div class="protocol-step-title">Formuler en problème de fonctionnement</div>
+              <div class="protocol-step-desc">Le sujet est une règle, une décision ou un arbitrage à rendre visible. Pas une attaque personnelle. Pas un jugement de compétence.</div>
+            </div>
+          </div>
+          <div class="protocol-step">
+            <div class="protocol-step-num">4</div>
+            <div class="protocol-step-content">
+              <div class="protocol-step-title">Prévoir l'après-coup</div>
+              <div class="protocol-step-desc">Qui protège la personne qui a parlé si la tension retombe sur elle ? L'après-coup se prépare avant, pas pendant.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="matrix-question" style="margin-top: 1.25rem;">
+        Ce protocole est utile pour les managers et équipes qui veulent construire des conditions de sécurité <em>avant</em> une conversation difficile.
+      </div>
+    </section>
+
+    <!-- S10 · CANVAS DECISION (Fiche-outil 08) -->
+    <section id="s10" class="kit-section">
+      <p class="eyebrow">Fiche-outil 08 · Canvas</p>
+      <h2 class="section-title">Quand le feedback porte<br><em>sur une décision,<br>pas sur une personne</em></h2>
+
+      <div class="retenir-box">
+        <div class="retenir-label">À retenir</div>
+        <div class="retenir-text">Ne cherchez pas toujours à qui faire un feedback. Cherchez d'abord quelle décision doit être rendue visible.</div>
+      </div>
+
+      <!-- Desktop: table -->
+      <table class="canvas-table">
+        <thead>
+          <tr>
+            <th>Situation</th>
+            <th>Décision implicite</th>
+            <th>Coût si personne ne parle</th>
+            <th>Question d'arbitrage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Priorités ajoutées après sprint planning</td>
+            <td>Scope augmenté sans validation</td>
+            <td>Surcharge, qualité dégradée, rétro trop tardive</td>
+            <td><em>« Si on ajoute ça, qu'est-ce qu'on retire ou qu'est-ce qu'on décale ? »</em></td>
+          </tr>
+          <tr>
+            <td>PR trop longue, revue impossible</td>
+            <td>Revue reportée indéfiniment</td>
+            <td>Blocage équipe, dette cachée</td>
+            <td><em>« Cette PR n'est pas reviewable telle quelle. On peut la découper ? »</em></td>
+          </tr>
+          <tr>
+            <td>Demande client hors contrat</td>
+            <td>Extension de périmètre non arbitrée</td>
+            <td>Dépassement de charge, relation fragilisée</td>
+            <td><em>« Cette demande sort du périmètre. Qui valide l'extension ou le refus ? »</em></td>
+          </tr>
+          <tr>
+            <td>Dette technique non arbitrée</td>
+            <td>Non-décision qui s'accumule</td>
+            <td>Coût croissant, équipe qui perd confiance</td>
+            <td><em>« La dette ralentit les livraisons. On arbitre maintenant ou on planifie quand ? »</em></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Mobile: cards -->
+      <div class="canvas-cards">
+        <div class="canvas-card">
+          <div class="canvas-card-situation">Priorités ajoutées après sprint planning</div>
+          <div class="canvas-card-row">
+            <div class="canvas-card-label">Décision implicite</div>
+            <div class="canvas-card-value">Scope augmenté sans validation</div>
+          </div>
+          <div class="canvas-card-row">
+            <div class="canvas-card-label">Coût</div>
+            <div class="canvas-card-value">Surcharge, qualité dégradée, rétro trop tardive</div>
+          </div>
+          <div class="canvas-card-arbitrage">« Si on ajoute ça, qu'est-ce qu'on retire ou qu'est-ce qu'on décale ? »</div>
+        </div>
+        <div class="canvas-card">
+          <div class="canvas-card-situation">PR trop longue, revue impossible</div>
+          <div class="canvas-card-row">
+            <div class="canvas-card-label">Décision implicite</div>
+            <div class="canvas-card-value">Revue reportée indéfiniment</div>
+          </div>
+          <div class="canvas-card-row">
+            <div class="canvas-card-label">Coût</div>
+            <div class="canvas-card-value">Blocage équipe, dette cachée</div>
+          </div>
+          <div class="canvas-card-arbitrage">« Cette PR n'est pas reviewable telle quelle. On peut la découper ? »</div>
+        </div>
+        <div class="canvas-card">
+          <div class="canvas-card-situation">Demande client hors contrat</div>
+          <div class="canvas-card-row">
+            <div class="canvas-card-label">Décision implicite</div>
+            <div class="canvas-card-value">Extension de périmètre non arbitrée</div>
+          </div>
+          <div class="canvas-card-row">
+            <div class="canvas-card-label">Coût</div>
+            <div class="canvas-card-value">Dépassement de charge, relation fragilisée</div>
+          </div>
+          <div class="canvas-card-arbitrage">« Cette demande sort du périmètre. Qui valide l'extension ou le refus ? »</div>
+        </div>
+        <div class="canvas-card">
+          <div class="canvas-card-situation">Dette technique non arbitrée</div>
+          <div class="canvas-card-row">
+            <div class="canvas-card-label">Décision implicite</div>
+            <div class="canvas-card-value">Non-décision qui s'accumule</div>
+          </div>
+          <div class="canvas-card-row">
+            <div class="canvas-card-label">Coût</div>
+            <div class="canvas-card-value">Coût croissant, équipe qui perd confiance</div>
+          </div>
+          <div class="canvas-card-arbitrage">« La dette ralentit les livraisons. On arbitre maintenant ou on planifie quand ? »</div>
+        </div>
+      </div>
+
+      <div class="canvas-bottom-punchline">
+        Ce n'est pas un reproche à une personne. C'est une demande d'arbitrage explicite.
+      </div>
+
+      <div class="matrix-question" style="margin-top: 1.25rem;">
+        Avant un feedback difficile : <strong>est-ce un feedback à une personne ou à une décision ?</strong> La formulation change radicalement.
+      </div>
+    </section>
+
+    <!-- S11 · RESISTANCES (Fiche-outil 09) -->
+    <section id="s11" class="kit-section">
+      <p class="eyebrow">Fiche-outil 09</p>
+      <h2 class="section-title">Quand ça résiste :<br><em>reconnaître sans abandonner</em></h2>
+      <p class="section-intro">La résistance est une stratégie de protection, pas un refus d'entendre. Changez de tactique, pas d'objectif.</p>
+
+      <!-- Desktop table -->
+      <table class="resistance-table">
+        <thead>
+          <tr>
+            <th>Résistance</th>
+            <th>Ce que ça révèle</th>
+            <th>Réponse possible</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Déni : « tu n'as pas compris le contexte »</td>
+            <td>Protection de l'expertise</td>
+            <td>« Je ne remets pas en cause ton expertise. Je partage mon observation sur l'impact. »</td>
+          </tr>
+          <tr>
+            <td>Silence / acquiescement sans suite</td>
+            <td>Le feedback perçu comme attaque personnelle</td>
+            <td>« J'ai l'impression que tu n'es pas convaincu. On peut en discuter ? »</td>
+          </tr>
+          <tr>
+            <td>Contre-attaque : « et toi ? »</td>
+            <td>Déplacement de responsabilité</td>
+            <td>« Bonne question. On en parle après. Pour l'instant, finissons ce point. »</td>
+          </tr>
+          <tr>
+            <td>Surcharge émotionnelle</td>
+            <td>Peur d'être jugé, difficulté à entendre</td>
+            <td>« Je comprends que ce soit difficile à entendre. On peut ralentir et revenir au fait précis ? »</td>
+          </tr>
+          <tr>
+            <td>Neutralisation politique</td>
+            <td>Sujet sensible au-delà de la relation</td>
+            <td>« Mon feedback semble créer une tension. C'est la forme, le fond, ou le moment ? »</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Mobile cards -->
+      <div class="resistance-cards-mobile">
+        <div class="mobile-card">
+          <div class="mobile-card-title">Déni : « tu n'as pas compris le contexte »</div>
+          <div class="mobile-card-row">
+            <div class="mobile-card-row-label">Ce que ça révèle</div>
+            <div class="mobile-card-row-value">Protection de l'expertise</div>
+          </div>
+          <div class="mobile-card-row">
+            <div class="mobile-card-row-label">Réponse</div>
+            <div class="mobile-card-row-value highlighted">« Je ne remets pas en cause ton expertise. Je partage mon observation sur l'impact. »</div>
+          </div>
+        </div>
+        <div class="mobile-card">
+          <div class="mobile-card-title">Silence / acquiescement sans suite</div>
+          <div class="mobile-card-row">
+            <div class="mobile-card-row-label">Ce que ça révèle</div>
+            <div class="mobile-card-row-value">Feedback perçu comme attaque personnelle</div>
+          </div>
+          <div class="mobile-card-row">
+            <div class="mobile-card-row-label">Réponse</div>
+            <div class="mobile-card-row-value highlighted">« J'ai l'impression que tu n'es pas convaincu. On peut en discuter ? »</div>
+          </div>
+        </div>
+        <div class="mobile-card">
+          <div class="mobile-card-title">Contre-attaque : « et toi ? »</div>
+          <div class="mobile-card-row">
+            <div class="mobile-card-row-label">Ce que ça révèle</div>
+            <div class="mobile-card-row-value">Déplacement de responsabilité</div>
+          </div>
+          <div class="mobile-card-row">
+            <div class="mobile-card-row-label">Réponse</div>
+            <div class="mobile-card-row-value highlighted">« Bonne question. On en parle après. Pour l'instant, finissons ce point. »</div>
+          </div>
+        </div>
+        <div class="mobile-card">
+          <div class="mobile-card-title">Surcharge émotionnelle</div>
+          <div class="mobile-card-row">
+            <div class="mobile-card-row-label">Ce que ça révèle</div>
+            <div class="mobile-card-row-value">Peur d'être jugé, difficulté à entendre</div>
+          </div>
+          <div class="mobile-card-row">
+            <div class="mobile-card-row-label">Réponse</div>
+            <div class="mobile-card-row-value highlighted">« Je comprends que ce soit difficile à entendre. On peut ralentir et revenir au fait précis ? »</div>
+          </div>
+        </div>
+        <div class="mobile-card">
+          <div class="mobile-card-title">Neutralisation politique</div>
+          <div class="mobile-card-row">
+            <div class="mobile-card-row-label">Ce que ça révèle</div>
+            <div class="mobile-card-row-value">Sujet sensible au-delà de la relation</div>
+          </div>
+          <div class="mobile-card-row">
+            <div class="mobile-card-row-label">Réponse</div>
+            <div class="mobile-card-row-value highlighted">« Mon feedback semble créer une tension. C'est la forme, le fond, ou le moment ? »</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="resistance-rule">
+        Règle : si la tension monte, stoppez le contenu. Adressez la forme.
+      </div>
+
+      <div class="context-note" style="margin-top: 1rem;">
+        En ESN, la résistance peut aussi venir d'une peur de voir la compétence technique dévaluée. Reconnaître l'expertise avant de challenger l'impact désamorce beaucoup de résistances.
+      </div>
+    </section>
+
+    <!-- S12 · QUATRE CARTES DE PHRASES (Fiche-outil 10) -->
+    <section id="s12" class="kit-section">
+      <p class="eyebrow">Fiche-outil 10</p>
+      <h2 class="section-title">Quatre gestes,<br><em>quatre phrases</em></h2>
+      <p class="section-intro">Le bon feedback ne s'improvise pas. Il se prépare.</p>
+
+      <div class="phrase-cards">
+        <div class="phrase-card">
+          <div class="phrase-card-num">Carte 1</div>
+          <div class="phrase-card-title">Ouvrir</div>
+          <div class="phrase-card-pattern">« J'ai un point important à te partager. C'est le bon moment, ou on se cale 10 minutes aujourd'hui ? »</div>
+          <div class="phrase-card-example">« Tu as cinq minutes pour un retour rapide sur la réunion de ce matin ? »</div>
+          <div class="phrase-card-usage">En individuel quand le feedback concerne une personne. En collectif quand le sujet est une règle ou un arbitrage d'équipe.</div>
+        </div>
+
+        <div class="phrase-card">
+          <div class="phrase-card-num">Carte 2</div>
+          <div class="phrase-card-title">Nommer le fait</div>
+          <div class="phrase-card-pattern">« J'ai observé [fait]. Ça a eu comme impact [conséquence]. »</div>
+          <div class="phrase-card-example">« La PR comportait 400 lignes. Elle n'a pas pu être revue avant le merge. »</div>
+          <div class="phrase-card-usage">Ancrer le feedback dans l'observable, pas dans l'interprétation.</div>
+        </div>
+
+        <div class="phrase-card">
+          <div class="phrase-card-num">Carte 3</div>
+          <div class="phrase-card-title">Demander l'arbitrage</div>
+          <div class="phrase-card-pattern">« Si on ajoute ça, qu'est-ce qu'on retire ? »</div>
+          <div class="phrase-card-example">« Cette demande sort du sprint planning. On arbitre maintenant ou on en parle avec le sponsor ? »</div>
+          <div class="phrase-card-usage">Quand le feedback porte sur une décision, pas sur une personne.</div>
+        </div>
+
+        <div class="phrase-card">
+          <div class="phrase-card-num">Carte 4</div>
+          <div class="phrase-card-title">Désamorcer</div>
+          <div class="phrase-card-pattern">« Je comprends que ce soit difficile à entendre. On peut revenir au fait précis ? »</div>
+          <div class="phrase-card-example">« Je ne remets pas en cause ton expertise. Je partage ce que j'observe sur l'impact projet. »</div>
+          <div class="phrase-card-usage">Quand la résistance apparaît.</div>
+        </div>
+      </div>
+
+      <p class="phrase-note">Choisissez une carte. Entraînez la phrase à voix haute avant la conversation. Le naturel vient de la préparation.</p>
+    </section>
+
+    <!-- S13 · CHECKLIST (Fiche-outil 11) -->
+    <section id="s13" class="kit-section">
+      <p class="eyebrow">Fiche-outil 11 · Checklist</p>
+      <h2 class="section-title">Avant un feedback difficile<br><em>6 cases, 30 secondes</em></h2>
+
+      <div class="checklist">
+        <div class="check-item">
+          <input type="checkbox" id="ck1" class="check-input">
+          <label for="ck1" class="check-label">
+            <span class="check-keyword">Privé : </span>
+            <span class="check-text">ce feedback se donne en tête à tête, pas en public.</span>
+          </label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="ck2" class="check-input">
+          <label for="ck2" class="check-label">
+            <span class="check-keyword">Factuel : </span>
+            <span class="check-text">j'ai un fait précis et observable, pas seulement une impression.</span>
+          </label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="ck3" class="check-input">
+          <label for="ck3" class="check-label">
+            <span class="check-keyword">Utile : </span>
+            <span class="check-text">ce feedback peut changer quelque chose. Ce n'est pas juste pour me soulager.</span>
+          </label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="ck4" class="check-input">
+          <label for="ck4" class="check-label">
+            <span class="check-keyword">Orienté impact : </span>
+            <span class="check-text">je parle de l'effet sur le projet, l'équipe ou la relation. Pas de la personnalité.</span>
+          </label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="ck5" class="check-input">
+          <label for="ck5" class="check-label">
+            <span class="check-keyword">Moment : </span>
+            <span class="check-text">j'ai choisi ou créé un moment où la personne peut entendre le feedback.</span>
+          </label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="ck6" class="check-input">
+          <label for="ck6" class="check-label">
+            <span class="check-keyword">Ouverture : </span>
+            <span class="check-text">je laisse la porte à la version de l'autre.</span>
+          </label>
+        </div>
+      </div>
+
+
+      <div class="context-note" style="margin-top: 1.25rem; margin-bottom: 0;">
+        <div class="retenir-label" style="margin-bottom: 0.5rem;">Test de symétrie</div>
+        Avant d'envoyer un feedback sensible, remplacez mentalement le prénom par un autre profil.<br>
+        Si les mots changent — « cassant », « émotif », « ambitieux », « pas assez assertif » — revenez au fait observable.
+      </div>
+
+      <div class="checklist-rule">
+        Deux cases floues ? On reformule avant de parler.
+      </div>
+
+      <p class="checklist-usage">À relire 30 secondes avant de parler.</p>
+    </section>
+
+    <!-- S14 · RITUALISER (Fiche-outil 12) -->
+    <section id="s14" class="kit-section">
+      <p class="eyebrow">Fiche-outil 12</p>
+      <h2 class="section-title">Ritualiser le feedback :<br><em>commencez par un seul geste</em></h2>
+      <p class="section-intro">Le feedback qui arrive comme un événement fait toujours plus peur que celui qui fait partie du rythme.</p>
+
+      <div class="ritual-main">
+        <div class="ritual-main-badge">Rituel recommandé</div>
+        <div class="ritual-main-title">Débrief de sprint, 5 minutes</div>
+        <div class="ritual-main-desc">
+          À la fin de chaque sprint, une question : <strong>« Qu'est-ce qu'on aurait dû se dire plus tôt ? »</strong>
+        </div>
+        <div class="ritual-main-desc">
+          Ce n'est pas une rétro. C'est un entraînement au feedback en temps réel.
+        </div>
+        <div class="ritual-main-note">Testez ce rituel pendant quatre semaines avant d'en ajouter un autre.</div>
+      </div>
+
+      <div class="ritual-variants">
+        <div class="ritual-variant">
+          <div class="ritual-variant-badge">Variante A</div>
+          <div class="ritual-variant-title">Check-in 1:1, 15 min / semaine</div>
+          <div class="ritual-variant-desc">
+            Deux questions fixes : <em>« Qu'est-ce qui te freine ? »</em> et <em>« Qu'est-ce que je peux changer pour t'aider ? »</em> Demander du feedback ascendant d'abord réduit l'asymétrie.
+          </div>
+        </div>
+        <div class="ritual-variant">
+          <div class="ritual-variant-badge">Variante B</div>
+          <div class="ritual-variant-title">Débrief de fin de mission</div>
+          <div class="ritual-variant-desc">
+            Avant de clore : <em>« Qu'est-ce qu'on aurait dû se dire plus tôt ? »</em> Ce n'est pas un bilan. C'est une capitalisation.
+          </div>
+        </div>
+      </div>
+
+      <div class="ritual-warning">
+        <strong>Ce qui ne marche pas :</strong> les boîtes à feedback anonymes sans suite, les rétros où personne ne dit ce qui dérange vraiment.
+      </div>
+
+      <div class="matrix-question" style="margin-top: 1rem;">
+        Choisissez un seul rituel. Testez-le pendant quatre semaines. Ne tentez pas les trois en même temps.
+      </div>
+    </section>
+
+    <!-- S15 · PLAN CETTE SEMAINE (Fiche-outil 13) -->
+    <section id="s15" class="kit-section">
+      <p class="eyebrow">Fiche-outil 13 · Plan d'action</p>
+      <h2 class="section-title">Ce que vous faites<br><em>cette semaine</em></h2>
+      <p class="section-intro">Une conversation. Un rituel. Une demande. C'est suffisant pour commencer.</p>
+
+      <div class="plan-timeline">
+        <div class="plan-step">
+          <div class="plan-days">Lundi · Mardi</div>
+          <div class="plan-action">Une conversation</div>
+          <div class="plan-desc">
+            Identifiez un feedback retenu depuis plus d'une semaine.
+            Préparez-le avec la checklist (fiche 11). Donnez-le, en privé.
+          </div>
+        </div>
+        <div class="plan-step">
+          <div class="plan-days">Mercredi · Jeudi</div>
+          <div class="plan-action">Un rituel</div>
+          <div class="plan-desc">
+            Ajoutez une question de feedback dans un format qui existe déjà : daily, 1:1, fin de sprint.
+            Vous ne créez pas de réunion. Vous ajoutez une question.
+          </div>
+        </div>
+        <div class="plan-step">
+          <div class="plan-days">Vendredi</div>
+          <div class="plan-action">Une demande</div>
+          <div class="plan-desc">
+            Demandez du feedback ascendant à quelqu'un que vous managez ou accompagnez : <em>« Qu'est-ce que je pourrais faire différemment pour t'aider ? »</em> Écoutez. Ne vous défendez pas.
+          </div>
+        </div>
+      </div>
+
+      <div class="plan-final">
+        L'objectif n'est pas la perfection. C'est de mettre un premier feedback dans l'espace où il n'y en avait pas.
+      </div>
+
+      <div class="matrix-question" style="margin-top: 1rem;">
+        Notez à l'avance quelle conversation, quel rituel, quelle demande vous prévoyez. Un engagement flou n'est pas un engagement.
+      </div>
+    </section>
+
+    <!-- S16 · CLOTURE -->
+    <section id="s16" class="kit-section">
+      <p class="eyebrow">Pour finir</p>
+      <h2 class="section-title">Le feedback n'est pas<br><em>un talent.</em></h2>
+      <p class="closing-phrase">C'est une décision.</p>
+
+      <div class="closing-middle">
+        Le talk a posé le diagnostic.<br>
+        Ce kit vous donne les outils.<br>
+        La suite, c'est la pratique.
+      </div>
+
+      <div class="closing-quote">
+        <span class="quote-attribution" style="margin-bottom: 0.625rem; margin-top: 0; color: var(--T); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700;">Phrase à emporter</span>
+        Le feedback utile n'est ni gentil ni brutal. Il est clair, situé, et orienté vers la réussite de l'autre.
+      </div>
+
+      <div class="closing-note">
+        Si la conversation se passe mal malgré la préparation : ça arrive. Ce n'est pas la preuve que la méthode ne fonctionne pas. C'est la preuve que ça demande de la pratique.
+      </div>
+
+      <div class="closing-contact">
+        <div class="contact-block">
+          <div class="contact-block-label">Contact</div>
+          <div class="contact-block-name">Irina Talbot</div>
+          <a href="mailto:irina.talbot.35@gmail.com" class="contact-block-link">irina.talbot.35@gmail.com</a>
+          <a href="https://www.linkedin.com/in/irinatalbot35/" class="contact-block-link" target="_blank" rel="noopener">linkedin.com/in/irinatalbot35</a>
+        </div>
+        <div class="contact-block">
+          <div class="contact-block-label">Références</div>
+          <div class="resources-list">
+            <span class="ref-num">1.</span> Kim Scott, <cite>Radical Candor</cite>, St. Martin's Press, 2017<br>
+            <span class="ref-num">2.</span> Geert Hofstede et al., <cite>Cultures and Organizations</cite>, McGraw-Hill, 2010<br>
+            <span class="ref-num">3.</span> Kieran Snyder, « The abrasiveness trap », <cite>Fortune</cite>, 26 août 2014<br>
+            <span class="ref-num">4.</span> Amy Edmondson, <cite>The Fearless Organization</cite>, Wiley, 2018<br>
+            <span class="ref-num">5.</span> Erin Meyer, <cite>The Culture Map</cite>, PublicAffairs, 2014<br>
+            <span class="ref-num">6.</span> Amy Edmondson, « Psychological Safety and Learning Behavior in Work Teams », <cite>Administrative Science Quarterly</cite>, 44(2), 1999
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>

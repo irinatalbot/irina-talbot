@@ -1,0 +1,3634 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Radical Candor à la française - Agile Tour Rennes 2026</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=DM+Sans:wght@400;500;700&display=swap');
+
+:root {
+  --T: #A8472A;       /* Terracotta */
+  --T-soft: #C8624A;
+  --T-light: #E89A82;
+  --N: #1A1A1A;
+  --N2: #5A5148;
+  --W: #FFFFFF;
+  --C: #F0E8DA;
+  --C2: #E5DAC6;
+  --C3: #D8C8AB;
+
+  /* Scaling unit : ramène la slide à un canvas 1920x1080 et scale proportionnellement */
+  --u: min(calc(100vw / 1920), calc(100vh / 1080));
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: var(--C);
+  color: var(--N);
+  font-family: 'DM Sans', sans-serif;
+  width: 100vw; height: 100vh;
+  overflow: hidden;
+}
+
+/* ---------- Slide canvas : 1920x1080 scaled ---------- */
+.deck {
+  position: relative;
+  width: 100vw; height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+}
+.slide {
+  position: absolute;
+  width: calc(1920 * var(--u));
+  height: calc(1080 * var(--u));
+  display: none;
+  flex-direction: column;
+  padding: calc(72 * var(--u)) calc(96 * var(--u));
+  background: var(--C);
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+.slide.active { display: flex; opacity: 1; }
+
+/* --- Respirations spécifiques --- */
+[data-slide="6"] {
+  padding-bottom: calc(180 * var(--u));
+}
+[data-slide="9"] {
+  padding-bottom: calc(108 * var(--u));
+}
+/* Slide 12 : remonter les exemples du bas en rééquilibrant l'air */
+[data-slide="12"] .gest-num-big {
+  font-size: calc(108 * var(--u));
+}
+[data-slide="12"] .gest-head-row {
+  margin-bottom: calc(4 * var(--u));
+}
+[data-slide="12"] .gest-sub {
+  margin: calc(10 * var(--u)) 0 calc(20 * var(--u));
+}
+[data-slide="12"] .pillars {
+  margin-bottom: calc(16 * var(--u));
+}
+[data-slide="12"] .example-block {
+  margin-bottom: calc(14 * var(--u));
+}
+/* Slide 9 : 4 lignes dans le tableau, on resserre légèrement les cellules */
+[data-slide="9"] .gender-table .gcell {
+  padding: calc(13 * var(--u)) calc(24 * var(--u));
+}
+[data-slide="9"] .gender-table {
+  margin-top: calc(12 * var(--u));
+}
+[data-slide="9"] .gender-stat {
+  margin-top: calc(18 * var(--u));
+}
+
+/* ---------- Header minimal (sans logo) ---------- */
+.top-band {
+  display: flex; justify-content: flex-end; align-items: center;
+  margin-bottom: calc(28 * var(--u));
+}
+.slide-chip {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(18 * var(--u));
+  font-weight: 500;
+  color: var(--N2);
+  letter-spacing: calc(2 * var(--u));
+  text-transform: uppercase;
+}
+.slide-chip .num { color: var(--T); font-weight: 700; }
+.slide-chip .sep { color: var(--C3); margin: 0 calc(12 * var(--u)); }
+
+/* ---------- Titres ---------- */
+.h {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: calc(-3 * var(--u));
+  color: var(--N);
+}
+.h em { font-style: italic; font-weight: 400; color: var(--T); }
+.h-xxl { font-size: calc(180 * var(--u)); }
+.h-xl  { font-size: calc(130 * var(--u)); }
+.h-l   { font-size: calc(104 * var(--u)); }
+.h-m   { font-size: calc(84  * var(--u)); }
+.h-s   { font-size: calc(64  * var(--u)); }
+
+/* ---------- Corps ---------- */
+.lead {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400; font-style: italic;
+  font-size: calc(44 * var(--u)); line-height: 1.25;
+  color: var(--N2);
+  letter-spacing: calc(-0.5 * var(--u));
+  max-width: calc(1500 * var(--u));
+}
+.body {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400; font-size: calc(30 * var(--u)); line-height: 1.45;
+  color: var(--N);
+  max-width: calc(1500 * var(--u));
+}
+.body strong { font-weight: 700; color: var(--N); }
+.body em { font-style: italic; color: var(--T); font-weight: 500; }
+.muted { color: var(--N2); }
+
+/* ---------- Footnote refs ---------- */
+.fn {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.55em;
+  color: var(--T);
+  font-weight: 700;
+  vertical-align: super;
+  line-height: 0;
+  margin-left: calc(2 * var(--u));
+  letter-spacing: 0;
+}
+.fn-foot {
+  position: absolute;
+  bottom: calc(38 * var(--u));
+  left: calc(96 * var(--u));
+  right: calc(96 * var(--u));
+  display: flex; gap: calc(20 * var(--u));
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(15 * var(--u));
+  color: var(--N2);
+  letter-spacing: calc(1 * var(--u));
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.fn-foot .fn-ref {
+  color: var(--T); font-weight: 700;
+  margin-right: calc(6 * var(--u));
+}
+
+/* ---------- Slide 1 : cover ---------- */
+.cover {
+  justify-content: center; align-items: flex-start;
+  padding: calc(96 * var(--u)) calc(120 * var(--u));
+}
+.cover .eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(24 * var(--u));
+  font-weight: 500;
+  letter-spacing: calc(6 * var(--u));
+  text-transform: uppercase;
+  color: var(--T);
+  margin-bottom: calc(40 * var(--u));
+}
+.cover .main-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: calc(220 * var(--u));
+  line-height: 0.92;
+  letter-spacing: calc(-8 * var(--u));
+  color: var(--N);
+  margin-bottom: calc(24 * var(--u));
+}
+.cover .main-title em { font-style: italic; font-weight: 400; color: var(--T); }
+.cover .sub-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400; font-style: italic;
+  font-size: calc(80 * var(--u));
+  color: var(--N2);
+  letter-spacing: calc(-1 * var(--u));
+  margin-bottom: calc(60 * var(--u));
+}
+.cover .rule-big {
+  width: calc(160 * var(--u));
+  height: calc(6 * var(--u));
+  background: var(--T);
+}
+.cover .byline {
+  margin-top: calc(40 * var(--u));
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(32 * var(--u));
+  color: var(--N); font-weight: 700;
+  letter-spacing: calc(2 * var(--u));
+}
+.cover .byline .sep { color: var(--T); margin: 0 calc(16 * var(--u)); }
+.cover .role {
+  margin-top: calc(14 * var(--u));
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(20 * var(--u));
+  font-weight: 500;
+  letter-spacing: calc(3 * var(--u));
+  text-transform: uppercase;
+  color: var(--T);
+}
+.cover .speaker-bio {
+  margin-top: calc(22 * var(--u));
+  max-width: calc(1100 * var(--u));
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: calc(32 * var(--u));
+  line-height: 1.3;
+  color: var(--N2);
+  letter-spacing: calc(-0.5 * var(--u));
+}
+.cover .speaker-bio em {
+  color: var(--T);
+  font-weight: 500;
+}
+
+/* ---------- Slide 2 : paradoxe deux colonnes ---------- */
+.two-col {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: calc(100 * var(--u));
+  margin-top: calc(60 * var(--u)); flex: 1;
+  align-items: start;
+}
+.col-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(22 * var(--u));
+  font-weight: 700;
+  letter-spacing: calc(4 * var(--u));
+  text-transform: uppercase;
+  margin-bottom: calc(36 * var(--u));
+}
+.col-label.avoid { color: var(--T); }
+.col-label.have { color: var(--N2); }
+.col-item {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400; font-size: calc(56 * var(--u));
+  line-height: 1.15;
+  padding: calc(22 * var(--u)) 0;
+  border-top: calc(2 * var(--u)) solid var(--N);
+}
+.col-item:last-child { border-bottom: calc(2 * var(--u)) solid var(--N); }
+.col-avoid .col-item { border-color: var(--T); color: var(--N); }
+.col-avoid .col-item em { font-style: italic; color: var(--T); font-weight: 500; }
+.col-have .col-item { color: var(--N2); font-style: italic; }
+.scene {
+  margin-top: calc(40 * var(--u));
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(34 * var(--u));
+  color: var(--N2);
+  line-height: 1.3;
+  max-width: calc(1700 * var(--u));
+}
+.scene .scene-tag {
+  text-transform: uppercase;
+  font-family: 'DM Sans', sans-serif;
+  font-style: normal; font-weight: 700;
+  font-size: calc(16 * var(--u)); letter-spacing: calc(3 * var(--u));
+  color: var(--T); margin-right: calc(14 * var(--u));
+}
+
+/* ---------- Slide 3 : Hofstede en barres ---------- */
+.hof-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(80 * var(--u));
+  margin-top: calc(40 * var(--u)); flex: 1;
+}
+.hof-block {
+  display: flex; flex-direction: column;
+}
+.hof-axis-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(18 * var(--u));
+  font-weight: 700;
+  letter-spacing: calc(3 * var(--u));
+  text-transform: uppercase;
+  color: var(--T);
+  margin-bottom: calc(8 * var(--u));
+}
+.hof-axis-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: calc(20 * var(--u));
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--N2);
+  margin-left: calc(10 * var(--u));
+}
+.hof-axis-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(26 * var(--u));
+  color: var(--N2);
+  line-height: 1.3;
+  margin-bottom: calc(32 * var(--u));
+  max-width: calc(820 * var(--u));
+}
+.hof-axis-sub em {
+  color: var(--T);
+  font-weight: 500;
+}
+.hof-bar-row {
+  display: grid;
+  grid-template-columns: calc(180 * var(--u)) 1fr calc(70 * var(--u));
+  align-items: center;
+  gap: calc(16 * var(--u));
+  margin-bottom: calc(22 * var(--u));
+}
+.hof-country {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: calc(28 * var(--u));
+  font-style: italic;
+  color: var(--N2);
+  text-align: right;
+}
+.hof-country.fr {
+  color: var(--T);
+  font-style: normal;
+  font-weight: 700;
+}
+.hof-bar-track {
+  height: calc(28 * var(--u));
+  background: var(--C2);
+  border-radius: calc(2 * var(--u));
+  overflow: hidden;
+  position: relative;
+}
+.hof-bar-fill {
+  height: 100%;
+  background: var(--N2);
+  border-radius: calc(2 * var(--u));
+  display: block;
+}
+.hof-bar-row.fr .hof-bar-fill { background: var(--T); }
+.hof-score {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: calc(34 * var(--u));
+  color: var(--N2);
+  text-align: left;
+}
+.hof-bar-row.fr .hof-score { color: var(--T); }
+.hof-note {
+  grid-column: 1 / -1;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(34 * var(--u));
+  color: var(--N2);
+  line-height: 1.3;
+  margin-top: calc(8 * var(--u));
+  max-width: calc(1700 * var(--u));
+}
+.hof-note em { color: var(--T); font-weight: 500; font-style: italic; }
+.hof-note strong { color: var(--N); font-weight: 500; font-style: normal; }
+
+/* --- Slide 3 : Hofstede agrandi --- */
+[data-slide="3"] .hof-axis-title { font-size: calc(22 * var(--u)); }
+[data-slide="3"] .hof-axis-sub { font-size: calc(30 * var(--u)); margin-bottom: calc(28 * var(--u)); }
+[data-slide="3"] .hof-bar-row {
+  grid-template-columns: calc(220 * var(--u)) 1fr calc(80 * var(--u));
+  margin-bottom: calc(28 * var(--u));
+}
+[data-slide="3"] .hof-country { font-size: calc(36 * var(--u)); }
+[data-slide="3"] .hof-bar-track { height: calc(42 * var(--u)); }
+[data-slide="3"] .hof-score { font-size: calc(44 * var(--u)); }
+
+/* ---------- Slide 4 : bulles dialogue ---------- */
+.dialogues {
+  display: flex; flex-direction: column;
+  gap: calc(28 * var(--u));
+  margin-top: calc(40 * var(--u)); flex: 1;
+}
+.dial-row {
+  display: grid;
+  grid-template-columns: 1fr calc(80 * var(--u)) 1fr;
+  align-items: center;
+  gap: calc(24 * var(--u));
+}
+.dial-bubble {
+  background: var(--W);
+  padding: calc(28 * var(--u)) calc(32 * var(--u));
+  border-radius: calc(14 * var(--u));
+  position: relative;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: calc(34 * var(--u));
+  line-height: 1.25;
+  color: var(--N);
+  box-shadow: 0 calc(2 * var(--u)) 0 var(--C2);
+}
+.dial-bubble.said {
+  font-style: italic;
+  color: var(--N2);
+}
+.dial-bubble.meant {
+  background: var(--C2);
+  color: var(--N);
+  font-weight: 500;
+  border-left: calc(6 * var(--u)) solid var(--T);
+}
+.dial-bubble.meant em { color: var(--T); font-style: italic; font-weight: 500; }
+.dial-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(13 * var(--u));
+  font-weight: 700;
+  letter-spacing: calc(3 * var(--u));
+  text-transform: uppercase;
+  color: var(--N2);
+  display: block; margin-bottom: calc(10 * var(--u));
+}
+.dial-bubble.meant .dial-tag { color: var(--T); }
+.dial-arrow {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(40 * var(--u));
+  color: var(--T);
+  text-align: center;
+  font-weight: 400;
+}
+
+/* ---------- Slide 5 : 3 directions du feedback ---------- */
+.flow {
+  margin-top: calc(50 * var(--u)); flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: calc(40 * var(--u));
+  align-content: center;
+}
+.flow-card {
+  background: var(--W);
+  padding: calc(40 * var(--u)) calc(36 * var(--u));
+  border-radius: calc(12 * var(--u));
+  display: flex; flex-direction: column;
+  border-top: calc(8 * var(--u)) solid var(--C3);
+  position: relative;
+}
+.flow-card.hot { border-top-color: var(--T); background: var(--C2); }
+.flow-direction {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(13 * var(--u));
+  font-weight: 700;
+  letter-spacing: calc(3 * var(--u));
+  text-transform: uppercase;
+  color: var(--N2);
+  margin-bottom: calc(20 * var(--u));
+}
+.flow-card.hot .flow-direction { color: var(--T); }
+.flow-arrow-block {
+  display: flex; align-items: center; gap: calc(20 * var(--u));
+  margin-bottom: calc(28 * var(--u));
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(28 * var(--u));
+  color: var(--N2);
+}
+.flow-arrow-block .actor {
+  font-weight: 700;
+  font-style: normal;
+  color: var(--N);
+  font-size: calc(32 * var(--u));
+}
+.flow-card.hot .flow-arrow-block .actor { color: var(--T); }
+.flow-arrow-glyph {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: calc(48 * var(--u));
+  color: var(--T);
+  font-weight: 400;
+  line-height: 1;
+}
+.flow-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: calc(54 * var(--u));
+  letter-spacing: calc(-1 * var(--u));
+  color: var(--N);
+  line-height: 1.05;
+  margin-bottom: calc(14 * var(--u));
+}
+.flow-card.hot .flow-name { color: var(--T); font-style: italic; font-weight: 700; }
+.flow-context {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(24 * var(--u));
+  color: var(--N2);
+  line-height: 1.3;
+  margin-bottom: calc(20 * var(--u));
+}
+.flow-temp {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(15 * var(--u));
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: calc(2 * var(--u));
+  color: var(--N2);
+  margin-top: auto;
+  padding-top: calc(16 * var(--u));
+  border-top: calc(1 * var(--u)) solid var(--C3);
+}
+.flow-card.hot .flow-temp { color: var(--T); }
+.flow-note {
+  grid-column: 1 / -1;
+  margin-top: calc(8 * var(--u));
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(32 * var(--u));
+  color: var(--N2);
+  line-height: 1.3;
+  text-align: center;
+}
+.flow-note em { color: var(--T); font-weight: 500; font-style: italic; }
+
+/* Reveal on click : Slide 5 ascendant */
+.flow-card .flow-reveal {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  background: var(--C2);
+  border-radius: calc(12 * var(--u));
+  z-index: 3;
+  cursor: pointer;
+  transition: opacity .5s ease;
+  gap: calc(10 * var(--u));
+}
+.flow-card .flow-reveal .mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: calc(220 * var(--u));
+  line-height: .9;
+  color: var(--T);
+}
+.flow-card .flow-reveal .hint {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(14 * var(--u));
+  font-weight: 700;
+  letter-spacing: calc(3 * var(--u));
+  text-transform: uppercase;
+  color: var(--N2);
+}
+.slide[data-slide="5"].revealed .flow-card .flow-reveal {
+  opacity: 0; pointer-events: none;
+}
+
+/* ---------- Slide 6 : axes vides du quadrant ---------- */
+.qmap-wrap {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: calc(60 * var(--u));
+  margin-top: calc(20 * var(--u)); flex: 1;
+  align-items: center;
+}
+.qmap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-height: calc(600 * var(--u));
+  margin: 0 auto;
+}
+.qmap-bg {
+  position: absolute;
+  inset: calc(60 * var(--u)) calc(40 * var(--u)) calc(60 * var(--u)) calc(120 * var(--u));
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: calc(2 * var(--u));
+  background: var(--N);
+}
+.qmap-cell {
+  background: var(--C);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column;
+  padding: calc(20 * var(--u));
+  text-align: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(15 * var(--u));
+  letter-spacing: calc(2 * var(--u));
+  text-transform: uppercase;
+  color: var(--N2);
+  font-weight: 700;
+}
+.qmap-cell.target {
+  background: var(--T);
+  color: var(--W);
+}
+.qmap-cell .qmap-cell-fr {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(26 * var(--u));
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--N);
+  margin-top: calc(6 * var(--u));
+  line-height: 1.15;
+}
+.qmap-cell.target .qmap-cell-fr { color: var(--W); }
+.qmap-axis-y {
+  position: absolute;
+  left: calc(60 * var(--u));
+  top: calc(60 * var(--u));
+  bottom: calc(60 * var(--u));
+  width: calc(40 * var(--u));
+  display: flex; align-items: center; justify-content: center;
+  writing-mode: vertical-rl; transform: rotate(180deg);
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(16 * var(--u));
+  font-weight: 700;
+  letter-spacing: calc(4 * var(--u));
+  text-transform: uppercase;
+  color: var(--T);
+}
+.qmap-axis-x {
+  position: absolute;
+  left: calc(120 * var(--u));
+  right: calc(40 * var(--u));
+  bottom: calc(20 * var(--u));
+  height: calc(30 * var(--u));
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(16 * var(--u));
+  font-weight: 700;
+  letter-spacing: calc(4 * var(--u));
+  text-transform: uppercase;
+  color: var(--T);
+}
+.qmap-arrow-y, .qmap-arrow-x {
+  position: absolute;
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--N);
+  font-size: calc(28 * var(--u));
+}
+.qmap-arrow-y { top: calc(20 * var(--u)); left: calc(72 * var(--u)); }
+.qmap-arrow-x { bottom: calc(50 * var(--u)); right: calc(20 * var(--u)); }
+.qmap-side {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(38 * var(--u));
+  line-height: 1.3;
+  color: var(--N);
+  max-width: calc(800 * var(--u));
+}
+.qmap-side em { color: var(--T); font-weight: 500; font-style: italic; }
+.qmap-side .side-label {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: calc(16 * var(--u));
+  letter-spacing: calc(4 * var(--u));
+  text-transform: uppercase;
+  color: var(--T);
+  font-style: normal;
+  display: block;
+  margin-bottom: calc(20 * var(--u));
+}
+
+/* ---------- Slide 7 : matrice 4 quadrants avec chats ---------- */
+.matrix {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: calc(16 * var(--u));
+  margin-top: calc(14 * var(--u));
+  flex: 1;
+  min-height: 0;
+}
+.q {
+  background: var(--W);
+  padding: calc(16 * var(--u)) calc(20 * var(--u));
+  display: flex; flex-direction: column;
+  position: relative;
+  border-radius: calc(8 * var(--u));
+  overflow: hidden;
+  min-height: 0;
+}
+.q.q-target {
+  outline: calc(4 * var(--u)) solid var(--T);
+  outline-offset: calc(-4 * var(--u));
+}
+.q-cat {
+  flex: 1 1 auto;
+  background: var(--C2);
+  border-radius: calc(4 * var(--u));
+  margin-bottom: calc(10 * var(--u));
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(18 * var(--u));
+  color: var(--N2);
+  text-align: center;
+  padding: calc(8 * var(--u));
+  min-height: 0;
+}
+.q-cat img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.q-cat .placeholder { opacity: 0.7; }
+.q-head {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: calc(26 * var(--u));
+  letter-spacing: calc(-0.5 * var(--u));
+  color: var(--N);
+  line-height: 1.1;
+  flex-shrink: 0;
+}
+.q-head .q-head-en {
+  display: block;
+  font-style: italic;
+  color: var(--T);
+  font-weight: 400;
+  font-size: calc(17 * var(--u));
+  margin-top: calc(2 * var(--u));
+}
+.q-cap {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(15 * var(--u));
+  margin-top: calc(6 * var(--u));
+  color: var(--N2);
+  line-height: 1.3;
+  flex-shrink: 0;
+}
+.q-cap em { color: var(--T); font-style: italic; font-weight: 500; }
+.q-axes {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(12 * var(--u));
+  font-weight: 700;
+  letter-spacing: calc(1.5 * var(--u));
+  text-transform: uppercase;
+  color: var(--N2);
+  margin-top: calc(4 * var(--u));
+  flex-shrink: 0;
+}
+.q-axes .ok { color: var(--T); }
+.q-axes .ko { color: var(--N2); opacity: 0.5; }
+
+/* ---------- Slide 8 : focus Empathie dévastatrice ---------- */
+.focus {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: calc(80 * var(--u));
+  margin-top: calc(28 * var(--u)); flex: 1;
+  align-items: center;
+}
+.silence-list {
+  display: flex; flex-direction: column;
+  gap: calc(8 * var(--u));
+  margin-bottom: calc(28 * var(--u));
+}
+.silence-item {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400; font-style: italic;
+  font-size: calc(40 * var(--u));
+  line-height: 1.15;
+  color: var(--N);
+  letter-spacing: calc(-1 * var(--u));
+  padding-left: calc(24 * var(--u));
+  border-left: calc(3 * var(--u)) solid var(--T);
+}
+.silence-item em { color: var(--T); font-style: italic; font-weight: 500; }
+.focus-body {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: calc(28 * var(--u));
+  line-height: 1.3;
+  color: var(--N);
+  font-weight: 400;
+}
+.focus-body em { color: var(--T); font-style: italic; font-weight: 500; }
+.focus-body strong { font-weight: 700; }
+.focus-img {
+  border-radius: calc(8 * var(--u));
+  overflow: hidden;
+  align-self: stretch;
+  min-height: calc(560 * var(--u));
+  display: flex; align-items: center; justify-content: center;
+  padding: 0;
+  overflow: hidden;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(24 * var(--u));
+  color: var(--N2);
+  text-align: center;
+}
+.focus-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+/* ---------- Slide 9 : biais de genre ---------- */
+.gender-intro {
+  display: flex; align-items: center; gap: calc(28 * var(--u));
+  margin-bottom: calc(28 * var(--u));
+}
+.gender-pill {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: calc(44 * var(--u));
+  font-weight: 700;
+  letter-spacing: calc(2 * var(--u));
+  color: var(--W);
+  background: var(--T);
+  padding: calc(8 * var(--u)) calc(32 * var(--u));
+  border-radius: calc(60 * var(--u));
+  line-height: 1;
+}
+.gender-pill .gp-w { color: var(--rose-bg); }
+.gender-pill .gp-m { color: var(--bleu-bg); }
+.gender-pill .gp-eq {
+  margin: 0 calc(14 * var(--u));
+  font-style: italic;
+  font-weight: 400;
+}
+/* couleurs ironiques désaturées - pas trop saturées pour ne pas tomber dans le cliché complet */
+:root {
+  --rose: #D42060;
+  --rose-bg: #F3E2E5;
+  --bleu: #6E8AAB;
+  --bleu-bg: #DEE6EF;
+}
+.gender-table {
+  margin-top: calc(20 * var(--u)); flex: 1;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  gap: 0;
+  align-content: start;
+}
+.gender-table .gcell {
+  padding: calc(20 * var(--u)) calc(24 * var(--u));
+  border-bottom: calc(2 * var(--u)) solid var(--N);
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(26 * var(--u));
+  display: flex; align-items: center; gap: calc(12 * var(--u));
+}
+.gender-table .ghead {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: calc(2 * var(--u));
+  font-size: calc(17 * var(--u));
+  color: var(--N2);
+  border-bottom: calc(3 * var(--u)) solid var(--T);
+  padding: calc(16 * var(--u)) calc(24 * var(--u));
+}
+.gender-table .ghead.ghead-w {
+  background: var(--rose-bg);
+  color: var(--rose);
+  border-bottom-color: var(--rose);
+}
+.gender-table .ghead.ghead-m {
+  background: var(--bleu-bg);
+  color: var(--bleu);
+  border-bottom-color: var(--bleu);
+}
+.gender-table .ghead .gicon {
+  font-size: calc(32 * var(--u));
+  font-weight: 700;
+}
+.gender-table .ghead-w .gicon { color: var(--rose); }
+.gender-table .ghead-m .gicon { color: var(--bleu); }
+.gender-table .gbehav {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: calc(32 * var(--u));
+  color: var(--N);
+  letter-spacing: calc(-0.5 * var(--u));
+  line-height: 1.15;
+}
+.gender-table .gwoman {
+  background: var(--rose-bg);
+  color: var(--rose);
+  font-weight: 500;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(30 * var(--u));
+  line-height: 1.2;
+}
+.gender-table .gman {
+  background: var(--bleu-bg);
+  color: var(--bleu);
+  font-weight: 500;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(30 * var(--u));
+  line-height: 1.2;
+}
+.gender-disclaimer {
+  display: inline-block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: calc(28 * var(--u));
+  font-weight: 500;
+  font-style: italic;
+  color: var(--T);
+  margin-left: calc(20 * var(--u));
+  line-height: 1;
+}
+.gender-stat {
+  margin-top: calc(28 * var(--u));
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: calc(32 * var(--u));
+  padding: calc(22 * var(--u)) calc(28 * var(--u));
+  background: var(--W);
+  border-left: calc(8 * var(--u)) solid var(--T);
+}
+.gender-stat .gs-lead {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: calc(28 * var(--u));
+  color: var(--T);
+  line-height: 1.1;
+  max-width: calc(320 * var(--u));
+  border-right: calc(1 * var(--u)) solid var(--C3);
+  padding-right: calc(32 * var(--u));
+}
+.gender-stat .gs-body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(24 * var(--u));
+  color: var(--N);
+  line-height: 1.35;
+}
+.gender-stat .gs-body .big {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--T);
+  font-size: calc(38 * var(--u));
+}
+.gender-stat .gs-body em { color: var(--T); font-weight: 500; font-style: italic; }
+.gender-stat .gs-body strong { font-weight: 700; color: var(--N); }
+
+/* --- Stat block redesign (slide 9) --- */
+.gs-revamp {
+  display: flex;
+  flex-direction: column;
+  gap: calc(14 * var(--u));
+}
+.gs-verdict {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(26 * var(--u));
+  color: var(--N);
+  line-height: 1.2;
+}
+.gs-verdict strong { font-style: normal; font-weight: 700; color: var(--T); }
+.gs-numbers {
+  display: flex;
+  align-items: flex-start;
+  gap: calc(0 * var(--u));
+}
+.gs-num-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 calc(40 * var(--u));
+  border-right: calc(2 * var(--u)) solid var(--N);
+  opacity: 1;
+}
+.gs-num-block:first-child { padding-left: 0; }
+.gs-num-block:last-child { border-right: none; }
+.gs-n {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: calc(88 * var(--u));
+  line-height: 0.95;
+  color: var(--N);
+  letter-spacing: -0.02em;
+}
+.gs-n.rose { color: var(--rose); }
+.gs-nl {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(19 * var(--u));
+  line-height: 1.3;
+  color: var(--N);
+  max-width: calc(240 * var(--u));
+  margin-top: calc(6 * var(--u));
+  opacity: 0.75;
+}
+.gs-nl em { color: var(--T); font-style: italic; opacity: 1; }
+
+/* ---------- Slide 10 : équité (habitudes anti-biais) ---------- */
+.habits {
+  margin-top: calc(36 * var(--u)); flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(28 * var(--u)) calc(36 * var(--u));
+  align-content: center;
+}
+.habit {
+  background: var(--W);
+  padding: calc(24 * var(--u)) calc(28 * var(--u));
+  border-left: calc(6 * var(--u)) solid var(--T);
+  display: flex; flex-direction: column;
+  gap: calc(12 * var(--u));
+}
+.habit-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: calc(32 * var(--u));
+  color: var(--T);
+  line-height: 1;
+}
+.habit-head {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: calc(36 * var(--u));
+  color: var(--N);
+  line-height: 1.1;
+  letter-spacing: calc(-0.5 * var(--u));
+}
+.habit-head em { font-style: italic; color: var(--T); font-weight: 500; }
+.habit-ex {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: calc(14 * var(--u));
+  margin-top: calc(4 * var(--u));
+}
+.habit-ex .bad,
+.habit-ex .good {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(22 * var(--u));
+  line-height: 1.25;
+  padding: calc(10 * var(--u)) calc(14 * var(--u));
+  border-radius: calc(6 * var(--u));
+}
+.habit-ex .bad {
+  background: #F6E5DF;
+  color: #7A2E1A;
+  text-decoration: line-through;
+  text-decoration-color: rgba(168,71,42,0.4);
+}
+.habit-ex .good {
+  background: var(--C2);
+  color: var(--N);
+}
+.habit-ex .arr {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--T);
+  font-size: calc(28 * var(--u));
+  font-weight: 700;
+}
+
+/* ---------- Slides 11/12/13 : gestes pratiques (refonte) ---------- */
+.gest-head-row {
+  display: flex; align-items: baseline;
+  gap: calc(32 * var(--u));
+  margin-bottom: calc(8 * var(--u));
+}
+.gest-head-row .gest-title { margin: 0; }
+.gest-num-big {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: calc(140 * var(--u));
+  color: var(--T);
+  line-height: 0.85;
+  letter-spacing: calc(-4 * var(--u));
+}
+.gest-pretitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(18 * var(--u));
+  font-weight: 700;
+  letter-spacing: calc(4 * var(--u));
+  text-transform: uppercase;
+  color: var(--T);
+  margin-bottom: calc(10 * var(--u));
+}
+.gest-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: calc(96 * var(--u));
+  line-height: 1;
+  letter-spacing: calc(-3 * var(--u));
+  color: var(--N);
+}
+.gest-title em { color: var(--T); font-style: italic; font-weight: 400; }
+.gest-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: calc(36 * var(--u));
+  color: var(--N2);
+  margin: calc(20 * var(--u)) 0 calc(40 * var(--u));
+  letter-spacing: calc(-0.5 * var(--u));
+}
+
+/* Geste 01 : 3 piliers en cartes */
+.pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: calc(24 * var(--u));
+  margin-bottom: calc(28 * var(--u));
+}
+.pillar {
+  background: var(--W);
+  border-top: calc(8 * var(--u)) solid var(--T);
+  padding: calc(28 * var(--u)) calc(28 * var(--u));
+  border-radius: calc(8 * var(--u));
+  display: flex; flex-direction: column; gap: calc(12 * var(--u));
+}
+.pillar-num {
+  width: calc(56 * var(--u));
+  height: calc(56 * var(--u));
+  display: flex; align-items: center; justify-content: center;
+  color: var(--T);
+}
+.pillar-num svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.pillar-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: calc(48 * var(--u));
+  color: var(--N);
+  letter-spacing: calc(-1 * var(--u));
+  line-height: 1;
+}
+.pillar-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(20 * var(--u));
+  color: var(--N2);
+  line-height: 1.4;
+}
+.example-block {
+  background: var(--C2);
+  padding: calc(28 * var(--u)) calc(36 * var(--u));
+  border-left: calc(8 * var(--u)) solid var(--T);
+  border-radius: calc(0 * var(--u)) calc(8 * var(--u)) calc(8 * var(--u)) 0;
+  margin-bottom: calc(20 * var(--u));
+}
+.example-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(14 * var(--u));
+  font-weight: 700;
+  letter-spacing: calc(3 * var(--u));
+  text-transform: uppercase;
+  color: var(--T);
+  margin-bottom: calc(10 * var(--u));
+  display: block;
+}
+.example-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(32 * var(--u));
+  color: var(--N);
+  line-height: 1.3;
+}
+.example-text em { color: var(--T); font-style: italic; font-weight: 500; }
+
+/* Slide 12 : formule bug report isolée */
+.bug-formula {
+  margin-top: calc(24 * var(--u));
+  display: flex; flex-direction: column;
+  align-items: center;
+  gap: calc(10 * var(--u));
+  text-align: center;
+}
+.bug-formula-lead {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(26 * var(--u));
+  color: var(--N2);
+  line-height: 1.3;
+}
+.bug-formula-lead em { color: var(--T); font-style: italic; font-weight: 500; }
+.bug-formula-parts {
+  display: flex; align-items: baseline;
+  flex-wrap: wrap; justify-content: center;
+  gap: calc(14 * var(--u));
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: calc(36 * var(--u));
+  color: var(--T);
+  line-height: 1.1;
+  letter-spacing: calc(-0.5 * var(--u));
+}
+.bug-formula-parts .plus {
+  font-family: 'DM Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: var(--N2);
+  font-size: calc(28 * var(--u));
+}
+.bug-formula-tail {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(22 * var(--u));
+  color: var(--N);
+  margin-top: calc(4 * var(--u));
+}
+.bug-formula-tail strong { font-weight: 700; }
+
+/* --- Slide 13 : explication CNV + SBI et mise en page compacte --- */
+.method-note {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(16 * var(--u));
+  margin: calc(8 * var(--u)) 0 calc(16 * var(--u));
+}
+.method-chip {
+  background: var(--W);
+  border-left: calc(5 * var(--u)) solid var(--T);
+  padding: calc(12 * var(--u)) calc(18 * var(--u));
+  border-radius: calc(6 * var(--u));
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(16 * var(--u));
+  line-height: 1.35;
+  color: var(--N2);
+}
+.method-chip .method-title {
+  display: block;
+  font-size: calc(13 * var(--u));
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: calc(2.5 * var(--u));
+  color: var(--T);
+  margin-bottom: calc(4 * var(--u));
+}
+.method-chip strong { color: var(--N); font-weight: 700; }
+.method-chip em { color: var(--T); font-style: italic; font-weight: 500; }
+[data-slide="13"] { padding-bottom: calc(110 * var(--u)); }
+[data-slide="13"] .gest-num-big { font-size: calc(116 * var(--u)); }
+[data-slide="13"] .gest-head-row { margin-bottom: calc(4 * var(--u)); }
+[data-slide="13"] .gest-sub { font-size: calc(32 * var(--u)); margin: calc(8 * var(--u)) 0 calc(8 * var(--u)); }
+[data-slide="13"] .flow-steps { margin-bottom: calc(16 * var(--u)); }
+[data-slide="13"] .flow-step { padding: calc(18 * var(--u)) calc(16 * var(--u)); gap: calc(8 * var(--u)); }
+[data-slide="13"] .flow-step-name { font-size: calc(34 * var(--u)); }
+[data-slide="13"] .flow-step-desc { font-size: calc(15 * var(--u)); }
+[data-slide="13"] .example-block { padding: calc(20 * var(--u)) calc(30 * var(--u)); margin-bottom: calc(8 * var(--u)); }
+[data-slide="13"] .example-text { font-size: calc(28 * var(--u)); }
+[data-slide="13"] .bug-formula { margin-top: calc(8 * var(--u)); gap: calc(6 * var(--u)); }
+[data-slide="13"] .bug-formula-lead { font-size: calc(23 * var(--u)); }
+[data-slide="13"] .bug-formula-parts { font-size: calc(30 * var(--u)); gap: calc(10 * var(--u)); }
+[data-slide="13"] .bug-formula-tail { font-size: calc(19 * var(--u)); }
+
+/* Geste 02 : flow Fait → Impact → Besoin → Demande */
+.flow-steps {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: calc(16 * var(--u));
+  margin-bottom: calc(28 * var(--u));
+}
+.flow-step {
+  background: var(--W);
+  padding: calc(24 * var(--u)) calc(20 * var(--u));
+  border-radius: calc(8 * var(--u));
+  display: flex; flex-direction: column; gap: calc(10 * var(--u));
+  position: relative;
+  text-align: center;
+}
+.flow-step + .flow-step::before {
+  content: '→';
+  position: absolute;
+  left: calc(-22 * var(--u));
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: calc(40 * var(--u));
+  color: var(--T);
+}
+.flow-step-num {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(13 * var(--u));
+  font-weight: 700;
+  letter-spacing: calc(3 * var(--u));
+  text-transform: uppercase;
+  color: var(--T);
+}
+.flow-step-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: calc(40 * var(--u));
+  color: var(--N);
+  letter-spacing: calc(-0.5 * var(--u));
+}
+.flow-step-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(16 * var(--u));
+  color: var(--N2);
+  line-height: 1.35;
+}
+
+/* Geste 03 : comparaison fréquence vs intensité */
+.compare {
+  display: grid;
+  grid-template-columns: 1fr calc(120 * var(--u)) 1fr;
+  align-items: stretch;
+  gap: calc(24 * var(--u));
+  margin-bottom: calc(28 * var(--u));
+}
+.compare-side {
+  background: var(--W);
+  padding: calc(36 * var(--u)) calc(36 * var(--u));
+  border-radius: calc(8 * var(--u));
+  display: flex; flex-direction: column; gap: calc(14 * var(--u));
+}
+.compare-side.good { border-top: calc(8 * var(--u)) solid var(--T); }
+.compare-side.bad { border-top: calc(8 * var(--u)) solid var(--N2); opacity: 0.92; }
+.compare-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(14 * var(--u));
+  font-weight: 700;
+  letter-spacing: calc(3 * var(--u));
+  text-transform: uppercase;
+}
+.compare-side.good .compare-tag { color: var(--T); }
+.compare-side.bad .compare-tag { color: var(--N2); }
+.compare-when {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: calc(48 * var(--u));
+  letter-spacing: calc(-1 * var(--u));
+  color: var(--N);
+  line-height: 1;
+}
+.compare-side.bad .compare-when { color: var(--N2); }
+.compare-desc {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(28 * var(--u));
+  color: var(--N2);
+  line-height: 1.3;
+}
+.compare-vs {
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(64 * var(--u));
+  color: var(--T);
+}
+
+/* --- Slide 5 : citation Kim Scott --- */
+.kim-quote {
+  grid-column: 1 / -1;
+  margin-top: calc(16 * var(--u));
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(30 * var(--u));
+  color: var(--N);
+  line-height: 1.3;
+  border-left: calc(6 * var(--u)) solid var(--T);
+  padding: calc(10 * var(--u)) calc(24 * var(--u));
+}
+.kim-quote .kim-attr {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--T);
+  font-size: calc(22 * var(--u));
+  margin-left: calc(8 * var(--u));
+}
+
+/* --- Slide 10 : habitudes agrandies + header --- */
+[data-slide="10"] .habits {
+  gap: calc(32 * var(--u)) calc(40 * var(--u));
+  margin-top: calc(20 * var(--u));
+}
+[data-slide="10"] .habit {
+  padding: calc(32 * var(--u)) calc(36 * var(--u));
+  gap: calc(16 * var(--u));
+}
+[data-slide="10"] .habit-head { font-size: calc(40 * var(--u)); }
+[data-slide="10"] .habit-ex { font-size: calc(24 * var(--u)); }
+[data-slide="10"] .habit-ex .bad,
+[data-slide="10"] .habit-ex .good { font-size: calc(24 * var(--u)); }
+.habit-context {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(18 * var(--u));
+  color: var(--N2);
+  font-style: italic;
+  margin-top: calc(4 * var(--u));
+}
+
+/* --- Slide 12 : piliers plus aérés --- */
+[data-slide="12"] .pillars {
+  gap: calc(32 * var(--u));
+  margin-bottom: calc(20 * var(--u));
+}
+[data-slide="12"] .pillar {
+  padding: calc(36 * var(--u)) calc(40 * var(--u));
+  gap: calc(16 * var(--u));
+}
+
+/* --- Slide 16 : CTA feedback visible --- */
+.qr-zone .qr-cap {
+  font-size: calc(28 * var(--u));
+  font-weight: 700;
+  color: var(--T);
+  text-align: center;
+  letter-spacing: calc(1 * var(--u));
+}
+.qr-cta-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(14 * var(--u));
+  font-weight: 700;
+  letter-spacing: calc(3 * var(--u));
+  text-transform: uppercase;
+  color: var(--N2);
+  text-align: center;
+  margin-bottom: calc(8 * var(--u));
+}
+
+/* --- Slide 2 : note de scène --- */
+.scene-note {
+  margin-top: calc(10 * var(--u));
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(17 * var(--u));
+  font-weight: 700;
+  letter-spacing: calc(2 * var(--u));
+  text-transform: uppercase;
+  color: var(--T);
+}
+
+/* --- Slide 4 : conclusion dialogues --- */
+.dial-conclusion {
+  margin-top: calc(4 * var(--u));
+  border-top: calc(2 * var(--u)) solid var(--C2);
+  padding-top: calc(20 * var(--u));
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(34 * var(--u));
+  color: var(--N2);
+  line-height: 1.3;
+}
+.dial-conclusion em { color: var(--T); font-style: italic; font-weight: 500; }
+
+/* --- Slide 8 : texte décomposé --- */
+.focus-intro {
+  font-family: 'DM Sans', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: calc(24 * var(--u));
+  color: var(--N2);
+  margin-bottom: calc(12 * var(--u));
+  line-height: 1.2;
+}
+.focus-reasons {
+  display: flex;
+  flex-direction: column;
+  gap: calc(6 * var(--u));
+  margin-bottom: calc(16 * var(--u));
+}
+.focus-reason {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(26 * var(--u));
+  color: var(--N2);
+  padding-left: calc(20 * var(--u));
+  border-left: calc(3 * var(--u)) solid var(--C3);
+  line-height: 1.25;
+}
+.focus-punchline {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(30 * var(--u));
+  font-weight: 400;
+  color: var(--N);
+  line-height: 1.3;
+  padding-top: calc(14 * var(--u));
+  border-top: calc(2 * var(--u)) solid var(--C2);
+}
+.focus-punchline em { color: var(--T); font-weight: 500; }
+
+/* --- Slide 13 : callout fréquence --- */
+.freq-callout {
+  margin-top: calc(32 * var(--u));
+  padding: calc(28 * var(--u)) calc(40 * var(--u));
+  border-left: calc(8 * var(--u)) solid var(--T);
+  background: var(--W);
+}
+.freq-head {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: calc(46 * var(--u));
+  line-height: 1;
+  margin-bottom: calc(16 * var(--u));
+}
+.freq-head .fh-word { color: var(--N); }
+.freq-head .fh-op { color: var(--T); margin: 0 calc(8 * var(--u)); }
+.freq-head .fh-accent { color: var(--T); }
+.freq-body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(22 * var(--u));
+  color: var(--N2);
+  line-height: 1;
+  display: flex;
+  flex-direction: column;
+  gap: calc(10 * var(--u));
+}
+.freq-line {
+  display: block;
+  line-height: 1.3;
+}
+
+/* --- Slide 14 : attribution --- */
+.quote-author {
+  margin-top: calc(28 * var(--u));
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(22 * var(--u));
+  font-weight: 600;
+  letter-spacing: calc(3 * var(--u));
+  text-transform: uppercase;
+  color: var(--N2);
+}
+
+/* ---------- Slide 14 : citation ---------- */
+.quote-slide {
+  justify-content: center;
+  align-items: center;
+  padding: calc(120 * var(--u));
+}
+.quote-slide .quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400; font-style: italic;
+  font-size: calc(96 * var(--u));
+  line-height: 1.15;
+  color: var(--N);
+  text-align: center;
+  letter-spacing: calc(-2 * var(--u));
+  max-width: calc(1700 * var(--u));
+}
+.quote-slide .quote em { color: var(--T); font-style: italic; font-weight: 500; }
+.quote-slide .quote-rule {
+  width: calc(120 * var(--u));
+  height: calc(6 * var(--u));
+  background: var(--T);
+  margin-top: calc(56 * var(--u));
+}
+
+/* ---------- Slide 15 : CTA ---------- */
+.cta-list {
+  margin-top: calc(40 * var(--u)); flex: 1;
+  display: flex; flex-direction: column; justify-content: center;
+  gap: calc(48 * var(--u));
+  counter-reset: cta;
+}
+.cta-item {
+  display: grid;
+  grid-template-columns: calc(160 * var(--u)) 1fr;
+  align-items: baseline;
+  gap: calc(32 * var(--u));
+  padding-bottom: calc(36 * var(--u));
+  border-bottom: calc(2 * var(--u)) solid var(--C2);
+}
+.cta-item:last-child { border-bottom: none; }
+.cta-item::before {
+  counter-increment: cta;
+  content: counter(cta, decimal-leading-zero);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: calc(130 * var(--u));
+  color: var(--T);
+  line-height: 0.9;
+}
+.cta-item .cta-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: calc(60 * var(--u));
+  line-height: 1.15;
+  color: var(--N);
+  letter-spacing: calc(-1 * var(--u));
+}
+.cta-item .cta-text em { font-style: italic; color: var(--T); font-weight: 500; }
+
+/* ---------- Slide 16 : merci/QR ---------- */
+.thanks-wrap {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: calc(80 * var(--u));
+  margin-top: calc(20 * var(--u)); flex: 1;
+  align-items: center;
+}
+.thanks-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: calc(220 * var(--u));
+  line-height: 0.9;
+  letter-spacing: calc(-10 * var(--u));
+  color: var(--N);
+}
+.thanks-title em { color: var(--T); font-style: italic; font-weight: 400; }
+.thanks-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(44 * var(--u));
+  color: var(--N2);
+  margin: calc(20 * var(--u)) 0 calc(28 * var(--u));
+  letter-spacing: calc(-0.5 * var(--u));
+  max-width: calc(900 * var(--u));
+  line-height: 1.25;
+}
+.thanks-plateau {
+  background: var(--W);
+  border-left: calc(6 * var(--u)) solid var(--T);
+  padding: calc(22 * var(--u)) calc(28 * var(--u));
+  margin-bottom: calc(28 * var(--u));
+  border-radius: 0 calc(8 * var(--u)) calc(8 * var(--u)) 0;
+  max-width: calc(900 * var(--u));
+}
+.thanks-plateau .plateau-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(15 * var(--u));
+  font-weight: 700;
+  letter-spacing: calc(3 * var(--u));
+  text-transform: uppercase;
+  color: var(--T);
+  display: block;
+  margin-bottom: calc(8 * var(--u));
+}
+.thanks-plateau .plateau-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(24 * var(--u));
+  color: var(--N);
+  line-height: 1.35;
+}
+.thanks-contact {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(22 * var(--u));
+  line-height: 1.6;
+  color: var(--N);
+}
+.thanks-contact .name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: calc(48 * var(--u));
+  letter-spacing: calc(-1 * var(--u));
+  color: var(--N);
+  margin-bottom: calc(8 * var(--u));
+  display: block;
+}
+.thanks-contact .link {
+  color: var(--T); text-decoration: none; font-weight: 500;
+}
+.thanks-contact .label {
+  color: var(--N2); font-weight: 500; margin-right: calc(10 * var(--u));
+  text-transform: uppercase;
+  font-size: calc(15 * var(--u));
+  letter-spacing: calc(2 * var(--u));
+}
+.qr-zone {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: calc(20 * var(--u));
+}
+.qr-zone .qr-img {
+  display: block;
+}
+.qr-zone .qr-img img {
+  width: calc(440 * var(--u));
+  height: calc(440 * var(--u));
+  display: block;
+}
+.qr-zone .qr-cap {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(18 * var(--u));
+  color: var(--N);
+  letter-spacing: calc(2 * var(--u));
+  text-transform: uppercase;
+  font-weight: 600;
+  text-align: center;
+  max-width: calc(440 * var(--u));
+  line-height: 1.3;
+}
+
+/* ---------- Slide 17 : bibliographie ---------- */
+.biblio-list {
+  margin-top: calc(40 * var(--u)); flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(28 * var(--u)) calc(60 * var(--u));
+  align-content: start;
+}
+.biblio-item {
+  display: grid;
+  grid-template-columns: calc(70 * var(--u)) 1fr;
+  gap: calc(20 * var(--u));
+  padding: calc(20 * var(--u)) 0;
+  border-top: calc(2 * var(--u)) solid var(--C2);
+}
+.biblio-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: calc(48 * var(--u));
+  color: var(--T);
+  line-height: 1;
+}
+.biblio-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(20 * var(--u));
+  color: var(--N);
+  line-height: 1.45;
+}
+.biblio-text .b-author {
+  font-weight: 700;
+}
+.biblio-text .b-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(24 * var(--u));
+  color: var(--N);
+  display: block;
+  margin: calc(2 * var(--u)) 0;
+}
+.biblio-text .b-meta {
+  color: var(--N2);
+  font-size: calc(17 * var(--u));
+}
+
+/* ---------- Navigation ---------- */
+.nav {
+  position: fixed; bottom: calc(20 * var(--u)); right: calc(28 * var(--u));
+  display: flex; gap: calc(12 * var(--u)); align-items: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(14 * var(--u));
+  color: var(--N2);
+  letter-spacing: calc(2 * var(--u));
+  z-index: 50;
+}
+.nav button {
+  background: var(--W);
+  border: calc(1 * var(--u)) solid var(--N2);
+  color: var(--N);
+  width: calc(36 * var(--u)); height: calc(36 * var(--u));
+  cursor: pointer;
+  font-size: calc(16 * var(--u));
+  border-radius: 999px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .2s ease;
+  padding: 0;
+}
+.nav button:hover {
+  background: var(--T); color: var(--W); border-color: var(--T);
+}
+.nav .counter {
+  min-width: calc(70 * var(--u));
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Mobile portrait : reflow ---------- */
+@media (max-aspect-ratio: 4/5) {
+  :root {
+    --u: calc(100vw / 1080);
+  }
+  .slide {
+    width: 100vw;
+    height: auto;
+    min-height: 100vh;
+    padding: calc(60 * var(--u)) calc(60 * var(--u));
+  }
+  .deck { display: block; height: auto; min-height: 100vh; }
+  /* Reflow grids to single column */
+  .two-col, .hof-wrap, .qmap-wrap, .focus, .matrix,
+  .pillars, .compare, .thanks-wrap, .biblio-list {
+    grid-template-columns: 1fr !important;
+  }
+  .flow {
+    grid-template-columns: 1fr !important;
+  }
+  .flow-steps {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .gender-table {
+    grid-template-columns: 1fr !important;
+  }
+  .gender-table .ghead { display: none; }
+  .matrix {
+    grid-template-rows: auto auto auto auto;
+  }
+  .compare-vs { transform: rotate(90deg); padding: calc(20 * var(--u)) 0; }
+  .flow-step + .flow-step::before { display: none; }
+  .dial-row {
+    grid-template-columns: 1fr;
+    gap: calc(12 * var(--u));
+  }
+  .dial-arrow { transform: rotate(90deg); padding: calc(8 * var(--u)) 0; }
+  body, html { overflow: auto; }
+}
+
+/* ---------- Print export ---------- */
+@media print {
+  @page { size: 1920px 1080px; margin: 0; }
+  :root { --u: 1px; }
+  html, body { overflow: visible; }
+  .slide {
+    display: flex !important; position: relative;
+    page-break-after: always;
+    width: 1920px; height: 1080px;
+    opacity: 1 !important;
+  }
+  .nav { display: none; }
+  .deck { display: block; height: auto; }
+}
+
+/* ---------- Interlude slide : "3 gestes" ---------- */
+.interlude-slide {
+  justify-content: flex-start;
+}
+.interlude-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+}
+.interlude-eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(20 * var(--u));
+  font-weight: 500;
+  color: var(--T);
+  text-transform: uppercase;
+  letter-spacing: calc(4 * var(--u));
+  margin-bottom: calc(44 * var(--u));
+}
+.interlude-hero {
+  display: flex;
+  align-items: baseline;
+  gap: calc(28 * var(--u));
+}
+.interlude-big-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: calc(280 * var(--u));
+  font-weight: 700;
+  color: var(--T);
+  line-height: 0.85;
+  flex-shrink: 0;
+}
+.interlude-phrase {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: calc(104 * var(--u));
+  font-weight: 500;
+  color: var(--N);
+  line-height: 1.1;
+  letter-spacing: calc(-1.5 * var(--u));
+}
+.interlude-phrase em {
+  font-style: italic;
+  color: var(--T);
+  font-weight: 400;
+}
+.interlude-rule {
+  width: calc(120 * var(--u));
+  height: calc(5 * var(--u));
+  background: var(--T);
+  margin-top: calc(52 * var(--u));
+}
+
+/* =========================================================
+   PREMIUM V2 — ADDITIONS
+   ========================================================= */
+
+/* Slide 3 : conclusion 3 blocs */
+.hof-c3-wrap { grid-column: 1 / -1; margin-top: calc(16 * var(--u)); }
+.hof-c3-blocks {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: calc(20 * var(--u)); margin-bottom: calc(10 * var(--u));
+}
+.hof-c3-block {
+  font-family: 'Cormorant Garamond', serif; font-weight: 700;
+  font-size: calc(32 * var(--u)); color: var(--N);
+  padding: calc(18 * var(--u)) calc(22 * var(--u));
+  border-left: calc(5 * var(--u)) solid var(--T);
+  line-height: 1.2; background: var(--W);
+  border-radius: 0 calc(6 * var(--u)) calc(6 * var(--u)) 0;
+}
+.hof-c3-note {
+  font-family: 'DM Sans', sans-serif; font-size: calc(15 * var(--u));
+  color: var(--N2); font-style: italic; letter-spacing: calc(0.5 * var(--u));
+}
+
+/* Slide 5 : question forte typographique */
+.flow-question {
+  grid-column: 1 / -1; margin-top: calc(16 * var(--u));
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-weight: 700; font-size: calc(52 * var(--u));
+  color: var(--T); line-height: 1.2; letter-spacing: calc(-0.5 * var(--u));
+}
+
+/* Slide 6 : quadrant agrandi */
+[data-slide="6"] .qmap-wrap {
+  grid-template-columns: 1.5fr 1fr; gap: calc(48 * var(--u)); margin-top: calc(8 * var(--u));
+}
+[data-slide="6"] .qmap { max-height: calc(760 * var(--u)); }
+[data-slide="6"] .qmap-cell { padding: calc(14 * var(--u)) calc(16 * var(--u)); }
+.qmap-cell-en {
+  display: block; font-family: 'DM Sans', sans-serif;
+  font-size: calc(11 * var(--u)); font-style: normal;
+  letter-spacing: calc(1.5 * var(--u)); text-transform: uppercase;
+  color: var(--N2); font-weight: 700; margin-bottom: calc(4 * var(--u)); line-height: 1;
+}
+.qmap-cell.target .qmap-cell-en { color: rgba(255,255,255,0.7); }
+
+/* Slide 8 : structure deux colonnes */
+.focus-2col {
+  display: grid; grid-template-columns: 1fr calc(64 * var(--u)) 1fr;
+  gap: calc(16 * var(--u)); flex: 1; margin-top: calc(20 * var(--u)); align-items: start;
+}
+.focus-col-label {
+  font-family: 'DM Sans', sans-serif; font-size: calc(16 * var(--u));
+  font-weight: 700; letter-spacing: calc(3 * var(--u)); text-transform: uppercase;
+  color: var(--T); margin-bottom: calc(16 * var(--u));
+}
+.focus-col-label.cost { color: var(--N); }
+.focus-col-items { display: flex; flex-direction: column; gap: calc(16 * var(--u)); }
+.focus-col-item {
+  background: var(--W); padding: calc(20 * var(--u)) calc(24 * var(--u));
+  border-radius: calc(8 * var(--u)); font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: calc(34 * var(--u)); color: var(--N2);
+  line-height: 1.25; border-left: calc(4 * var(--u)) solid var(--C3);
+}
+.focus-col-item.cost { border-left-color: var(--T); color: var(--N); background: var(--C2); }
+.focus-col-item em { color: var(--T); font-style: italic; font-weight: 500; }
+.focus-col-transition {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding-top: calc(48 * var(--u)); font-family: 'Cormorant Garamond', serif;
+  font-size: calc(52 * var(--u)); color: var(--T);
+}
+.focus-2col-punchline {
+  grid-column: 1 / -1; margin-top: calc(16 * var(--u));
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: calc(34 * var(--u)); font-weight: 700; color: var(--N);
+  line-height: 1.3; text-align: center;
+  border-top: calc(2 * var(--u)) solid var(--C2); padding-top: calc(18 * var(--u));
+}
+.focus-2col-punchline em { color: var(--T); }
+
+/* Slide 9 : stat source + signal */
+.gs-source-line {
+  font-family: 'DM Sans', sans-serif; font-size: calc(14 * var(--u));
+  font-weight: 700; letter-spacing: calc(2 * var(--u)); text-transform: uppercase;
+  color: var(--N2); margin-bottom: calc(12 * var(--u));
+}
+.gs-signal-note {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: calc(22 * var(--u)); color: var(--N2); margin-top: calc(10 * var(--u));
+}
+
+/* Slides 12 & 13 : rythme vertical harmonieux */
+[data-slide="12"] { justify-content: space-between; }
+[data-slide="13"] { justify-content: space-between; }
+
+/* Slide 17 : plateau agrandi */
+[data-slide="17"] .thanks-plateau {
+  padding: calc(32 * var(--u)) calc(36 * var(--u));
+  margin-bottom: calc(32 * var(--u)); max-width: calc(960 * var(--u));
+}
+[data-slide="17"] .thanks-plateau .plateau-tag {
+  font-size: calc(17 * var(--u)); margin-bottom: calc(14 * var(--u));
+}
+[data-slide="17"] .thanks-plateau .plateau-text { font-size: calc(28 * var(--u)); line-height: 1.55; }
+[data-slide="17"] .thanks-sub { font-size: calc(40 * var(--u)); margin-bottom: calc(32 * var(--u)); }
+
+/* Slide 18 : kit post-talk */
+.kit-zone {
+  background: var(--W); border-left: calc(8 * var(--u)) solid var(--T);
+  padding: calc(22 * var(--u)) calc(30 * var(--u)); margin-bottom: calc(20 * var(--u));
+  border-radius: 0 calc(8 * var(--u)) calc(8 * var(--u)) 0;
+  display: grid; grid-template-columns: 1fr calc(130 * var(--u));
+  gap: calc(28 * var(--u)); align-items: center;
+}
+.kit-tag {
+  font-family: 'DM Sans', sans-serif; font-size: calc(13 * var(--u));
+  font-weight: 700; letter-spacing: calc(3 * var(--u)); text-transform: uppercase;
+  color: var(--T); display: block; margin-bottom: calc(8 * var(--u));
+}
+.kit-title {
+  font-family: 'Cormorant Garamond', serif; font-weight: 700;
+  font-size: calc(34 * var(--u)); color: var(--N);
+  letter-spacing: calc(-0.5 * var(--u)); margin-bottom: calc(6 * var(--u)); line-height: 1.1;
+}
+.kit-promise { font-family: 'DM Sans', sans-serif; font-size: calc(16 * var(--u)); color: var(--N2); line-height: 1.45; }
+.kit-qr { display: flex; flex-direction: column; align-items: center; gap: calc(8 * var(--u)); }
+.kit-qr-placeholder {
+  width: calc(110 * var(--u)); height: calc(110 * var(--u));
+  border: calc(2 * var(--u)) dashed var(--T);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Sans', sans-serif; font-size: calc(10 * var(--u));
+  color: var(--T); text-align: center; line-height: 1.3;
+  padding: calc(8 * var(--u)); box-sizing: border-box;
+}
+.kit-url-label {
+  font-family: 'DM Sans', sans-serif; font-size: calc(10 * var(--u));
+  color: var(--N2); text-align: center; font-weight: 700;
+  letter-spacing: calc(0.5 * var(--u)); text-transform: uppercase;
+  max-width: calc(130 * var(--u)); line-height: 1.3;
+}
+
+/* =========================================================
+   PREMIUM V3 — ADDITIONS
+   ========================================================= */
+
+/* Slide 3 : strip conclusion editoriale + espace footnote */
+[data-slide="3"] { padding-bottom: calc(92 * var(--u)); }
+.hof-conclusion-strip {
+  border-top: calc(2 * var(--u)) solid var(--T);
+  padding-top: calc(14 * var(--u));
+  display: flex; align-items: baseline;
+  gap: calc(14 * var(--u)); flex-wrap: nowrap;
+  margin-bottom: calc(8 * var(--u));
+}
+.hof-c-item {
+  font-family: 'Cormorant Garamond', serif; font-weight: 500;
+  font-size: calc(30 * var(--u)); color: var(--N); line-height: 1.2;
+}
+.hof-c-item--accent { font-style: italic; color: var(--T); }
+.hof-c-sep {
+  color: var(--C3); font-family: 'DM Sans', sans-serif;
+  font-weight: 700; font-size: calc(22 * var(--u)); flex-shrink: 0;
+}
+
+/* Slide 4 : distribution equitable */
+[data-slide="4"] .dialogues { justify-content: space-between; gap: 0; }
+[data-slide="4"] .dial-row { align-items: stretch; }
+[data-slide="4"] .dial-bubble { display: flex; flex-direction: column; justify-content: center; }
+[data-slide="4"] .dial-arrow { display: flex; align-items: center; justify-content: center; }
+[data-slide="4"] .dial-conclusion { margin-top: calc(14 * var(--u)); flex-shrink: 0; }
+
+/* Slide 6 : labels axes + cellules */
+[data-slide="6"] .qmap-axis-x,
+[data-slide="6"] .qmap-axis-y {
+  font-size: calc(16 * var(--u)); letter-spacing: calc(2 * var(--u));
+}
+[data-slide="6"] .qmap-cell-en {
+  font-size: calc(13 * var(--u)); letter-spacing: calc(1.5 * var(--u));
+  color: var(--N2); margin-bottom: calc(8 * var(--u)); line-height: 1.2;
+}
+[data-slide="6"] .qmap-cell.target .qmap-cell-en { color: rgba(255,255,255,0.78); }
+[data-slide="6"] .qmap-cell .qmap-cell-fr {
+  font-size: calc(28 * var(--u)); display: block;
+  margin-top: calc(2 * var(--u)); line-height: 1.1; font-weight: 500;
+}
+[data-slide="6"] .qmap-cell.target .qmap-cell-fr { color: var(--W); }
+
+/* Slide 8 : colonnes pleine hauteur + micro-scene */
+[data-slide="8"] .focus-2col { align-items: stretch; margin-top: calc(26 * var(--u)); }
+[data-slide="8"] .focus-col-items { flex: 1; gap: calc(18 * var(--u)); }
+[data-slide="8"] .focus-col-item { flex: 1; display: flex; align-items: center; }
+[data-slide="8"] .focus-col-transition {
+  padding-top: 0; flex-direction: column;
+  justify-content: center; gap: calc(6 * var(--u));
+  font-size: calc(26 * var(--u)); color: var(--N2);
+}
+.focus-micro-scene {
+  grid-column: 1 / -1;
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: calc(26 * var(--u)); color: var(--N2);
+  text-align: center;
+  padding: calc(12 * var(--u)) calc(28 * var(--u));
+  background: var(--C2); border-radius: calc(4 * var(--u));
+  letter-spacing: calc(-0.2 * var(--u)); margin-top: calc(4 * var(--u));
+}
+
+/* Slide 9 : stat cards avec paddings genereux */
+[data-slide="9"] .gs-numbers { gap: calc(16 * var(--u)); align-items: stretch; }
+[data-slide="9"] .gs-num-block {
+  background: var(--W); border-radius: calc(8 * var(--u));
+  padding: calc(24 * var(--u)) calc(28 * var(--u));
+  border-right: none; border-bottom: calc(4 * var(--u)) solid var(--T);
+  flex: 1; gap: 0;
+}
+[data-slide="9"] .gs-num-block:first-child { padding-left: calc(28 * var(--u)); }
+[data-slide="9"] .gs-nl {
+  margin-top: calc(16 * var(--u)); font-size: calc(19 * var(--u));
+  max-width: none; opacity: 1; color: var(--N2); line-height: 1.3;
+}
+
+/* Slide 13 : flow-steps avec poids visuel + hover */
+[data-slide="13"] .flow-steps { gap: calc(20 * var(--u)); }
+[data-slide="13"] .flow-step {
+  padding: calc(32 * var(--u)) calc(24 * var(--u)); gap: calc(12 * var(--u));
+  transition: box-shadow .2s ease, background .2s ease;
+}
+[data-slide="13"] .flow-step-num { font-size: calc(15 * var(--u)); letter-spacing: calc(3 * var(--u)); }
+[data-slide="13"] .flow-step-name { font-size: calc(52 * var(--u)); letter-spacing: calc(-1.5 * var(--u)); }
+[data-slide="13"] .flow-step-desc { font-size: calc(18 * var(--u)); margin-top: calc(6 * var(--u)); }
+[data-slide="13"] .flow-step:hover {
+  box-shadow: 0 calc(4 * var(--u)) calc(20 * var(--u)) rgba(168,71,42,0.18);
+  background: var(--C2);
+}
+
+/* Slide 17 : plateau compact */
+.plateau-strong {
+  display: block; font-family: 'Cormorant Garamond', serif;
+  font-weight: 700; font-style: normal;
+  font-size: calc(30 * var(--u)); color: var(--N);
+  margin-bottom: calc(10 * var(--u));
+}
+.plateau-desc {
+  display: block; font-family: 'DM Sans', sans-serif;
+  font-size: calc(18 * var(--u)); color: var(--N2);
+  line-height: 1.45; margin-bottom: calc(10 * var(--u));
+}
+.plateau-punch {
+  display: block; font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: calc(23 * var(--u));
+  color: var(--T); font-weight: 500;
+}
+
+/* Slide 18 : CTA compact + 7 references visibles */
+.kit-compact {
+  display: flex; align-items: center; gap: calc(20 * var(--u));
+  padding: calc(12 * var(--u)) calc(20 * var(--u));
+  background: var(--W); border-left: calc(4 * var(--u)) solid var(--T);
+  border-radius: 0 calc(6 * var(--u)) calc(6 * var(--u)) 0;
+  margin-bottom: calc(12 * var(--u));
+}
+.kit-compact-label {
+  font-family: 'DM Sans', sans-serif; font-size: calc(12 * var(--u));
+  font-weight: 700; letter-spacing: calc(2.5 * var(--u));
+  text-transform: uppercase; color: var(--T); white-space: nowrap;
+}
+.kit-compact-url {
+  font-family: 'DM Sans', sans-serif; font-size: calc(16 * var(--u));
+  color: var(--N2); flex: 1;
+}
+.kit-compact-qr {
+  width: calc(60 * var(--u)); height: calc(60 * var(--u));
+  border: calc(2 * var(--u)) dashed var(--T);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Sans', sans-serif; font-size: calc(9 * var(--u));
+  color: var(--T); text-align: center; line-height: 1.3; flex-shrink: 0;
+}
+[data-slide="18"] .biblio-list {
+  margin-top: calc(14 * var(--u));
+  gap: calc(12 * var(--u)) calc(44 * var(--u));
+  align-content: start;
+}
+[data-slide="18"] .biblio-item {
+  padding: calc(10 * var(--u)) 0;
+  grid-template-columns: calc(46 * var(--u)) 1fr;
+  gap: calc(12 * var(--u));
+}
+[data-slide="18"] .biblio-num { font-size: calc(32 * var(--u)); }
+[data-slide="18"] .biblio-text { font-size: calc(15 * var(--u)); line-height: 1.35; }
+[data-slide="18"] .biblio-text .b-title { font-size: calc(18 * var(--u)); margin: calc(1 * var(--u)) 0; }
+[data-slide="18"] .biblio-text .b-meta { font-size: calc(12 * var(--u)); }
+
+/* =========================================================
+   PREMIUM V4 — CORRECTIONS & AMÉLIORATIONS
+   ========================================================= */
+
+/* Utilitaire anti-rupture */
+.nobr { white-space: nowrap; }
+/* Bulles : lignes et groupes insécables */
+.quote-lines { display: block; }
+.quote-line { display: inline; }
+
+/* Slide 4 v4 : respirations aérées + protection guillemets */
+[data-slide="4"] .dialogues { justify-content: space-between; gap: calc(10 * var(--u)); }
+[data-slide="4"] .dial-row { align-items: stretch; padding: calc(6 * var(--u)) 0; }
+[data-slide="4"] .dial-bubble { display: flex; flex-direction: column; justify-content: center; overflow-wrap: break-word; hyphens: none; }
+[data-slide="4"] .dial-arrow { display: flex; align-items: center; justify-content: center; }
+[data-slide="4"] .dial-conclusion { margin-top: calc(12 * var(--u)); flex-shrink: 0; }
+
+/* Slide 8 v4 : grille 3×3 alignée — nouveau composant */
+.focus-grid-s8 {
+  display: grid;
+  grid-template-columns: 1fr calc(114 * var(--u)) 1fr;
+  gap: calc(10 * var(--u)) calc(14 * var(--u));
+  flex: 1;
+  margin-top: calc(18 * var(--u));
+  align-items: stretch;
+}
+.fgs8-h {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(13 * var(--u));
+  font-weight: 700;
+  letter-spacing: calc(3 * var(--u));
+  text-transform: uppercase;
+  color: var(--T);
+  padding-bottom: calc(8 * var(--u));
+  border-bottom: calc(1 * var(--u)) solid var(--C3);
+}
+.fgs8-h-right { color: var(--N); }
+.fgs8-h-mid { text-align: center; color: var(--N2); }
+.fgs8-mech {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(20 * var(--u));
+  color: var(--N2);
+  text-align: center;
+  padding: calc(4 * var(--u)) calc(6 * var(--u));
+  border-left: calc(1 * var(--u)) solid var(--C3);
+  border-right: calc(1 * var(--u)) solid var(--C3);
+}
+[data-slide="8"] .focus-col-item { font-size: calc(28 * var(--u)); padding: calc(14 * var(--u)) calc(18 * var(--u)); }
+[data-slide="8"] .focus-micro-scene { font-size: calc(22 * var(--u)); margin-top: calc(8 * var(--u)); }
+.focus-2col-punchline-s8 {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(32 * var(--u));
+  font-weight: 700;
+  color: var(--N);
+  line-height: 1.3;
+  text-align: center;
+  border-top: calc(2 * var(--u)) solid var(--C2);
+  padding-top: calc(14 * var(--u));
+  margin-top: calc(10 * var(--u));
+  flex-shrink: 0;
+}
+.focus-2col-punchline-s8 em { color: var(--T); }
+
+/* Slide 18 v4 : lisibilité desktop (textes agrandis, pas de micro-fonte) */
+[data-slide="18"] .biblio-list {
+  margin-top: calc(14 * var(--u));
+  gap: calc(16 * var(--u)) calc(52 * var(--u));
+  align-content: start;
+}
+[data-slide="18"] .biblio-item {
+  padding: calc(14 * var(--u)) 0;
+  grid-template-columns: calc(52 * var(--u)) 1fr;
+  gap: calc(14 * var(--u));
+  border-top: calc(1 * var(--u)) solid var(--C2);
+}
+[data-slide="18"] .biblio-num { font-size: calc(38 * var(--u)); }
+[data-slide="18"] .biblio-text { font-size: calc(17 * var(--u)); line-height: 1.4; }
+[data-slide="18"] .biblio-text .b-author { display: block; }
+[data-slide="18"] .biblio-text .b-title { font-size: calc(21 * var(--u)); margin: calc(2 * var(--u)) 0; }
+[data-slide="18"] .biblio-text .b-meta { font-size: calc(14 * var(--u)); line-height: 1.35; }
+
+/* Slide 18 v4 — mobile portrait : colonne unique, textes lisibles, scroll autorisé */
+@media (max-aspect-ratio: 4/5) {
+  [data-slide="18"] .biblio-list { grid-template-columns: 1fr; gap: calc(14 * var(--u)); }
+  [data-slide="18"] .biblio-num { font-size: calc(52 * var(--u)); }
+  [data-slide="18"] .biblio-text { font-size: calc(26 * var(--u)); }
+  [data-slide="18"] .biblio-text .b-title { font-size: calc(30 * var(--u)); }
+  [data-slide="18"] .biblio-text .b-meta { font-size: calc(22 * var(--u)); }
+  [data-slide="18"] { padding-bottom: calc(130 * var(--u)); }
+  /* Grille s8 mobile : empiler en colonne unique, masquer mécanismes */
+  .focus-grid-s8 { grid-template-columns: 1fr; }
+  .fgs8-h-mid, .fgs8-mech { display: none; }
+}
+
+/* =========================================================
+   PREMIUM V5 — CORRECTIONS (slides 03, 04, 08, 17, 18)
+   ========================================================= */
+
+/* --- Slide 03 v5 : conclusion pleine largeur et visuelle --- */
+[data-slide="3"] .hof-conclusion-strip {
+  grid-column: 1 / -1;
+  border-top: calc(3 * var(--u)) solid var(--T);
+  padding: calc(22 * var(--u)) 0 calc(8 * var(--u));
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  gap: 0 calc(16 * var(--u));
+  align-items: stretch;
+  margin-top: calc(8 * var(--u));
+  margin-bottom: 0;
+}
+[data-slide="3"] .hof-c-item {
+  font-size: calc(34 * var(--u));
+  font-weight: 700;
+  text-align: center;
+  padding: calc(18 * var(--u)) calc(20 * var(--u));
+  background: var(--W);
+  border-radius: calc(6 * var(--u));
+  border-bottom: calc(3 * var(--u)) solid var(--C3);
+  line-height: 1.25;
+  display: flex; align-items: center; justify-content: center;
+}
+[data-slide="3"] .hof-c-item--accent {
+  border-bottom-color: var(--T);
+  color: var(--T);
+  font-style: italic;
+  font-size: calc(34 * var(--u));
+}
+[data-slide="3"] .hof-c-sep {
+  display: flex; align-items: center; justify-content: center;
+  font-size: calc(28 * var(--u));
+  color: var(--C3);
+  flex-shrink: 0;
+  width: calc(24 * var(--u));
+}
+[data-slide="3"] .hof-c3-note,
+[data-slide="3"] .hof-c3-note-hidden { display: none; }
+
+/* --- Slide 08 v5 : nouvelle composition 3 zones --- */
+[data-slide="8"] .focus-grid-s8,
+[data-slide="8"] .focus-micro-scene,
+[data-slide="8"] .focus-2col-punchline-s8 { display: none !important; }
+
+.focus-s8-wrap {
+  display: grid;
+  grid-template-columns: 1fr calc(148 * var(--u)) 1fr;
+  gap: calc(20 * var(--u));
+  flex: 1;
+  margin-top: calc(20 * var(--u));
+  align-items: stretch;
+}
+.focus-s8-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(15 * var(--u));
+  font-weight: 700;
+  letter-spacing: calc(3 * var(--u));
+  text-transform: uppercase;
+  color: var(--T);
+  margin-bottom: calc(14 * var(--u));
+  padding-bottom: calc(10 * var(--u));
+  border-bottom: calc(2 * var(--u)) solid var(--T);
+}
+.focus-s8-label.right { color: var(--N); border-bottom-color: var(--N2); }
+.focus-s8-col { display: flex; flex-direction: column; }
+.focus-s8-cards { display: flex; flex-direction: column; gap: calc(12 * var(--u)); flex: 1; }
+.focus-s8-card {
+  background: var(--W);
+  padding: calc(20 * var(--u)) calc(24 * var(--u));
+  border-radius: calc(8 * var(--u));
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(32 * var(--u));
+  color: var(--N2);
+  line-height: 1.3;
+  flex: 1;
+  display: flex; align-items: center;
+  border-left: calc(4 * var(--u)) solid var(--C3);
+  letter-spacing: 0;
+}
+.focus-s8-card em { color: var(--T); font-style: italic; font-weight: 500; }
+.focus-s8-card--cost {
+  border-left-color: var(--T);
+  color: var(--N);
+  background: var(--C2);
+}
+.focus-s8-center {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: calc(6 * var(--u));
+  padding: calc(20 * var(--u)) calc(8 * var(--u));
+  border-left: calc(1 * var(--u)) solid var(--C3);
+  border-right: calc(1 * var(--u)) solid var(--C3);
+}
+.focus-s8-silence {
+  font-family: 'DM Sans', sans-serif; font-weight: 700;
+  font-size: calc(18 * var(--u)); letter-spacing: calc(4 * var(--u));
+  text-transform: uppercase; color: var(--N); text-align: center;
+}
+.focus-s8-arrow {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: calc(52 * var(--u)); color: var(--T);
+  line-height: 1; text-align: center; margin: calc(4 * var(--u)) 0;
+}
+.focus-s8-cost {
+  font-family: 'DM Sans', sans-serif; font-weight: 700;
+  font-size: calc(14 * var(--u)); letter-spacing: calc(2.5 * var(--u));
+  text-transform: uppercase; color: var(--T); text-align: center; line-height: 1.4;
+}
+.focus-s8-mech-note {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: calc(17 * var(--u)); color: var(--N2);
+  text-align: center; margin-top: calc(6 * var(--u)); line-height: 1.35;
+}
+.focus-s8-callout {
+  margin-top: calc(12 * var(--u));
+  padding: calc(18 * var(--u)) calc(28 * var(--u));
+  background: var(--C2); border-radius: calc(4 * var(--u));
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: calc(32 * var(--u)); color: var(--N2);
+  text-align: center; line-height: 1.3; letter-spacing: 0;
+}
+.focus-s8-punchline {
+  margin-top: calc(10 * var(--u));
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-weight: 700; font-size: calc(44 * var(--u)); color: var(--N);
+  text-align: center; line-height: 1.2;
+  border-top: calc(2 * var(--u)) solid var(--C2);
+  padding-top: calc(10 * var(--u)); flex-shrink: 0;
+  letter-spacing: 0;
+}
+.focus-s8-punchline em { color: var(--T); }
+
+/* Mobile : slide 8 v5 */
+@media (max-aspect-ratio: 4/5) {
+  .focus-s8-wrap { grid-template-columns: 1fr; gap: calc(16 * var(--u)); }
+  .focus-s8-center { border: none; padding: calc(8 * var(--u)) 0; flex-direction: row; gap: calc(20 * var(--u)); }
+  .focus-s8-arrow { font-size: calc(32 * var(--u)); }
+}
+
+/* --- Slide 17 v5 : grille 3×2 — bas plateau aligné bas QR --- */
+[data-slide="17"] .thanks-wrap {
+  display: grid;
+  grid-template-columns: 1fr calc(460 * var(--u));
+  grid-template-rows: auto 1fr auto;
+  gap: calc(0 * var(--u)) calc(80 * var(--u));
+  align-items: stretch;
+  margin-top: calc(16 * var(--u));
+}
+[data-slide="17"] .s17-top       { grid-column:1; grid-row:1; }
+[data-slide="17"] .s17-qr-space  { grid-column:2; grid-row:1; }
+[data-slide="17"] .s17-plateau   { grid-column:1; grid-row:2; align-self:end; }
+[data-slide="17"] .s17-qr-img   {
+  grid-column:2; grid-row:2;
+  display:flex; flex-direction:column; justify-content:flex-end;
+}
+[data-slide="17"] .s17-qr-img img,
+[data-slide="17"] .s17-qr-img .qr-placeholder-s17 {
+  width: calc(440 * var(--u)); height: calc(440 * var(--u)); display:block;
+}
+[data-slide="17"] .s17-contact   { grid-column:1; grid-row:3; margin-top:calc(28 * var(--u)); }
+[data-slide="17"] .s17-qr-cap   { grid-column:2; grid-row:3; margin-top:calc(16 * var(--u)); }
+[data-slide="17"] .s17-qr-cap .qr-cta-label { font-family:'DM Sans',sans-serif; font-size:calc(14 * var(--u)); font-weight:700; letter-spacing:calc(3 * var(--u)); text-transform:uppercase; color:var(--N2); text-align:center; }
+[data-slide="17"] .s17-qr-cap .qr-cap { font-family:'DM Sans',sans-serif; font-size:calc(28 * var(--u)); font-weight:700; color:var(--T); text-align:center; letter-spacing:calc(1 * var(--u)); margin-top:calc(8 * var(--u)); line-height:1.2; }
+[data-slide="17"] .qr-placeholder-s17 { border:calc(2 * var(--u)) dashed var(--T); display:flex; align-items:center; justify-content:center; font-family:'DM Sans',sans-serif; font-size:calc(16 * var(--u)); color:var(--T); text-align:center; padding:calc(20 * var(--u)); box-sizing:border-box; }
+
+/* --- Slide 18 v5 : bibliographie lisible en projection --- */
+[data-slide="18"] .biblio-list {
+  margin-top: calc(12 * var(--u));
+  gap: calc(14 * var(--u)) calc(52 * var(--u));
+  align-content: start;
+}
+[data-slide="18"] .biblio-item {
+  padding: calc(12 * var(--u)) 0;
+  grid-template-columns: calc(62 * var(--u)) 1fr;
+  gap: calc(14 * var(--u));
+  border-top: calc(1 * var(--u)) solid var(--C2);
+}
+[data-slide="18"] .biblio-num { font-size: calc(44 * var(--u)); }
+[data-slide="18"] .biblio-text { font-size: calc(22 * var(--u)); line-height: 1.4; }
+[data-slide="18"] .biblio-text .b-author { display: block; font-size: calc(22 * var(--u)); font-weight: 700; }
+[data-slide="18"] .biblio-text .b-title { font-size: calc(28 * var(--u)); margin: calc(3 * var(--u)) 0 calc(2 * var(--u)); }
+[data-slide="18"] .biblio-text .b-meta { font-size: calc(17 * var(--u)); color: var(--N2); line-height: 1.35; }
+
+/* Mobile : slide 18 v5 */
+@media (max-aspect-ratio: 4/5) {
+  [data-slide="18"] .biblio-list { grid-template-columns: 1fr; gap: calc(14 * var(--u)); }
+  [data-slide="18"] .biblio-num { font-size: calc(56 * var(--u)); }
+  [data-slide="18"] .biblio-text { font-size: calc(28 * var(--u)); }
+  [data-slide="18"] .biblio-text .b-author { font-size: calc(28 * var(--u)); }
+  [data-slide="18"] .biblio-text .b-title { font-size: calc(34 * var(--u)); }
+  [data-slide="18"] .biblio-text .b-meta { font-size: calc(24 * var(--u)); }
+  [data-slide="18"] { padding-bottom: calc(130 * var(--u)); overflow-y: auto; }
+  [data-slide="17"] .thanks-wrap { grid-template-columns: 1fr !important; grid-template-rows: auto auto auto auto auto auto; }
+  [data-slide="17"] .s17-top     { grid-column:1; grid-row:1; }
+  [data-slide="17"] .s17-qr-space{ display:none; }
+  [data-slide="17"] .s17-plateau { grid-column:1; grid-row:2; align-self:auto; }
+  [data-slide="17"] .s17-qr-img  { grid-column:1; grid-row:3; justify-content:center; }
+  [data-slide="17"] .s17-contact { grid-column:1; grid-row:4; }
+  [data-slide="17"] .s17-qr-cap  { grid-column:1; grid-row:5; text-align:center; }
+}
+
+/* =========================================================
+   PREMIUM V6 — CORRECTIONS (slides 03, 04, 17, 18)
+   ========================================================= */
+
+/* --- Slide 03 v6 : hof-wrap sans flex:1, espacements harmonieux --- */
+[data-slide="3"] { padding-bottom: calc(80 * var(--u)); }
+[data-slide="3"] .hof-wrap {
+  flex: none;
+  gap: calc(50 * var(--u));
+  margin-top: calc(28 * var(--u));
+}
+[data-slide="3"] .hof-axis-sub { margin-bottom: calc(18 * var(--u)); }
+[data-slide="3"] .hof-bar-row { margin-bottom: calc(18 * var(--u)); }
+[data-slide="3"] .hof-conclusion-strip {
+  margin-top: calc(28 * var(--u));
+}
+
+/* --- Slide 04 v6 : bulles compactes, 3 rows + conclusion dans la hauteur --- */
+[data-slide="4"] .dial-bubble {
+  font-size: calc(28 * var(--u));
+  padding: calc(20 * var(--u)) calc(26 * var(--u));
+}
+[data-slide="4"] .dial-tag {
+  font-size: calc(12 * var(--u));
+  margin-bottom: calc(8 * var(--u));
+}
+[data-slide="4"] .dialogues {
+  gap: calc(10 * var(--u));
+  margin-top: calc(28 * var(--u));
+}
+[data-slide="4"] .dial-row {
+  padding: 0;
+  gap: calc(20 * var(--u));
+}
+[data-slide="4"] .dial-conclusion {
+  font-size: calc(25 * var(--u));
+  line-height: 1.4;
+  margin-top: calc(10 * var(--u));
+}
+
+/* --- Slide 17 v6 : grille réquilibrée, QR et plateau alignés en bas --- */
+[data-slide="17"] .thanks-title {
+  font-size: calc(180 * var(--u));
+}
+[data-slide="17"] .thanks-sub {
+  font-size: calc(36 * var(--u));
+  margin-bottom: calc(16 * var(--u));
+  margin-top: calc(12 * var(--u));
+}
+[data-slide="17"] .thanks-contact {
+  font-size: calc(18 * var(--u));
+}
+[data-slide="17"] .thanks-contact .name {
+  font-size: calc(40 * var(--u));
+  margin-bottom: calc(6 * var(--u));
+}
+[data-slide="17"] .s17-contact {
+  margin-top: calc(18 * var(--u));
+}
+[data-slide="17"] .s17-qr-img img,
+[data-slide="17"] .s17-qr-img .qr-placeholder-s17 {
+  width: calc(380 * var(--u));
+  height: calc(380 * var(--u));
+}
+[data-slide="17"] .s17-qr-cap {
+  margin-top: calc(14 * var(--u));
+}
+[data-slide="17"] .s17-qr-cap .qr-cap {
+  font-size: calc(24 * var(--u));
+}
+[data-slide="17"] .thanks-wrap {
+  margin-top: calc(10 * var(--u));
+}
+
+/* --- Slide 18 v6 : bibliographie aérée, espace distribué --- */
+[data-slide="18"] .biblio-list {
+  align-content: space-between;
+  gap: calc(0px) calc(60 * var(--u));
+  margin-top: calc(16 * var(--u));
+}
+[data-slide="18"] .biblio-item {
+  padding: calc(20 * var(--u)) 0;
+  grid-template-columns: calc(68 * var(--u)) 1fr;
+  gap: calc(16 * var(--u));
+}
+[data-slide="18"] .biblio-num {
+  font-size: calc(48 * var(--u));
+  color: var(--T);
+  line-height: 1;
+}
+[data-slide="18"] .biblio-text .b-author {
+  font-size: calc(24 * var(--u));
+}
+[data-slide="18"] .biblio-text .b-title {
+  font-size: calc(30 * var(--u));
+  margin: calc(4 * var(--u)) 0 calc(3 * var(--u));
+}
+[data-slide="18"] .biblio-text .b-meta {
+  font-size: calc(17 * var(--u));
+}
+[data-slide="18"] .kit-compact {
+  padding: calc(14 * var(--u)) calc(22 * var(--u));
+  margin-bottom: calc(6 * var(--u));
+}
+
+/* Mobile v6 overrides */
+@media (max-aspect-ratio: 4/5) {
+  [data-slide="18"] .biblio-list { align-content: start; }
+  [data-slide="17"] .thanks-title { font-size: calc(140 * var(--u)); }
+}
+
+/* =========================================================
+   PREMIUM V7 — CORRECTIONS FINALES (slides 06, 08, 17, 18)
+   ========================================================= */
+
+/* --- Slide 06 : citation Kim Scott --- */
+.s6-kim-quote {
+  margin-top: calc(28 * var(--u));
+  padding-top: calc(22 * var(--u));
+  border-top: calc(1 * var(--u)) solid var(--C3);
+}
+.s6-kim-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(26 * var(--u));
+  color: var(--N2);
+  line-height: 1.45;
+  letter-spacing: 0;
+}
+.s6-kim-attr {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(13 * var(--u));
+  font-weight: 700;
+  letter-spacing: calc(3 * var(--u));
+  text-transform: uppercase;
+  color: var(--T);
+  margin-top: calc(10 * var(--u));
+}
+.s6-kim-attr em {
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+  color: var(--N2);
+}
+
+/* --- Slide 17 v7 : contact agrandi --- */
+[data-slide="17"] .thanks-contact .name {
+  font-size: calc(56 * var(--u)) !important;
+  margin-bottom: calc(14 * var(--u));
+}
+[data-slide="17"] .thanks-contact {
+  font-size: calc(26 * var(--u)) !important;
+  line-height: 1.6;
+}
+[data-slide="17"] .thanks-contact .label {
+  font-size: calc(16 * var(--u));
+  letter-spacing: calc(3 * var(--u));
+}
+[data-slide="17"] .thanks-contact .link {
+  font-size: calc(26 * var(--u));
+}
+[data-slide="17"] .s17-contact {
+  margin-top: calc(24 * var(--u)) !important;
+}
+
+/* --- Slide 08 (task ref. "slide 11") : séquence centrale lisible --- */
+.focus-s8-silence {
+  font-size: calc(24 * var(--u)) !important;
+  letter-spacing: calc(3 * var(--u));
+}
+.focus-s8-cost {
+  font-size: calc(20 * var(--u)) !important;
+  letter-spacing: calc(2 * var(--u));
+}
+.focus-s8-mech-note {
+  font-size: calc(22 * var(--u)) !important;
+  line-height: 1.45;
+  margin-top: calc(8 * var(--u));
+}
+.focus-s8-card {
+  padding: calc(22 * var(--u)) calc(28 * var(--u)) !important;
+  line-height: 1.4 !important;
+}
+
+/* --- Slide 17 : Kit post-talk interactif --- */
+.s17-kit {
+  display: flex;
+  flex-direction: column;
+  gap: calc(8 * var(--u));
+  padding: calc(26 * var(--u)) calc(32 * var(--u));
+  background: var(--W);
+  border-left: calc(6 * var(--u)) solid var(--T);
+  border-radius: 0 calc(10 * var(--u)) calc(10 * var(--u)) 0;
+  max-width: calc(920 * var(--u));
+  cursor: default;
+}
+.s17-kit-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(14 * var(--u));
+  font-weight: 700;
+  letter-spacing: calc(4 * var(--u));
+  text-transform: uppercase;
+  color: var(--T);
+}
+.s17-kit-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: calc(34 * var(--u));
+  color: var(--N);
+  line-height: 1.1;
+  letter-spacing: calc(-0.5 * var(--u));
+}
+.s17-kit-url {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(20 * var(--u));
+  color: var(--T);
+  font-weight: 500;
+  letter-spacing: calc(0.5 * var(--u));
+  margin-top: calc(4 * var(--u));
+}
+
+/* --- Slide 18 : item 8 kit mis en avant --- */
+.biblio-item--kit {
+  background: var(--W);
+  border-left: calc(6 * var(--u)) solid var(--T);
+  border-radius: 0 calc(8 * var(--u)) calc(8 * var(--u)) 0;
+  padding: calc(18 * var(--u)) calc(24 * var(--u)) !important;
+  border-top: none !important;
+}
+.biblio-item--kit .biblio-num {
+  color: var(--T);
+}
+.biblio-item--kit .b-kit-url {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(20 * var(--u));
+  color: var(--T);
+  font-weight: 700;
+  letter-spacing: calc(0.5 * var(--u));
+  margin-top: calc(4 * var(--u));
+  display: block;
+}
+
+/* =========================================================
+   PREMIUM V8 — SLIDE 17 : PLATEAU AGRANDI + DISPOSITION
+   ========================================================= */
+
+/* Bloc blanc plateau : polices projetables */
+[data-slide="17"] .plateau-strong {
+  font-size: calc(42 * var(--u)) !important;
+  margin-bottom: calc(18 * var(--u));
+  line-height: 1.1;
+}
+[data-slide="17"] .plateau-desc {
+  font-size: calc(28 * var(--u)) !important;
+  line-height: 1.5;
+  margin-bottom: calc(18 * var(--u));
+}
+[data-slide="17"] .plateau-punch {
+  font-size: calc(28 * var(--u)) !important;
+  line-height: 1.4;
+}
+[data-slide="17"] .thanks-plateau {
+  padding: calc(36 * var(--u)) calc(44 * var(--u)) !important;
+  max-width: 100% !important;
+}
+[data-slide="17"] .thanks-plateau .plateau-tag {
+  font-size: calc(18 * var(--u)) !important;
+  margin-bottom: calc(22 * var(--u)) !important;
+}
+
+/* Grille : colonne gauche + QR (QR légèrement réduit pour aérer) */
+[data-slide="17"] .thanks-wrap {
+  grid-template-columns: 1fr calc(400 * var(--u)) !important;
+  gap: calc(0 * var(--u)) calc(64 * var(--u)) !important;
+  margin-top: calc(8 * var(--u)) !important;
+}
+[data-slide="17"] .s17-qr-img img,
+[data-slide="17"] .s17-qr-img .qr-placeholder-s17 {
+  width: calc(360 * var(--u)) !important;
+  height: calc(360 * var(--u)) !important;
+}
+
+/* --- Slide 17 v7 : modifications finales --- */
+[data-slide="17"] .plateau-desc {
+  font-size: calc(15 * var(--u)) !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+  margin-bottom: calc(14 * var(--u));
+}
+[data-slide="17"] .plateau-punch {
+  font-size: calc(44 * var(--u)) !important;
+  line-height: 1.25;
+}
+[data-slide="17"] .s17-plateau {
+  align-self: stretch !important;
+  display: flex;
+  flex-direction: column;
+}
+[data-slide="17"] .thanks-plateau {
+  flex: 1;
+  height: 100%;
+  box-sizing: border-box;
+  margin-bottom: 0 !important;
+}
+[data-slide="17"] .s17-qr-img {
+  align-self: stretch !important;
+  justify-content: center !important;
+  background: var(--W);
+  border-radius: calc(8 * var(--u));
+  padding: calc(24 * var(--u)) calc(20 * var(--u));
+}
+[data-slide="17"] .s17-qr-img img,
+[data-slide="17"] .s17-qr-img .qr-placeholder-s17 {
+  width: auto !important;
+  height: auto !important;
+  max-width: 85% !important;
+  max-height: calc(290 * var(--u)) !important;
+}
+[data-slide="17"] .s17-qr-cap .qr-cta-label {
+  display: none !important;
+}
+.s17-qr-punchline {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(24 * var(--u));
+  color: var(--T);
+  text-align: center;
+  font-weight: 500;
+  line-height: 1.3;
+  margin-top: calc(10 * var(--u));
+  max-width: calc(380 * var(--u));
+}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- ============================================================
+     SLIDE 1 : COVER
+     ============================================================ -->
+<section class="slide cover active" data-slide="1">
+  <div class="eyebrow">Agile Tour Rennes - 3 juin 2026</div>
+  <h1 class="main-title">Radical Candor<br><em>à la française.</em></h1>
+  <div class="sub-title">Oser le feedback direct.</div>
+  <div class="rule-big"></div>
+  <div class="byline">Irina Talbot</div>
+  <div class="role">AI-Driven CX Transformation Lead</div>
+  <div class="speaker-bio">Dix ans de projets tech complexes à faire le <em>glue work</em> quand les équipes cessent de se parler. Ce n'est (presque) jamais le framework qui casse. C'est <em>le feedback qu'on n'ose pas donner.</em></div>
+</section>
+
+<!-- ============================================================
+     SLIDE 2 : LE PARADOXE
+     ============================================================ -->
+<section class="slide" data-slide="2">
+  <div class="top-band">
+    <div class="slide-chip"><span class="num">02</span><span class="sep">/</span>18<span class="sep">·</span> Intro<span class="sep">·</span>Paradoxe</div>
+  </div>
+  <h1 class="h h-m">On a les rituels.<br>Il nous <em>manque</em> le courage.</h1>
+  <div class="two-col">
+    <div class="col-have">
+      <div class="col-label have">Ce qu'on a</div>
+      <div class="col-item">La rétrospective.</div>
+      <div class="col-item">La code review.</div>
+      <div class="col-item">Le 1:1.</div>
+    </div>
+    <div class="col-avoid">
+      <div class="col-label avoid">Ce qu'on évite</div>
+      <div class="col-item">Nommer <em>ce qui ne va pas.</em></div>
+      <div class="col-item">Remettre en cause <em>une approche.</em></div>
+      <div class="col-item">Le feedback <em>qui fâche.</em></div>
+    </div>
+  </div>
+  <div class="scene"><span class="scene-tag">Scène</span>Rétro de sprint. Le ticket critique a glissé pour la troisième fois. Tout le monde sait pourquoi : des changements arrivent après le planning. Personne ne nomme le sujet. On écrit : « mieux cadrer les priorités ». Action item votée. Même problème au sprint suivant.</div>
+  <div class="scene-note">Le rituel a eu lieu. Le feedback, lui, est resté dans la gorge.</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 3 : HOFSTEDE - VISUALISATION BARRES
+     ============================================================ -->
+<section class="slide" data-slide="3">
+  <div class="top-band">
+    <div class="slide-chip"><span class="num">03</span><span class="sep">/</span>18<span class="sep">·</span> Contexte culturel</div>
+  </div>
+  <h1 class="h h-m">Dans ce comparatif,<br>la France <em>ressort.</em></h1>
+  <div class="hof-wrap">
+    <div class="hof-block">
+      <div class="hof-axis-title">PDI <span class="hof-axis-en">Power Distance Index</span></div>
+      <div class="hof-axis-sub">Distance hiérarchique acceptée. <em>À quel point on trouve normal qu'un chef soit un chef.</em></div>
+      <div class="hof-bar-row fr">
+        <div class="hof-country fr">France</div>
+        <div class="hof-bar-track"><span class="hof-bar-fill" style="width:68%"></span></div>
+        <div class="hof-score">68</div>
+      </div>
+      <div class="hof-bar-row">
+        <div class="hof-country">Pays-Bas</div>
+        <div class="hof-bar-track"><span class="hof-bar-fill" style="width:38%"></span></div>
+        <div class="hof-score">38</div>
+      </div>
+      <div class="hof-bar-row">
+        <div class="hof-country">Allemagne</div>
+        <div class="hof-bar-track"><span class="hof-bar-fill" style="width:35%"></span></div>
+        <div class="hof-score">35</div>
+      </div>
+      <div class="hof-bar-row">
+        <div class="hof-country">USA</div>
+        <div class="hof-bar-track"><span class="hof-bar-fill" style="width:40%"></span></div>
+        <div class="hof-score">40</div>
+      </div>
+    </div>
+    <div class="hof-block">
+      <div class="hof-axis-title">UAI <span class="hof-axis-en">Uncertainty Avoidance Index</span></div>
+      <div class="hof-axis-sub">Évitement de l'incertitude. <em>À quel point on a besoin de règles pour se sentir en sécurité.</em></div>
+      <div class="hof-bar-row fr">
+        <div class="hof-country fr">France</div>
+        <div class="hof-bar-track"><span class="hof-bar-fill" style="width:86%"></span></div>
+        <div class="hof-score">86</div>
+      </div>
+      <div class="hof-bar-row">
+        <div class="hof-country">Pays-Bas</div>
+        <div class="hof-bar-track"><span class="hof-bar-fill" style="width:53%"></span></div>
+        <div class="hof-score">53</div>
+      </div>
+      <div class="hof-bar-row">
+        <div class="hof-country">Allemagne</div>
+        <div class="hof-bar-track"><span class="hof-bar-fill" style="width:65%"></span></div>
+        <div class="hof-score">65</div>
+      </div>
+      <div class="hof-bar-row">
+        <div class="hof-country">USA</div>
+        <div class="hof-bar-track"><span class="hof-bar-fill" style="width:46%"></span></div>
+        <div class="hof-score">46</div>
+      </div>
+    </div>
+    <div class="hof-conclusion-strip">
+      <span class="hof-c-item">Autorité touchée.</span>
+      <span class="hof-c-sep">·</span>
+      <span class="hof-c-item">Conversation incertaine.</span>
+      <span class="hof-c-sep">·</span>
+      <span class="hof-c-item hof-c-item--accent">Ce n'est pas de la lâcheté.<br>C'est du software culturel.</span>
+    </div>
+    <div class="hof-c3-note-hidden">Scores indicatifs : tendance, pas destin.</div>
+  </div>
+  <div class="fn-foot"><span><span class="fn-ref">1</span>voir bibliographie</span><span style="font-style:italic;">Scores indicatifs&nbsp;: tendance, pas destin.</span></div>
+</section>
+
+<!-- ============================================================
+     SLIDE 4 : ON EMBALLE (Erin Meyer) - bulles dialogue
+     ============================================================ -->
+<section class="slide" data-slide="4">
+  <div class="top-band">
+    <div class="slide-chip"><span class="num">04</span><span class="sep">/</span>18<span class="sep">·</span> Contexte culturel</div>
+  </div>
+  <h1 class="h h-m">On emballe. On <em>espère</em> que ça passe.</h1>
+  <div class="dialogues">
+    <div class="dial-row">
+      <div class="dial-bubble said">
+        <span class="dial-tag">En COPIL client</span>
+        «&nbsp;C'est noté, on va regarder comment l'intégrer au planning…&nbsp;»
+      </div>
+      <div class="dial-arrow">→</div>
+      <div class="dial-bubble meant">
+        <span class="dial-tag">Ce qu'on pense</span>
+        «&nbsp;Cette demande fait <em>exploser la <span class="nobr">roadmap.</span></em>&nbsp;<span class="nobr">Il faut arbitrer maintenant.&nbsp;»</span>
+      </div>
+    </div>
+    <div class="dial-row">
+      <div class="dial-bubble said">
+        <span class="dial-tag">En pull request</span>
+        «&nbsp;Intéressant comme approche, peut-être qu'on pourrait voir d'autres options&nbsp;?&nbsp;»
+      </div>
+      <div class="dial-arrow">→</div>
+      <div class="dial-bubble meant">
+        <span class="dial-tag">En vrai</span>
+        «&nbsp;Ce code va <em>casser en <span class="nobr">prod.</span></em>&nbsp;<span class="nobr">À refaire.&nbsp;»</span>
+      </div>
+    </div>
+    <div class="dial-row">
+      <div class="dial-bubble said">
+        <span class="dial-tag">En entretien annuel</span>
+        «&nbsp;Bon trimestre dans l'ensemble, continue comme ça.&nbsp;»
+      </div>
+      <div class="dial-arrow">→</div>
+      <div class="dial-bubble meant">
+        <span class="dial-tag">Six mois plus tard</span>
+        «&nbsp;Le client a demandé&nbsp;<span class="nobr"><em>qu'on te remplace.</em>&nbsp;»</span>
+      </div>
+    </div>
+    <div class="dial-conclusion">Les Français savent critiquer. En évaluation formelle, ils peuvent être très directs.<br>Ici, on parle des rituels informels&nbsp;: quand le silence devient de l'<em>empathie&nbsp;dévastatrice.</em></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 5 : 3 DIRECTIONS DU FEEDBACK - REFONTE
+     ============================================================ -->
+<section class="slide" data-slide="5">
+  <div class="top-band">
+    <div class="slide-chip"><span class="num">05</span><span class="sep">/</span>18<span class="sep">·</span> Toutes directions</div>
+  </div>
+  <h1 class="h h-m">Le feedback ne circule pas<br>dans <em>un seul sens.</em></h1>
+  <div class="flow">
+    <div class="flow-card">
+      <div class="flow-direction">Descendant</div>
+      <div class="flow-arrow-block">
+        <span class="actor">Manager</span>
+        <span class="flow-arrow-glyph">↓</span>
+        <span>Équipe</span>
+      </div>
+      <div class="flow-name">Le plus<br>visible.</div>
+      <div class="flow-context">Entretien annuel, recadrage, reconnaissance publique.</div>
+      <div class="flow-temp">Cadré · attendu</div>
+    </div>
+    <div class="flow-card">
+      <div class="flow-direction">Horizontal</div>
+      <div class="flow-arrow-block">
+        <span class="actor">Pair</span>
+        <span class="flow-arrow-glyph">↔</span>
+        <span class="actor">Pair</span>
+      </div>
+      <div class="flow-name">Le plus<br>fréquent.</div>
+      <div class="flow-context">Code review, daily, rétro, pair programming.</div>
+      <div class="flow-temp">Quotidien · informel</div>
+    </div>
+    <div class="flow-card hot">
+      <div class="flow-reveal">
+        <div class="mark">?</div>
+        <div class="hint">cliquez pour révéler</div>
+      </div>
+      <div class="flow-direction">Ascendant</div>
+      <div class="flow-arrow-block">
+        <span>Équipe</span>
+        <span class="flow-arrow-glyph">↑</span>
+        <span class="actor">Manager</span>
+      </div>
+      <div class="flow-name">Le plus<br>bloqué.</div>
+      <div class="flow-context">Signal au manager, retour sur une pratique, demande d'ajustement.</div>
+      <div class="flow-temp">Tabou · risqué</div>
+    </div>
+    <div class="flow-question">Dans une culture à forte distance hiérarchique, quelle direction coûte le plus&nbsp;?</div>
+    <div class="kim-quote">"If you find you cannot be Radically Candid with your boss, I recommend that you consider finding a new job with a new boss." <span class="kim-attr">, Kim Scott</span></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 6 : QUADRANT AXES VIDES - REFONTE
+     ============================================================ -->
+<section class="slide" data-slide="6">
+  <div class="top-band">
+    <div class="slide-chip"><span class="num">06</span><span class="sep">/</span>18<span class="sep">·</span> Radical Candor</div>
+  </div>
+  <h1 class="h h-m">Deux axes.<br><em>Quatre réalités.</em></h1>
+  <div class="qmap-wrap">
+    <div class="qmap">
+      <div class="qmap-axis-y">Se soucier vraiment</div>
+      <div class="qmap-arrow-y">↑</div>
+      <div class="qmap-bg">
+        <div class="qmap-cell">
+          <span class="qmap-cell-en">Ruinous Empathy</span>
+          <span class="qmap-cell-fr">Empathie dévastatrice</span>
+        </div>
+        <div class="qmap-cell target">
+          <span class="qmap-cell-en">Radical Candor</span>
+          <span class="qmap-cell-fr">Franchise bienveillante</span>
+        </div>
+        <div class="qmap-cell">
+          <span class="qmap-cell-en">Manipulative Insincerity</span>
+          <span class="qmap-cell-fr">Double-jeu manipulateur</span>
+        </div>
+        <div class="qmap-cell">
+          <span class="qmap-cell-en">Obnoxious Aggression</span>
+          <span class="qmap-cell-fr">Agressivité insupportable</span>
+        </div>
+      </div>
+      <div class="qmap-axis-x">Dire les choses directement</div>
+      <div class="qmap-arrow-x">→</div>
+    </div>
+    <div class="qmap-side">
+      <span class="side-label">L'idée centrale</span>
+      Les meilleurs managers que Kim Scott a croisés avaient deux choses en commun : <em>ils se souciaient</em> vraiment des personnes, et <em>ils leur disaient</em> ce qu'ils pensaient.<br><br>Pas l'un ou l'autre. <em>Les deux.</em>
+      <div class="s6-kim-quote">
+        <div class="s6-kim-text">"From the moment we open our mouths, we are taught that if you don't have anything nice to say, don't say anything at all."</div>
+        <div class="s6-kim-attr">Kim Scott, <em>Radical Candor</em></div>
+      </div>
+    </div>
+  </div>
+  <div class="fn-foot"><span><span class="fn-ref">3</span>voir bibliographie</span></div>
+</section>
+
+<!-- ============================================================
+     SLIDE 7 : MATRICE 4 QUADRANTS AVEC CHATS
+     ============================================================ -->
+<section class="slide" data-slide="7">
+  <div class="top-band">
+    <div class="slide-chip"><span class="num">07</span><span class="sep">/</span>18<span class="sep">·</span> Les 4 quadrants</div>
+  </div>
+  <h1 class="h h-m"><em>Où</em> êtes-vous ?</h1>
+  <div class="matrix">
+    <div class="q">
+      <div class="q-cat">
+        <img src="./img/cat-empathie-devastatrice.webp" alt="Chat orange sirotant un thé devant une maison en flammes" onerror="this.style.display='none';this.parentNode.innerHTML='<div class=&quot;placeholder&quot;>This is fine.<br>(la maison brûle)</div>';">
+      </div>
+      <div class="q-head">Empathie dévastatrice</div>
+      <div class="q-axes"><span class="ok">Attention ✓</span> <span class="ko">· Remise en question ✗</span></div>
+      <div class="q-cap"><em>"RAS en daily. (Le burndown est plat depuis trois sprints.)"</em></div>
+    </div>
+    <div class="q q-target">
+      <div class="q-cat">
+        <img src="./img/cat-franchise-bienveillante.webp" alt="Chat tabby tendant la patte avec un regard franc" onerror="this.style.display='none';this.parentNode.innerHTML='<div class=&quot;placeholder&quot;>chat qui regarde<br>avec bienveillance ET sérieux</div>';">
+      </div>
+      <div class="q-head">Franchise bienveillante</div>
+      <div class="q-axes"><span class="ok">Attention ✓ · Remise en question ✓</span></div>
+      <div class="q-cap"><em>"Je me soucie de toi. Et je te dis la vérité."</em></div>
+    </div>
+    <div class="q">
+      <div class="q-cat">
+        <img src="./img/cat-double-jeu.webp" alt="Chat tabby pensif au regard méfiant" onerror="this.style.display='none';this.parentNode.innerHTML='<div class=&quot;placeholder&quot;>chat qui regarde ailleurs<br>avec un sourire de façade</div>';">
+      </div>
+      <div class="q-head">Double-jeu manipulateur</div>
+      <div class="q-axes"><span class="ko">Attention ✗ · Remise en question ✗</span></div>
+      <div class="q-cap"><em>"Ta présentation était... intéressante."</em></div>
+    </div>
+    <div class="q">
+      <div class="q-cat">
+        <img src="./img/cat-agressivite.webp" alt="Chat hargneux qui feule, montrant les crocs" onerror="this.style.display='none';this.parentNode.innerHTML='<div class=&quot;placeholder&quot;>chat hargneux qui feule</div>';">
+      </div>
+      <div class="q-head">Agressivité insupportable</div>
+      <div class="q-axes"><span class="ko">Attention ✗</span> <span class="ok">· Remise en question ✓</span></div>
+      <div class="q-cap"><em>"Cette PR est illisible. Tu t'es relu au moins ?"</em></div>
+    </div>
+  </div>
+  <div class="fn-foot"><span><span class="fn-ref">3</span>voir bibliographie</span></div>
+</section>
+
+<!-- ============================================================
+     SLIDE 8 : FOCUS EMPATHIE DÉVASTATRICE
+     ============================================================ -->
+<section class="slide" data-slide="8">
+  <div class="top-band">
+    <div class="slide-chip"><span class="num">08</span><span class="sep">/</span>18<span class="sep">·</span> Focus</div>
+  </div>
+  <h1 class="h h-m">La bienveillance sans franchise n’est pas de la gentillesse.<br><em>C’est du confort déguisé.</em></h1>
+  <div class="focus-grid-s8">
+    <div class="fgs8-h">Ce que je me raconte</div>
+    <div class="fgs8-h fgs8-h-mid">Mécanisme</div>
+    <div class="fgs8-h fgs8-h-right">Ce que l’autre perd</div>
+    <div class="focus-col-item">« Je ne veux pas <em>le blesser.</em> »</div>
+    <div class="fgs8-mech">silence</div>
+    <div class="focus-col-item cost">Il découvre le problème <em>trop tard.</em></div>
+    <div class="focus-col-item">« Je ne me sens pas <em>légitime.</em> »</div>
+    <div class="fgs8-mech">coût différé</div>
+    <div class="focus-col-item cost">L’équipe porte <em>le coût en silence.</em></div>
+    <div class="focus-col-item">« Ce n’est pas <em>mon rôle.</em> »</div>
+    <div class="fgs8-mech">répétition</div>
+    <div class="focus-col-item cost">Il répète <em>le même comportement.</em></div>
+  </div>
+  <div class="focus-micro-scene">Je pourrais lui dire. Je choisis de gérer ses erreurs à sa place. : <em>Le rituel remplace le courage.</em></div>
+  <div class="focus-2col-punchline-s8">Se taire, c’est <em>confortable pour moi.</em> Rarement utile pour l’autre.</div>
+  <div class="focus-s8-wrap">
+    <div class="focus-s8-col">
+      <div class="focus-s8-label">Ce que je me raconte</div>
+      <div class="focus-s8-cards">
+        <div class="focus-s8-card"><span>&#171;&#160;Je ne veux pas <span class="nobr">le blesser.&#160;&#187;</span></span></div>
+        <div class="focus-s8-card"><span>&#171;&#160;Je ne me sens pas <span class="nobr">légitime.&#160;&#187;</span></span></div>
+        <div class="focus-s8-card"><span>&#171;&#160;Ce n’est pas <span class="nobr">mon rôle.&#160;&#187;</span></span></div>
+      </div>
+    </div>
+    <div class="focus-s8-center">
+      <div class="focus-s8-silence">Silence</div>
+      <div class="focus-s8-arrow">&#8595;</div>
+      <div class="focus-s8-cost">Coût<br>différé</div>
+      <div class="focus-s8-mech-note">Je repousse<br>l’information.</div>
+    </div>
+    <div class="focus-s8-col">
+      <div class="focus-s8-label right">Ce que l’autre perd</div>
+      <div class="focus-s8-cards">
+        <div class="focus-s8-card focus-s8-card--cost"><span>Il découvre le problème <span class="nobr">trop tard.</span></span></div>
+        <div class="focus-s8-card focus-s8-card--cost"><span>L’équipe porte <span class="nobr">le coût.</span></span></div>
+        <div class="focus-s8-card focus-s8-card--cost"><span>Il répète le même <span class="nobr">comportement.</span></span></div>
+      </div>
+    </div>
+  </div>
+  <div class="focus-s8-callout">Je pourrais lui dire. Je choisis de gérer ses erreurs à sa place.</div>
+  <div class="focus-s8-punchline">Se taire, c’est <em>confortable pour moi.</em> Rarement utile pour l’autre.</div>
+  <div class="fn-foot"><span><span class="fn-ref">3</span>voir bibliographie</span></div>
+</section>
+
+<!-- ============================================================
+     SLIDE 9 : BIAIS DE GENRE - INTRO CLAIRE
+     ============================================================ -->
+<section class="slide" data-slide="9">
+  <div class="top-band">
+    <div class="slide-chip"><span class="num">09</span><span class="sep">/</span>18<span class="sep">·</span> Biais de genre</div>
+  </div>
+  <div class="gender-intro">
+    <span class="gender-pill"><span class="gp-w">♀</span><span class="gp-eq">≠</span><span class="gp-m">♂</span></span>
+    <span class="gender-disclaimer">oui, on joue le cliché exprès.</span>
+  </div>
+  <h1 class="h h-m">Le <em>même</em> geste. <em>Deux perceptions.</em></h1>
+  <div class="gender-table">
+    <div class="gcell ghead">Comportement</div>
+    <div class="gcell ghead ghead-w"><span class="gicon">♀</span>Une femme est perçue comme...</div>
+    <div class="gcell ghead ghead-m"><span class="gicon">♂</span>Un homme est perçu comme...</div>
+
+    <div class="gcell gbehav">Être franche et directive</div>
+    <div class="gcell gwoman">autoritaire, froide, "peau de vache"</div>
+    <div class="gcell gman">clair, décisif, leader</div>
+
+    <div class="gcell gbehav">Rester discrète</div>
+    <div class="gcell gwoman">sans stature, invisible</div>
+    <div class="gcell gman">posé, humble, solide</div>
+
+    <div class="gcell gbehav">Montrer de l'émotion</div>
+    <div class="gcell gwoman">«&nbsp;hystérique&nbsp;», excessive, peu maîtrisée</div>
+    <div class="gcell gman">passionné, engagé</div>
+
+    <div class="gcell gbehav">S'imposer comme leader</div>
+    <div class="gcell gwoman">trop ambitieuse, dure</div>
+    <div class="gcell gman">naturel, charismatique</div>
+  </div>
+  <div class="gender-stat gs-revamp">
+    <div class="gs-source-line">Snyder · Fortune · 2014 · 248 reviews · 28 entreprises tech US</div>
+    <div class="gs-numbers">
+      <div class="gs-num-block">
+        <span class="gs-n rose">76 %</span>
+        <span class="gs-nl">reviews critiques de femmes avec critique de <em>personnalité</em></span>
+      </div>
+      <div class="gs-num-block">
+        <span class="gs-n">2 %</span>
+        <span class="gs-nl">équivalent chez les hommes</span>
+      </div>
+      <div class="gs-num-block">
+        <span class="gs-n rose">17 / 0</span>
+        <span class="gs-nl">occurrences de «&nbsp;abrasive&nbsp;» («&nbsp;cassante&nbsp;»)&nbsp;: femmes / hommes</span>
+      </div>
+    </div>
+    <div class="gs-signal-note">Signal fort. Pas une prévalence universelle.</div>
+  </div>
+  <div class="fn-foot"><span><span class="fn-ref">4</span>voir bibliographie</span></div>
+</section>
+
+<!-- ============================================================
+     SLIDE 10 : ÉQUITÉ - REFORMULÉE
+     ============================================================ -->
+<section class="slide" data-slide="10">
+  <div class="top-band">
+    <div class="slide-chip"><span class="num">10</span><span class="sep">/</span>18<span class="sep">·</span> Ce que ça implique</div>
+  </div>
+  <div class="gest-head-row" style="margin-bottom:calc(16 * var(--u));">
+    <div class="gest-num-big">4</div>
+    <h1 class="gest-title">habitudes pour <em>rééquilibrer.</em></h1>
+  </div>
+  <div class="habits">
+    <div class="habit">
+      <div class="habit-num">01</div>
+      <div class="habit-head">Décrire <em>le geste,</em> pas la personne.</div>
+      <div class="habit-ex">
+        <span class="bad">"Elle est cassante en réunion."</span>
+        <span class="arr">→</span>
+        <span class="good">"Elle a coupé la parole trois fois lors du sprint review."</span>
+      </div>
+    </div>
+    <div class="habit">
+      <div class="habit-num">02</div>
+      <div class="habit-head">Tester <em>la symétrie</em> avant d'envoyer.</div>
+      <div class="habit-ex">
+        <span class="bad">Relire avec le même prénom.</span>
+        <span class="arr">→</span>
+        <span class="good">Relire en remplaçant "Marie" par "Marc". Est-ce que ça sonne différemment ?</span>
+      </div>
+      <div class="habit-context">Si oui, la review parle d'une personne. Pas d'un comportement.</div>
+    </div>
+    <div class="habit">
+      <div class="habit-num">03</div>
+      <div class="habit-head">Bannir <em>les étiquettes</em> de personnalité.</div>
+      <div class="habit-ex">
+        <span class="bad">"Trop émotive." · "Pas assertive."</span>
+        <span class="arr">→</span>
+        <span class="good">"Lors du sprint review du 14, elle a quitté la salle avant la clôture."</span>
+      </div>
+      <div class="habit-context">Un fait daté, un impact observable. Pas un trait de caractère.</div>
+    </div>
+    <div class="habit">
+      <div class="habit-num">04</div>
+      <div class="habit-head">Relire <em>à deux</em> les évaluations.</div>
+      <div class="habit-ex">
+        <span class="bad">Rédiger la review seul·e en 20 min.</span>
+        <span class="arr">→</span>
+        <span class="good">Faire relire par un pair avant envoi.</span>
+      </div>
+    </div>
+  </div>
+  <div class="fn-foot"><span><span class="fn-ref">4</span>voir bibliographie</span></div>
+</section>
+
+<!-- ============================================================
+     SLIDE 11 : INTERLUDE "3 GESTES"
+     ============================================================ -->
+<section class="slide interlude-slide" data-slide="11">
+  <div class="top-band">
+    <div class="slide-chip"><span class="num">11</span><span class="sep">/</span>18</div>
+  </div>
+  <div class="interlude-inner">
+    <div class="interlude-eyebrow">De la posture aux actes</div>
+    <div class="interlude-hero">
+      <span class="interlude-big-num">3</span>
+      <h2 class="interlude-phrase">gestes pour<br><em>commencer demain matin.</em></h2>
+    </div>
+    <div class="interlude-rule"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 12 : GESTE 01 - CRÉER LES CONDITIONS
+     ============================================================ -->
+<section class="slide" data-slide="12">
+  <div class="top-band">
+    <div class="slide-chip"><span class="num">12</span><span class="sep">/</span>18 <span class="sep">·</span> Geste 01</div>
+  </div>
+  <div class="gest-head-row">
+    <div class="gest-num-big">01</div>
+    <h1 class="gest-title">Créer les <em>conditions.</em></h1>
+  </div>
+  <div class="gest-sub">Préparer le terrain avant d'y planter quelque chose.</div>
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-num" aria-hidden="true">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="13" r="8"/><polyline points="12,9 12,13 15,15"/><line x1="9" y1="2" x2="15" y2="2"/><line x1="12" y1="2" x2="12" y2="5"/></svg>
+      </div>
+      <div class="pillar-name">Timing.</div>
+      <div class="pillar-desc">Pas en réunion publique. Pas à chaud. Pas la veille du week-end.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num" aria-hidden="true">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="4" width="18" height="16" rx="1"/><line x1="3" y1="9" x2="21" y2="9"/><circle cx="6" cy="6.5" r="0.5" fill="currentColor"/></svg>
+      </div>
+      <div class="pillar-name">Cadre.</div>
+      <div class="pillar-desc">Un endroit neutre. Pas le bureau du manager si c'est ascendant.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num" aria-hidden="true">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/><polyline points="9,15 11,17 15,13"/></svg>
+      </div>
+      <div class="pillar-name">Disponibilité.</div>
+      <div class="pillar-desc">Vérifier que la personne peut l'entendre maintenant. Sinon, proposer un créneau court.</div>
+    </div>
+  </div>
+  <div class="example-block">
+    <span class="example-tag">À dire</span>
+    <div class="example-text">"J'ai une observation que j'aimerais partager avec toi - <em>tu es disponible là, ou je repasse plus tard ?</em>"</div>
+  </div>
+  <div class="example-block">
+    <span class="example-tag">Variante ascendante</span>
+    <div class="example-text">"J'aimerais te partager quelque chose sur la gestion des changements de périmètre. <em>Tu peux m'accorder 10 minutes cette semaine ?</em>"</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 13 : GESTE 02 - ANCRER DANS LE FAIT
+     ============================================================ -->
+<section class="slide" data-slide="13">
+  <div class="top-band">
+    <div class="slide-chip"><span class="num">13</span><span class="sep">/</span>18 <span class="sep">·</span> Geste 02</div>
+  </div>
+  <div class="gest-head-row">
+    <div class="gest-num-big">02</div>
+    <h1 class="gest-title">Ancrer dans le <em>fait.</em></h1>
+  </div>
+  <div class="gest-sub">Une adaptation CNV + SBI pour parler de <em>comportements,</em> pas de personnalités.</div>
+  <div class="method-note">
+    <div class="method-chip"><span class="method-title">CNV · Rosenberg</span>Observer sans juger. Nommer le besoin. Formuler une demande claire.</div>
+    <div class="method-chip"><span class="method-title">SBI · Center for Creative Leadership</span>Situer la situation. Décrire le comportement. Expliciter l'impact.</div>
+  </div>
+  <div class="flow-steps">
+    <div class="flow-step">
+      <div class="flow-step-num">Étape 01</div>
+      <div class="flow-step-name">Fait</div>
+      <div class="flow-step-desc">Ce que j'ai vu, sans interprétation.</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-step-num">Étape 02</div>
+      <div class="flow-step-name">Impact</div>
+      <div class="flow-step-desc">Ce que ça produit concrètement.</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-step-num">Étape 03</div>
+      <div class="flow-step-name">Besoin</div>
+      <div class="flow-step-desc">Ce que je cherche à préserver.</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-step-num">Étape 04</div>
+      <div class="flow-step-name">Demande</div>
+      <div class="flow-step-desc">Ce que je propose pour la suite.</div>
+    </div>
+  </div>
+  <div class="example-block">
+    <span class="example-tag">En pratique · ascendant : équipe → manager</span>
+    <div class="example-text">"Sur les deux derniers sprints, tu as ajouté des tickets après le planning. Je finis par livrer les stories principales en retard. <em>J'ai besoin qu'on arbitre ensemble avant d'ajouter en cours de sprint.</em> On en parle demain en fin de daily ?"</div>
+  </div>
+  <div class="bug-formula">
+    <div class="bug-formula-lead">Un bon feedback ressemble à un bon bug report :</div>
+    <div class="bug-formula-parts"><span>contexte</span><span class="plus">+</span><span>reproduction</span><span class="plus">+</span><span>impact</span></div>
+  </div>
+  <div class="fn-foot"><span><span class="fn-ref">6-7</span>voir bibliographie</span></div>
+</section>
+
+<!-- ============================================================
+     SLIDE 14 : GESTE 03 - RITUALISER
+     ============================================================ -->
+<section class="slide" data-slide="14">
+  <div class="top-band">
+    <div class="slide-chip"><span class="num">14</span><span class="sep">/</span>18 <span class="sep">·</span> Geste 03</div>
+  </div>
+  <div class="gest-head-row">
+    <div class="gest-num-big">03</div>
+    <h1 class="gest-title"><em>Ritualiser</em> pour désacraliser.</h1>
+  </div>
+  <div class="gest-sub">Un feedback ordinaire n'est plus une menace.</div>
+  <div class="compare">
+    <div class="compare-side good">
+      <span class="compare-tag">Ce qui fonctionne</span>
+      <div class="compare-when">Chaque semaine.</div>
+      <div class="compare-desc">Une petite conversation, intégrée au 1:1 ou à la rétro. Cinq minutes suffisent.</div>
+    </div>
+    <div class="compare-vs">&gt;</div>
+    <div class="compare-side bad">
+      <span class="compare-tag">Ce qui échoue</span>
+      <div class="compare-when">Tous les six mois.</div>
+      <div class="compare-desc">Une grande conversation que personne n'ose avoir, et qu'on repousse encore.</div>
+    </div>
+  </div>
+  <div class="freq-callout">
+    <div class="freq-head"><span class="fh-word">Fréquence</span><span class="fh-op">&gt;</span><span class="fh-accent">Intensité.</span></div>
+    <div class="freq-body">
+      <span class="freq-line">Elle ne se construit pas dans l'outil de performance qu'on ouvre deux fois par an.</span>
+      <span class="freq-line">Dans le multi-projets, les accomplissements s'oublient. Les feedbacks constructifs s'effacent.</span>
+      <span class="freq-line">Ce qui reste : la régularité des petits gestes.</span>
+    </div>
+  </div>
+  <div class="fn-foot"><span><span class="fn-ref">5</span>voir bibliographie</span></div>
+</section>
+
+<!-- ============================================================
+     SLIDE 15 : CITATION
+     ============================================================ -->
+<section class="slide quote-slide" data-slide="15">
+  <div class="top-band" style="position: absolute; top: calc(72 * var(--u)); right: calc(96 * var(--u)); width: auto;">
+    <div class="slide-chip"><span class="num">15</span><span class="sep">/</span>18</div>
+  </div>
+  <div class="quote">
+    "La responsabilité collective se construit aussi dans les conversations <em>qu'on accepte d'avoir.</em>"
+  </div>
+  <div class="quote-rule"></div>
+</section>
+
+<!-- ============================================================
+     SLIDE 16 : CTA
+     ============================================================ -->
+<section class="slide" data-slide="16">
+  <div class="top-band">
+    <div class="slide-chip"><span class="num">16</span><span class="sep">/</span>18 <span class="sep">·</span> Call to action</div>
+  </div>
+  <h1 class="h h-xl">Cette <em>semaine.</em></h1>
+  <div class="cta-list">
+    <div class="cta-item"><div class="cta-text">Identifiez <em>une</em> conversation<br>que vous évitez.</div></div>
+    <div class="cta-item"><div class="cta-text">Choisissez <em>le geste</em> :<br>conditions, fait, ou rituel.</div></div>
+    <div class="cta-item"><div class="cta-text">N'attendez pas le bon moment. <em>Créez-le !</em></div></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 17 : MERCI / Q&A / PLATEAU
+     ============================================================ -->
+<section class="slide" data-slide="17">
+  <div class="top-band">
+    <div class="slide-chip"><span class="num">17</span><span class="sep">/</span>18 <span class="sep">·</span> Merci<span class="sep">·</span>Q&amp;A</div>
+  </div>
+  <!-- Grille 3 lignes × 2 colonnes pour aligner bas plateau / bas QR -->
+  <div class="thanks-wrap">
+    <!-- Ligne 1 : titre + sous-titre | espaceur invisible -->
+    <div class="s17-top">
+      <div class="thanks-title"><em>Merci.</em></div>
+      <div class="thanks-sub">Pour ma première conférence, vos questions valent encore plus que mes réponses.</div>
+    </div>
+    <div class="s17-qr-space"></div>
+    <!-- Ligne 2 : plateau captation (aligné en bas) | QR (aligné en bas) -->
+    <div class="s17-plateau">
+      <div class="thanks-plateau">
+        <span class="plateau-tag">À revisionner · Plateau vidéo</span>
+        <div class="plateau-text">
+          <span class="plateau-strong">Feedback et courage relationnel</span>
+          <span class="plateau-desc">Session d'approfondissement enregistrée en amont du talk. Disponible en replay sur les réseaux sociaux.</span>
+          <span class="plateau-punch">Le feedback est un muscle, pas un formulaire annuel.</span>
+        </div>
+      </div>
+    </div>
+    <div class="s17-qr-img">
+      <img src="./img/qr-feedback.png" alt="QR vers le formulaire de feedback Sessionize du talk" onerror="this.style.display='none';this.parentNode.innerHTML='<div class=&quot;qr-placeholder-s17&quot;>QR<br>feedback</div>';">
+    </div>
+    <!-- Ligne 3 : contact | légende QR -->
+    <div class="s17-contact">
+      <div class="thanks-contact">
+        <span class="name">Irina Talbot</span>
+        <div><span class="label">Email</span><a class="link" href="mailto:irina.talbot.35@gmail.com">irina.talbot.35@gmail.com</a></div>
+        <div><span class="label">LinkedIn</span><a class="link" href="https://www.linkedin.com/in/irinatalbot35/">linkedin.com/in/irinatalbot35</a></div>
+        <div><span class="label">Sessionize</span><a class="link" href="https://sessionize.com/irina-talbot/">sessionize.com/irina-talbot</a></div>
+      </div>
+    </div>
+    <div class="s17-qr-cap">
+      <div class="s17-qr-punchline">Ne pas scanner, ce serait de l'empathie dévastatrice.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 18 : BIBLIOGRAPHIE
+     ============================================================ -->
+<section class="slide" data-slide="18">
+  <div class="top-band">
+    <div class="slide-chip"><span class="num">18</span><span class="sep">/</span>18 <span class="sep">·</span> Bibliographie</div>
+  </div>
+  <h1 class="h h-m">Pour <em>aller plus loin.</em></h1>
+
+  <div class="biblio-list">
+    <div class="biblio-item">
+      <div class="biblio-num">1</div>
+      <div class="biblio-text">
+        <span class="b-author">Hofstede, Hofstede &amp; Minkov</span>
+        <span class="b-title">Cultures and Organizations: Software of the Mind</span>
+        <span class="b-meta">McGraw-Hill · 2010 · PDI / UAI</span>
+      </div>
+    </div>
+    <div class="biblio-item">
+      <div class="biblio-num">2</div>
+      <div class="biblio-text">
+        <span class="b-author">Erin Meyer</span>
+        <span class="b-title">The Culture Map</span>
+        <span class="b-meta">PublicAffairs · 2014 · Ch.&nbsp;2, Evaluating</span>
+      </div>
+    </div>
+    <div class="biblio-item">
+      <div class="biblio-num">3</div>
+      <div class="biblio-text">
+        <span class="b-author">Kim Scott</span>
+        <span class="b-title">Radical Candor</span>
+        <span class="b-meta">St. Martin's Press · 2017 · Ch.&nbsp;1</span>
+      </div>
+    </div>
+    <div class="biblio-item">
+      <div class="biblio-num">4</div>
+      <div class="biblio-text">
+        <span class="b-author">Kieran Snyder</span>
+        <span class="b-title">The abrasiveness trap</span>
+        <span class="b-meta">Fortune · 2014 · 248 reviews · 28 entreprises tech US</span>
+      </div>
+    </div>
+    <div class="biblio-item">
+      <div class="biblio-num">5</div>
+      <div class="biblio-text">
+        <span class="b-author">Amy C. Edmondson</span>
+        <span class="b-title">The Fearless Organization</span>
+        <span class="b-meta">Wiley · 2018 · sécurité psychologique</span>
+      </div>
+    </div>
+    <div class="biblio-item">
+      <div class="biblio-num">6</div>
+      <div class="biblio-text">
+        <span class="b-author">Marshall B. Rosenberg</span>
+        <span class="b-title">Les mots sont des fenêtres (ou bien ce sont des murs)</span>
+        <span class="b-meta">CNV · OSBD · La Découverte 2002</span>
+      </div>
+    </div>
+    <div class="biblio-item">
+      <div class="biblio-num">7</div>
+      <div class="biblio-text">
+        <span class="b-author">Center for Creative Leadership</span>
+        <span class="b-title">SBI / SBII Feedback Model</span>
+        <span class="b-meta">Situation · Behavior · Impact · Intent</span>
+      </div>
+    </div>
+    <a href="kit_post_talk.html" style="display:contents;text-decoration:none;color:inherit;">
+    <div class="biblio-item biblio-item--kit">
+      <div class="biblio-num">8</div>
+      <div class="biblio-text">
+        <span class="b-author">Irina Talbot</span>
+        <span class="b-title">Kit post-talk · Radical Candor à la française</span>
+        <span class="b-meta">Outils, références et ressources du talk · Agile Tour Rennes 2026</span>
+      </div>
+    </div>
+    </a>
+  </div>
+</section>
+
+</div>
+
+<div class="nav">
+  <button id="prev" title="Précédent (←)">‹</button>
+  <span class="counter" id="counter">01 / 18</span>
+  <button id="next" title="Suivant (→, espace)">›</button>
+  <button id="full" title="Plein écran (F)">⛶</button>
+</div>
+
+<script>
+(function(){
+  const slides = document.querySelectorAll('.slide');
+  let idx = 0;
+  const counter = document.getElementById('counter');
+  function show(n){
+    idx = Math.max(0, Math.min(slides.length-1, n));
+    slides.forEach((s,i)=>{
+      s.classList.toggle('active', i===idx);
+      if(i===idx) s.classList.remove('revealed');
+    });
+    if(counter) counter.textContent = String(idx+1).padStart(2,'0') + ' / ' + String(slides.length).padStart(2,'0');
+  }
+  function advance(){
+    const cur = slides[idx];
+    if(cur && cur.querySelector('.flow-reveal') && !cur.classList.contains('revealed')){
+      cur.classList.add('revealed');
+      return;
+    }
+    show(idx+1);
+  }
+  document.addEventListener('keydown', (e)=>{
+    if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)){ e.preventDefault(); advance(); }
+    else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){ e.preventDefault(); show(idx-1); }
+    else if(e.key === 'Home'){ show(0); }
+    else if(e.key === 'End'){ show(slides.length-1); }
+    else if(e.key === 'f' || e.key === 'F'){
+      if(!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
+    }
+  });
+  document.querySelectorAll('.flow-reveal').forEach(el=>{
+    el.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      const slide = el.closest('.slide');
+      if(slide) slide.classList.add('revealed');
+    });
+  });
+  document.getElementById('prev').onclick = ()=>show(idx-1);
+  document.getElementById('next').onclick = ()=>advance();
+  document.getElementById('full').onclick = ()=>{
+    if(!document.fullscreenElement) document.documentElement.requestFullscreen();
+    else document.exitFullscreen();
+  };
+  let xs=0, xe=0;
+  document.addEventListener('touchstart', e=>{ xs = e.changedTouches[0].clientX; });
+  document.addEventListener('touchend', e=>{
+    xe = e.changedTouches[0].clientX;
+    if(xe - xs < -40) advance();
+    else if(xe - xs > 40) show(idx-1);
+  });
+  show(0);
+})();
+</script>
+</body>
+</html>
