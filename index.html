@@ -1972,16 +1972,83 @@ html, body {
 [data-slide="12"] { justify-content: space-between; }
 [data-slide="13"] { justify-content: space-between; }
 
-/* Slide 17 : plateau agrandi */
-[data-slide="17"] .thanks-plateau {
+/* ---------- Slide 17 : Sponsors / Remerciements ---------- */
+[data-slide="17"] {
+  justify-content: flex-start;
+  padding-bottom: calc(60 * var(--u));
+}
+[data-slide="17"] .h-m {
+  font-size: calc(74 * var(--u));
+  line-height: 1.02;
+}
+.sp-lead {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: calc(30 * var(--u));
+  color: var(--N2);
+  line-height: 1.3;
+  margin-top: calc(8 * var(--u));
+  margin-bottom: calc(28 * var(--u));
+  letter-spacing: calc(-0.4 * var(--u));
+  max-width: calc(1600 * var(--u));
+}
+.sp-tier {
+  display: flex;
+  flex-direction: column;
+}
+.sp-tier--acteur { margin-bottom: calc(22 * var(--u)); }
+.sp-tier--contributeurs { margin-bottom: 0; }
+.sp-tier-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(18 * var(--u));
+  font-weight: 700;
+  letter-spacing: calc(4 * var(--u));
+  text-transform: uppercase;
+  color: var(--T);
+  margin-bottom: calc(14 * var(--u));
+  padding-bottom: calc(8 * var(--u));
+  border-bottom: calc(1 * var(--u)) solid var(--C3);
+}
+.sp-acteur { display: grid; grid-template-columns: 1fr; }
+.sp-tile {
+  background: var(--W);
+  border: calc(1 * var(--u)) solid var(--C2);
+  border-radius: calc(6 * var(--u));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(14 * var(--u)) calc(24 * var(--u));
+  height: calc(118 * var(--u));
+  overflow: hidden;
+}
+.sp-tile img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+.sp-tile--hero {
+  height: calc(150 * var(--u));
+  padding: calc(18 * var(--u)) calc(60 * var(--u));
+}
+.sp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: calc(18 * var(--u));
+}
+
+/* Slide 18 : plateau agrandi */
+[data-slide="18"] .thanks-plateau {
   padding: calc(32 * var(--u)) calc(36 * var(--u));
   margin-bottom: calc(32 * var(--u)); max-width: calc(960 * var(--u));
 }
-[data-slide="17"] .thanks-plateau .plateau-tag {
+[data-slide="18"] .thanks-plateau .plateau-tag {
   font-size: calc(17 * var(--u)); margin-bottom: calc(14 * var(--u));
 }
-[data-slide="17"] .thanks-plateau .plateau-text { font-size: calc(28 * var(--u)); line-height: 1.55; }
-[data-slide="17"] .thanks-sub { font-size: calc(40 * var(--u)); margin-bottom: calc(32 * var(--u)); }
+[data-slide="18"] .thanks-plateau .plateau-text { font-size: calc(28 * var(--u)); line-height: 1.55; }
+[data-slide="18"] .thanks-sub { font-size: calc(40 * var(--u)); margin-bottom: calc(32 * var(--u)); }
 
 /* Slide 18 : kit post-talk */
 .kit-zone {
@@ -2153,20 +2220,20 @@ html, body {
   font-family: 'DM Sans', sans-serif; font-size: calc(9 * var(--u));
   color: var(--T); text-align: center; line-height: 1.3; flex-shrink: 0;
 }
-[data-slide="18"] .biblio-list {
+[data-slide="19"] .biblio-list {
   margin-top: calc(14 * var(--u));
   gap: calc(12 * var(--u)) calc(44 * var(--u));
   align-content: start;
 }
-[data-slide="18"] .biblio-item {
+[data-slide="19"] .biblio-item {
   padding: calc(10 * var(--u)) 0;
   grid-template-columns: calc(46 * var(--u)) 1fr;
   gap: calc(12 * var(--u));
 }
-[data-slide="18"] .biblio-num { font-size: calc(32 * var(--u)); }
-[data-slide="18"] .biblio-text { font-size: calc(15 * var(--u)); line-height: 1.35; }
-[data-slide="18"] .biblio-text .b-title { font-size: calc(18 * var(--u)); margin: calc(1 * var(--u)) 0; }
-[data-slide="18"] .biblio-text .b-meta { font-size: calc(12 * var(--u)); }
+[data-slide="19"] .biblio-num { font-size: calc(32 * var(--u)); }
+[data-slide="19"] .biblio-text { font-size: calc(15 * var(--u)); line-height: 1.35; }
+[data-slide="19"] .biblio-text .b-title { font-size: calc(18 * var(--u)); margin: calc(1 * var(--u)) 0; }
+[data-slide="19"] .biblio-text .b-meta { font-size: calc(12 * var(--u)); }
 
 /* =========================================================
    PREMIUM V4 — CORRECTIONS & AMÉLIORATIONS
@@ -2237,31 +2304,31 @@ html, body {
 .focus-2col-punchline-s8 em { color: var(--T); }
 
 /* Slide 18 v4 : lisibilité desktop (textes agrandis, pas de micro-fonte) */
-[data-slide="18"] .biblio-list {
+[data-slide="19"] .biblio-list {
   margin-top: calc(14 * var(--u));
   gap: calc(16 * var(--u)) calc(52 * var(--u));
   align-content: start;
 }
-[data-slide="18"] .biblio-item {
+[data-slide="19"] .biblio-item {
   padding: calc(14 * var(--u)) 0;
   grid-template-columns: calc(52 * var(--u)) 1fr;
   gap: calc(14 * var(--u));
   border-top: calc(1 * var(--u)) solid var(--C2);
 }
-[data-slide="18"] .biblio-num { font-size: calc(38 * var(--u)); }
-[data-slide="18"] .biblio-text { font-size: calc(17 * var(--u)); line-height: 1.4; }
-[data-slide="18"] .biblio-text .b-author { display: block; }
-[data-slide="18"] .biblio-text .b-title { font-size: calc(21 * var(--u)); margin: calc(2 * var(--u)) 0; }
-[data-slide="18"] .biblio-text .b-meta { font-size: calc(14 * var(--u)); line-height: 1.35; }
+[data-slide="19"] .biblio-num { font-size: calc(38 * var(--u)); }
+[data-slide="19"] .biblio-text { font-size: calc(17 * var(--u)); line-height: 1.4; }
+[data-slide="19"] .biblio-text .b-author { display: block; }
+[data-slide="19"] .biblio-text .b-title { font-size: calc(21 * var(--u)); margin: calc(2 * var(--u)) 0; }
+[data-slide="19"] .biblio-text .b-meta { font-size: calc(14 * var(--u)); line-height: 1.35; }
 
 /* Slide 18 v4 — mobile portrait : colonne unique, textes lisibles, scroll autorisé */
 @media (max-aspect-ratio: 4/5) {
-  [data-slide="18"] .biblio-list { grid-template-columns: 1fr; gap: calc(14 * var(--u)); }
-  [data-slide="18"] .biblio-num { font-size: calc(52 * var(--u)); }
-  [data-slide="18"] .biblio-text { font-size: calc(26 * var(--u)); }
-  [data-slide="18"] .biblio-text .b-title { font-size: calc(30 * var(--u)); }
-  [data-slide="18"] .biblio-text .b-meta { font-size: calc(22 * var(--u)); }
-  [data-slide="18"] { padding-bottom: calc(130 * var(--u)); }
+  [data-slide="19"] .biblio-list { grid-template-columns: 1fr; gap: calc(14 * var(--u)); }
+  [data-slide="19"] .biblio-num { font-size: calc(52 * var(--u)); }
+  [data-slide="19"] .biblio-text { font-size: calc(26 * var(--u)); }
+  [data-slide="19"] .biblio-text .b-title { font-size: calc(30 * var(--u)); }
+  [data-slide="19"] .biblio-text .b-meta { font-size: calc(22 * var(--u)); }
+  [data-slide="19"] { padding-bottom: calc(130 * var(--u)); }
   /* Grille s8 mobile : empiler en colonne unique, masquer mécanismes */
   .focus-grid-s8 { grid-template-columns: 1fr; }
   .fgs8-h-mid, .fgs8-mech { display: none; }
@@ -2412,7 +2479,7 @@ html, body {
 }
 
 /* --- Slide 17 v5 : grille 3×2 — bas plateau aligné bas QR --- */
-[data-slide="17"] .thanks-wrap {
+[data-slide="18"] .thanks-wrap {
   display: grid;
   grid-template-columns: 1fr calc(460 * var(--u));
   grid-template-rows: auto 1fr auto;
@@ -2420,57 +2487,57 @@ html, body {
   align-items: stretch;
   margin-top: calc(16 * var(--u));
 }
-[data-slide="17"] .s17-top       { grid-column:1; grid-row:1; }
-[data-slide="17"] .s17-qr-space  { grid-column:2; grid-row:1; }
-[data-slide="17"] .s17-plateau   { grid-column:1; grid-row:2; align-self:end; }
-[data-slide="17"] .s17-qr-img   {
+[data-slide="18"] .s17-top       { grid-column:1; grid-row:1; }
+[data-slide="18"] .s17-qr-space  { grid-column:2; grid-row:1; }
+[data-slide="18"] .s17-plateau   { grid-column:1; grid-row:2; align-self:end; }
+[data-slide="18"] .s17-qr-img   {
   grid-column:2; grid-row:2;
   display:flex; flex-direction:column; justify-content:flex-end;
 }
-[data-slide="17"] .s17-qr-img img,
-[data-slide="17"] .s17-qr-img .qr-placeholder-s17 {
+[data-slide="18"] .s17-qr-img img,
+[data-slide="18"] .s17-qr-img .qr-placeholder-s17 {
   width: calc(440 * var(--u)); height: calc(440 * var(--u)); display:block;
 }
-[data-slide="17"] .s17-contact   { grid-column:1; grid-row:3; margin-top:calc(28 * var(--u)); }
-[data-slide="17"] .s17-qr-cap   { grid-column:2; grid-row:3; margin-top:calc(16 * var(--u)); }
-[data-slide="17"] .s17-qr-cap .qr-cta-label { font-family:'DM Sans',sans-serif; font-size:calc(14 * var(--u)); font-weight:700; letter-spacing:calc(3 * var(--u)); text-transform:uppercase; color:var(--N2); text-align:center; }
-[data-slide="17"] .s17-qr-cap .qr-cap { font-family:'DM Sans',sans-serif; font-size:calc(28 * var(--u)); font-weight:700; color:var(--T); text-align:center; letter-spacing:calc(1 * var(--u)); margin-top:calc(8 * var(--u)); line-height:1.2; }
-[data-slide="17"] .qr-placeholder-s17 { border:calc(2 * var(--u)) dashed var(--T); display:flex; align-items:center; justify-content:center; font-family:'DM Sans',sans-serif; font-size:calc(16 * var(--u)); color:var(--T); text-align:center; padding:calc(20 * var(--u)); box-sizing:border-box; }
+[data-slide="18"] .s17-contact   { grid-column:1; grid-row:3; margin-top:calc(28 * var(--u)); }
+[data-slide="18"] .s17-qr-cap   { grid-column:2; grid-row:3; margin-top:calc(16 * var(--u)); }
+[data-slide="18"] .s17-qr-cap .qr-cta-label { font-family:'DM Sans',sans-serif; font-size:calc(14 * var(--u)); font-weight:700; letter-spacing:calc(3 * var(--u)); text-transform:uppercase; color:var(--N2); text-align:center; }
+[data-slide="18"] .s17-qr-cap .qr-cap { font-family:'DM Sans',sans-serif; font-size:calc(28 * var(--u)); font-weight:700; color:var(--T); text-align:center; letter-spacing:calc(1 * var(--u)); margin-top:calc(8 * var(--u)); line-height:1.2; }
+[data-slide="18"] .qr-placeholder-s17 { border:calc(2 * var(--u)) dashed var(--T); display:flex; align-items:center; justify-content:center; font-family:'DM Sans',sans-serif; font-size:calc(16 * var(--u)); color:var(--T); text-align:center; padding:calc(20 * var(--u)); box-sizing:border-box; }
 
 /* --- Slide 18 v5 : bibliographie lisible en projection --- */
-[data-slide="18"] .biblio-list {
+[data-slide="19"] .biblio-list {
   margin-top: calc(12 * var(--u));
   gap: calc(14 * var(--u)) calc(52 * var(--u));
   align-content: start;
 }
-[data-slide="18"] .biblio-item {
+[data-slide="19"] .biblio-item {
   padding: calc(12 * var(--u)) 0;
   grid-template-columns: calc(62 * var(--u)) 1fr;
   gap: calc(14 * var(--u));
   border-top: calc(1 * var(--u)) solid var(--C2);
 }
-[data-slide="18"] .biblio-num { font-size: calc(44 * var(--u)); }
-[data-slide="18"] .biblio-text { font-size: calc(22 * var(--u)); line-height: 1.4; }
-[data-slide="18"] .biblio-text .b-author { display: block; font-size: calc(22 * var(--u)); font-weight: 700; }
-[data-slide="18"] .biblio-text .b-title { font-size: calc(28 * var(--u)); margin: calc(3 * var(--u)) 0 calc(2 * var(--u)); }
-[data-slide="18"] .biblio-text .b-meta { font-size: calc(17 * var(--u)); color: var(--N2); line-height: 1.35; }
+[data-slide="19"] .biblio-num { font-size: calc(44 * var(--u)); }
+[data-slide="19"] .biblio-text { font-size: calc(22 * var(--u)); line-height: 1.4; }
+[data-slide="19"] .biblio-text .b-author { display: block; font-size: calc(22 * var(--u)); font-weight: 700; }
+[data-slide="19"] .biblio-text .b-title { font-size: calc(28 * var(--u)); margin: calc(3 * var(--u)) 0 calc(2 * var(--u)); }
+[data-slide="19"] .biblio-text .b-meta { font-size: calc(17 * var(--u)); color: var(--N2); line-height: 1.35; }
 
 /* Mobile : slide 18 v5 */
 @media (max-aspect-ratio: 4/5) {
-  [data-slide="18"] .biblio-list { grid-template-columns: 1fr; gap: calc(14 * var(--u)); }
-  [data-slide="18"] .biblio-num { font-size: calc(56 * var(--u)); }
-  [data-slide="18"] .biblio-text { font-size: calc(28 * var(--u)); }
-  [data-slide="18"] .biblio-text .b-author { font-size: calc(28 * var(--u)); }
-  [data-slide="18"] .biblio-text .b-title { font-size: calc(34 * var(--u)); }
-  [data-slide="18"] .biblio-text .b-meta { font-size: calc(24 * var(--u)); }
-  [data-slide="18"] { padding-bottom: calc(130 * var(--u)); overflow-y: auto; }
-  [data-slide="17"] .thanks-wrap { grid-template-columns: 1fr !important; grid-template-rows: auto auto auto auto auto auto; }
-  [data-slide="17"] .s17-top     { grid-column:1; grid-row:1; }
-  [data-slide="17"] .s17-qr-space{ display:none; }
-  [data-slide="17"] .s17-plateau { grid-column:1; grid-row:2; align-self:auto; }
-  [data-slide="17"] .s17-qr-img  { grid-column:1; grid-row:3; justify-content:center; }
-  [data-slide="17"] .s17-contact { grid-column:1; grid-row:4; }
-  [data-slide="17"] .s17-qr-cap  { grid-column:1; grid-row:5; text-align:center; }
+  [data-slide="19"] .biblio-list { grid-template-columns: 1fr; gap: calc(14 * var(--u)); }
+  [data-slide="19"] .biblio-num { font-size: calc(56 * var(--u)); }
+  [data-slide="19"] .biblio-text { font-size: calc(28 * var(--u)); }
+  [data-slide="19"] .biblio-text .b-author { font-size: calc(28 * var(--u)); }
+  [data-slide="19"] .biblio-text .b-title { font-size: calc(34 * var(--u)); }
+  [data-slide="19"] .biblio-text .b-meta { font-size: calc(24 * var(--u)); }
+  [data-slide="19"] { padding-bottom: calc(130 * var(--u)); overflow-y: auto; }
+  [data-slide="18"] .thanks-wrap { grid-template-columns: 1fr !important; grid-template-rows: auto auto auto auto auto auto; }
+  [data-slide="18"] .s17-top     { grid-column:1; grid-row:1; }
+  [data-slide="18"] .s17-qr-space{ display:none; }
+  [data-slide="18"] .s17-plateau { grid-column:1; grid-row:2; align-self:auto; }
+  [data-slide="18"] .s17-qr-img  { grid-column:1; grid-row:3; justify-content:center; }
+  [data-slide="18"] .s17-contact { grid-column:1; grid-row:4; }
+  [data-slide="18"] .s17-qr-cap  { grid-column:1; grid-row:5; text-align:center; }
 }
 
 /* =========================================================
@@ -2514,74 +2581,74 @@ html, body {
 }
 
 /* --- Slide 17 v6 : grille réquilibrée, QR et plateau alignés en bas --- */
-[data-slide="17"] .thanks-title {
+[data-slide="18"] .thanks-title {
   font-size: calc(180 * var(--u));
 }
-[data-slide="17"] .thanks-sub {
+[data-slide="18"] .thanks-sub {
   font-size: calc(36 * var(--u));
   margin-bottom: calc(16 * var(--u));
   margin-top: calc(12 * var(--u));
 }
-[data-slide="17"] .thanks-contact {
+[data-slide="18"] .thanks-contact {
   font-size: calc(18 * var(--u));
 }
-[data-slide="17"] .thanks-contact .name {
+[data-slide="18"] .thanks-contact .name {
   font-size: calc(40 * var(--u));
   margin-bottom: calc(6 * var(--u));
 }
-[data-slide="17"] .s17-contact {
+[data-slide="18"] .s17-contact {
   margin-top: calc(18 * var(--u));
 }
-[data-slide="17"] .s17-qr-img img,
-[data-slide="17"] .s17-qr-img .qr-placeholder-s17 {
+[data-slide="18"] .s17-qr-img img,
+[data-slide="18"] .s17-qr-img .qr-placeholder-s17 {
   width: calc(380 * var(--u));
   height: calc(380 * var(--u));
 }
-[data-slide="17"] .s17-qr-cap {
+[data-slide="18"] .s17-qr-cap {
   margin-top: calc(14 * var(--u));
 }
-[data-slide="17"] .s17-qr-cap .qr-cap {
+[data-slide="18"] .s17-qr-cap .qr-cap {
   font-size: calc(24 * var(--u));
 }
-[data-slide="17"] .thanks-wrap {
+[data-slide="18"] .thanks-wrap {
   margin-top: calc(10 * var(--u));
 }
 
 /* --- Slide 18 v6 : bibliographie aérée, espace distribué --- */
-[data-slide="18"] .biblio-list {
+[data-slide="19"] .biblio-list {
   align-content: space-between;
   gap: calc(0px) calc(60 * var(--u));
   margin-top: calc(16 * var(--u));
 }
-[data-slide="18"] .biblio-item {
+[data-slide="19"] .biblio-item {
   padding: calc(20 * var(--u)) 0;
   grid-template-columns: calc(68 * var(--u)) 1fr;
   gap: calc(16 * var(--u));
 }
-[data-slide="18"] .biblio-num {
+[data-slide="19"] .biblio-num {
   font-size: calc(48 * var(--u));
   color: var(--T);
   line-height: 1;
 }
-[data-slide="18"] .biblio-text .b-author {
+[data-slide="19"] .biblio-text .b-author {
   font-size: calc(24 * var(--u));
 }
-[data-slide="18"] .biblio-text .b-title {
+[data-slide="19"] .biblio-text .b-title {
   font-size: calc(30 * var(--u));
   margin: calc(4 * var(--u)) 0 calc(3 * var(--u));
 }
-[data-slide="18"] .biblio-text .b-meta {
+[data-slide="19"] .biblio-text .b-meta {
   font-size: calc(17 * var(--u));
 }
-[data-slide="18"] .kit-compact {
+[data-slide="19"] .kit-compact {
   padding: calc(14 * var(--u)) calc(22 * var(--u));
   margin-bottom: calc(6 * var(--u));
 }
 
 /* Mobile v6 overrides */
 @media (max-aspect-ratio: 4/5) {
-  [data-slide="18"] .biblio-list { align-content: start; }
-  [data-slide="17"] .thanks-title { font-size: calc(140 * var(--u)); }
+  [data-slide="19"] .biblio-list { align-content: start; }
+  [data-slide="18"] .thanks-title { font-size: calc(140 * var(--u)); }
 }
 
 /* =========================================================
@@ -2620,22 +2687,22 @@ html, body {
 }
 
 /* --- Slide 17 v7 : contact agrandi --- */
-[data-slide="17"] .thanks-contact .name {
+[data-slide="18"] .thanks-contact .name {
   font-size: calc(56 * var(--u)) !important;
   margin-bottom: calc(14 * var(--u));
 }
-[data-slide="17"] .thanks-contact {
+[data-slide="18"] .thanks-contact {
   font-size: calc(26 * var(--u)) !important;
   line-height: 1.6;
 }
-[data-slide="17"] .thanks-contact .label {
+[data-slide="18"] .thanks-contact .label {
   font-size: calc(16 * var(--u));
   letter-spacing: calc(3 * var(--u));
 }
-[data-slide="17"] .thanks-contact .link {
+[data-slide="18"] .thanks-contact .link {
   font-size: calc(26 * var(--u));
 }
-[data-slide="17"] .s17-contact {
+[data-slide="18"] .s17-contact {
   margin-top: calc(24 * var(--u)) !important;
 }
 
@@ -2721,43 +2788,43 @@ html, body {
    ========================================================= */
 
 /* Bloc blanc plateau : polices projetables */
-[data-slide="17"] .plateau-strong {
+[data-slide="18"] .plateau-strong {
   font-size: calc(42 * var(--u)) !important;
   margin-bottom: calc(18 * var(--u));
   line-height: 1.1;
 }
-[data-slide="17"] .plateau-desc {
+[data-slide="18"] .plateau-desc {
   font-size: calc(28 * var(--u)) !important;
   line-height: 1.5;
   margin-bottom: calc(18 * var(--u));
 }
-[data-slide="17"] .plateau-punch {
+[data-slide="18"] .plateau-punch {
   font-size: calc(28 * var(--u)) !important;
   line-height: 1.4;
 }
-[data-slide="17"] .thanks-plateau {
+[data-slide="18"] .thanks-plateau {
   padding: calc(36 * var(--u)) calc(44 * var(--u)) !important;
   max-width: 100% !important;
 }
-[data-slide="17"] .thanks-plateau .plateau-tag {
+[data-slide="18"] .thanks-plateau .plateau-tag {
   font-size: calc(18 * var(--u)) !important;
   margin-bottom: calc(22 * var(--u)) !important;
 }
 
 /* Grille : colonne gauche + QR (QR légèrement réduit pour aérer) */
-[data-slide="17"] .thanks-wrap {
+[data-slide="18"] .thanks-wrap {
   grid-template-columns: 1fr calc(400 * var(--u)) !important;
   gap: calc(0 * var(--u)) calc(64 * var(--u)) !important;
   margin-top: calc(8 * var(--u)) !important;
 }
-[data-slide="17"] .s17-qr-img img,
-[data-slide="17"] .s17-qr-img .qr-placeholder-s17 {
+[data-slide="18"] .s17-qr-img img,
+[data-slide="18"] .s17-qr-img .qr-placeholder-s17 {
   width: calc(360 * var(--u)) !important;
   height: calc(360 * var(--u)) !important;
 }
 
 /* --- Slide 17 v7 : modifications finales --- */
-[data-slide="17"] .plateau-desc {
+[data-slide="18"] .plateau-desc {
   font-size: calc(15 * var(--u)) !important;
   white-space: nowrap;
   overflow: hidden;
@@ -2765,36 +2832,36 @@ html, body {
   line-height: 1.3;
   margin-bottom: calc(14 * var(--u));
 }
-[data-slide="17"] .plateau-punch {
+[data-slide="18"] .plateau-punch {
   font-size: calc(44 * var(--u)) !important;
   line-height: 1.25;
 }
-[data-slide="17"] .s17-plateau {
+[data-slide="18"] .s17-plateau {
   align-self: stretch !important;
   display: flex;
   flex-direction: column;
 }
-[data-slide="17"] .thanks-plateau {
+[data-slide="18"] .thanks-plateau {
   flex: 1;
   height: 100%;
   box-sizing: border-box;
   margin-bottom: 0 !important;
 }
-[data-slide="17"] .s17-qr-img {
+[data-slide="18"] .s17-qr-img {
   align-self: stretch !important;
   justify-content: center !important;
   background: var(--W);
   border-radius: calc(8 * var(--u));
   padding: calc(24 * var(--u)) calc(20 * var(--u));
 }
-[data-slide="17"] .s17-qr-img img,
-[data-slide="17"] .s17-qr-img .qr-placeholder-s17 {
+[data-slide="18"] .s17-qr-img img,
+[data-slide="18"] .s17-qr-img .qr-placeholder-s17 {
   width: auto !important;
   height: auto !important;
   max-width: 85% !important;
   max-height: calc(290 * var(--u)) !important;
 }
-[data-slide="17"] .s17-qr-cap .qr-cta-label {
+[data-slide="18"] .s17-qr-cap .qr-cta-label {
   display: none !important;
 }
 .s17-qr-punchline {
@@ -2831,7 +2898,7 @@ html, body {
      ============================================================ -->
 <section class="slide" data-slide="2">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">02</span><span class="sep">/</span>18<span class="sep">·</span> Intro<span class="sep">·</span>Paradoxe</div>
+    <div class="slide-chip"><span class="num">02</span><span class="sep">/</span>19<span class="sep">·</span> Intro<span class="sep">·</span>Paradoxe</div>
   </div>
   <h1 class="h h-m">On a les rituels.<br>Il nous <em>manque</em> le courage.</h1>
   <div class="two-col">
@@ -2857,7 +2924,7 @@ html, body {
      ============================================================ -->
 <section class="slide" data-slide="3">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">03</span><span class="sep">/</span>18<span class="sep">·</span> Contexte culturel</div>
+    <div class="slide-chip"><span class="num">03</span><span class="sep">/</span>19<span class="sep">·</span> Contexte culturel</div>
   </div>
   <h1 class="h h-m">Dans ce comparatif,<br>la France <em>ressort.</em></h1>
   <div class="hof-wrap">
@@ -2926,7 +2993,7 @@ html, body {
      ============================================================ -->
 <section class="slide" data-slide="4">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">04</span><span class="sep">/</span>18<span class="sep">·</span> Contexte culturel</div>
+    <div class="slide-chip"><span class="num">04</span><span class="sep">/</span>19<span class="sep">·</span> Contexte culturel</div>
   </div>
   <h1 class="h h-m">On emballe. On <em>espère</em> que ça passe.</h1>
   <div class="dialogues">
@@ -2972,7 +3039,7 @@ html, body {
      ============================================================ -->
 <section class="slide" data-slide="5">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">05</span><span class="sep">/</span>18<span class="sep">·</span> Toutes directions</div>
+    <div class="slide-chip"><span class="num">05</span><span class="sep">/</span>19<span class="sep">·</span> Toutes directions</div>
   </div>
   <h1 class="h h-m">Le feedback ne circule pas<br>dans <em>un seul sens.</em></h1>
   <div class="flow">
@@ -3023,7 +3090,7 @@ html, body {
      ============================================================ -->
 <section class="slide" data-slide="6">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">06</span><span class="sep">/</span>18<span class="sep">·</span> Radical Candor</div>
+    <div class="slide-chip"><span class="num">06</span><span class="sep">/</span>19<span class="sep">·</span> Radical Candor</div>
   </div>
   <h1 class="h h-m">Deux axes.<br><em>Quatre réalités.</em></h1>
   <div class="qmap-wrap">
@@ -3068,7 +3135,7 @@ html, body {
      ============================================================ -->
 <section class="slide" data-slide="7">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">07</span><span class="sep">/</span>18<span class="sep">·</span> Les 4 quadrants</div>
+    <div class="slide-chip"><span class="num">07</span><span class="sep">/</span>19<span class="sep">·</span> Les 4 quadrants</div>
   </div>
   <h1 class="h h-m"><em>Où</em> êtes-vous ?</h1>
   <div class="matrix">
@@ -3113,7 +3180,7 @@ html, body {
      ============================================================ -->
 <section class="slide" data-slide="8">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">08</span><span class="sep">/</span>18<span class="sep">·</span> Focus</div>
+    <div class="slide-chip"><span class="num">08</span><span class="sep">/</span>19<span class="sep">·</span> Focus</div>
   </div>
   <h1 class="h h-m">La bienveillance sans franchise n’est pas de la gentillesse.<br><em>C’est du confort déguisé.</em></h1>
   <div class="focus-grid-s8">
@@ -3166,7 +3233,7 @@ html, body {
      ============================================================ -->
 <section class="slide" data-slide="9">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">09</span><span class="sep">/</span>18<span class="sep">·</span> Biais de genre</div>
+    <div class="slide-chip"><span class="num">09</span><span class="sep">/</span>19<span class="sep">·</span> Biais de genre</div>
   </div>
   <div class="gender-intro">
     <span class="gender-pill"><span class="gp-w">♀</span><span class="gp-eq">≠</span><span class="gp-m">♂</span></span>
@@ -3220,7 +3287,7 @@ html, body {
      ============================================================ -->
 <section class="slide" data-slide="10">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">10</span><span class="sep">/</span>18<span class="sep">·</span> Ce que ça implique</div>
+    <div class="slide-chip"><span class="num">10</span><span class="sep">/</span>19<span class="sep">·</span> Ce que ça implique</div>
   </div>
   <div class="gest-head-row" style="margin-bottom:calc(16 * var(--u));">
     <div class="gest-num-big">4</div>
@@ -3274,7 +3341,7 @@ html, body {
      ============================================================ -->
 <section class="slide interlude-slide" data-slide="11">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">11</span><span class="sep">/</span>18</div>
+    <div class="slide-chip"><span class="num">11</span><span class="sep">/</span>19</div>
   </div>
   <div class="interlude-inner">
     <div class="interlude-eyebrow">De la posture aux actes</div>
@@ -3291,7 +3358,7 @@ html, body {
      ============================================================ -->
 <section class="slide" data-slide="12">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">12</span><span class="sep">/</span>18 <span class="sep">·</span> Geste 01</div>
+    <div class="slide-chip"><span class="num">12</span><span class="sep">/</span>19 <span class="sep">·</span> Geste 01</div>
   </div>
   <div class="gest-head-row">
     <div class="gest-num-big">01</div>
@@ -3336,7 +3403,7 @@ html, body {
      ============================================================ -->
 <section class="slide" data-slide="13">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">13</span><span class="sep">/</span>18 <span class="sep">·</span> Geste 02</div>
+    <div class="slide-chip"><span class="num">13</span><span class="sep">/</span>19 <span class="sep">·</span> Geste 02</div>
   </div>
   <div class="gest-head-row">
     <div class="gest-num-big">02</div>
@@ -3385,7 +3452,7 @@ html, body {
      ============================================================ -->
 <section class="slide" data-slide="14">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">14</span><span class="sep">/</span>18 <span class="sep">·</span> Geste 03</div>
+    <div class="slide-chip"><span class="num">14</span><span class="sep">/</span>19 <span class="sep">·</span> Geste 03</div>
   </div>
   <div class="gest-head-row">
     <div class="gest-num-big">03</div>
@@ -3421,7 +3488,7 @@ html, body {
      ============================================================ -->
 <section class="slide quote-slide" data-slide="15">
   <div class="top-band" style="position: absolute; top: calc(72 * var(--u)); right: calc(96 * var(--u)); width: auto;">
-    <div class="slide-chip"><span class="num">15</span><span class="sep">/</span>18</div>
+    <div class="slide-chip"><span class="num">15</span><span class="sep">/</span>19</div>
   </div>
   <div class="quote">
     "La responsabilité collective se construit aussi dans les conversations <em>qu'on accepte d'avoir.</em>"
@@ -3434,7 +3501,7 @@ html, body {
      ============================================================ -->
 <section class="slide" data-slide="16">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">16</span><span class="sep">/</span>18 <span class="sep">·</span> Call to action</div>
+    <div class="slide-chip"><span class="num">16</span><span class="sep">/</span>19 <span class="sep">·</span> Call to action</div>
   </div>
   <h1 class="h h-xl">Cette <em>semaine.</em></h1>
   <div class="cta-list">
@@ -3445,11 +3512,46 @@ html, body {
 </section>
 
 <!-- ============================================================
-     SLIDE 17 : MERCI / Q&A / PLATEAU
+     SLIDE 17 : SPONSORS / REMERCIEMENTS PARTENAIRES
      ============================================================ -->
-<section class="slide" data-slide="17">
+<section class="slide sponsors-slide" data-slide="17">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">17</span><span class="sep">/</span>18 <span class="sep">·</span> Merci<span class="sep">·</span>Q&amp;A</div>
+    <div class="slide-chip"><span class="num">17</span><span class="sep">/</span>19 <span class="sep">·</span> Sponsors<span class="sep">·</span>Partenaires</div>
+  </div>
+  <h1 class="h h-m">Un grand merci aux <em>sponsors.</em></h1>
+  <div class="sp-lead">Agile Tour Rennes 2026 . Sans eux, ni la sc&egrave;ne, ni le replay.</div>
+
+  <div class="sp-tier sp-tier--acteur">
+    <div class="sp-tier-label">Sponsor acteur</div>
+    <div class="sp-acteur">
+      <div class="sp-tile sp-tile--hero">
+        <img src="./assets/sponsors-atr2026/image1.png" alt="Sopra Steria">
+      </div>
+    </div>
+  </div>
+
+  <div class="sp-tier sp-tier--contributeurs">
+    <div class="sp-tier-label">Sponsors contributeurs</div>
+    <div class="sp-grid">
+      <div class="sp-tile"><img src="./assets/sponsors-atr2026/image2.png" alt="Brittany Ferries"></div>
+      <div class="sp-tile"><img src="./assets/sponsors-atr2026/image3.png" alt="CGI"></div>
+      <div class="sp-tile"><img src="./assets/sponsors-atr2026/image4.png" alt="gmvet"></div>
+      <div class="sp-tile"><img src="./assets/sponsors-atr2026/image5.png" alt="Luminess"></div>
+      <div class="sp-tile"><img src="./assets/sponsors-atr2026/image6.png" alt="neosoft"></div>
+      <div class="sp-tile"><img src="./assets/sponsors-atr2026/image7.png" alt="NSDI Conseil"></div>
+      <div class="sp-tile"><img src="./assets/sponsors-atr2026/image8.png" alt="onepoint"></div>
+      <div class="sp-tile"><img src="./assets/sponsors-atr2026/image9.png" alt="Softeam . Une marque de Docaposte"></div>
+      <div class="sp-tile"><img src="./assets/sponsors-atr2026/image10.png" alt="Wijin"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 18 : MERCI / Q&A / PLATEAU
+     ============================================================ -->
+<section class="slide" data-slide="18">
+  <div class="top-band">
+    <div class="slide-chip"><span class="num">18</span><span class="sep">/</span>19 <span class="sep">·</span> Merci<span class="sep">·</span>Q&amp;A</div>
   </div>
   <!-- Grille 3 lignes × 2 colonnes pour aligner bas plateau / bas QR -->
   <div class="thanks-wrap">
@@ -3489,11 +3591,11 @@ html, body {
 </section>
 
 <!-- ============================================================
-     SLIDE 18 : BIBLIOGRAPHIE
+     SLIDE 19 : BIBLIOGRAPHIE
      ============================================================ -->
-<section class="slide" data-slide="18">
+<section class="slide" data-slide="19">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">18</span><span class="sep">/</span>18 <span class="sep">·</span> Bibliographie</div>
+    <div class="slide-chip"><span class="num">19</span><span class="sep">/</span>19 <span class="sep">·</span> Bibliographie</div>
   </div>
   <h1 class="h h-m">Pour <em>aller plus loin.</em></h1>
 
