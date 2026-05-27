@@ -3731,6 +3731,147 @@ html, body {
   });
   show(0);
 })();
+
+(() => {
+  const slides = Array.from(document.querySelectorAll(".slide"));
+  if (!slides.length) return;
+
+  let current = slides.findIndex(slide => slide.classList.contains("active"));
+  if (current < 0) current = 0;
+
+  const hashSlide = Number(window.location.hash.replace("#", ""));
+  if (Number.isInteger(hashSlide) && hashSlide >= 1 && hashSlide <= slides.length) {
+    current = hashSlide - 1;
+  }
+
+  function clamp(value, min, max) {
+    return Math.max(min, Math.min(max, value));
+  }
+
+  function render() {
+    slides.forEach((slide, index) => {
+      const isActive = index === current;
+      slide.classList.toggle("active", isActive);
+      slide.setAttribute("aria-hidden", String(!isActive));
+    });
+
+    const label = `${String(current + 1).padStart(2, "0")} / ${String(slides.length).padStart(2, "0")}`;
+
+    document
+      .querySelectorAll("[data-slide-counter], .slide-counter, .counter, #counter")
+      .forEach(el => {
+        el.textContent = label;
+      });
+
+    history.replaceState(null, "", `#${current + 1}`);
+  }
+
+  function nextSlide() {
+    const activeSlide = slides[current];
+
+    // Cas spécial : ta slide 5 a une classe "revealed" prévue dans le CSS.
+    // Premier clic/touche : révélation. Deuxième : slide suivante.
+    if (
+      activeSlide &&
+      activeSlide.dataset.slide === "5" &&
+      !activeSlide.classList.contains("revealed")
+    ) {
+      activeSlide.classList.add("revealed");
+      return;
+    }
+
+    current = clamp(current + 1, 0, slides.length - 1);
+    render();
+  }
+
+  function previousSlide() {
+    const activeSlide = slides[current];
+
+    if (
+      activeSlide &&
+      activeSlide.dataset.slide === "5" &&
+      activeSlide.classList.contains("revealed")
+    ) {
+      activeSlide.classList.remove("revealed");
+      return;
+    }
+
+    current = clamp(current - 1, 0, slides.length - 1);
+    render();
+  }
+
+  const nextKeys = new Set([
+    "ArrowRight",
+    "PageDown",
+    " ",
+    "Spacebar",
+    "Enter",
+    "n",
+    "N",
+    "MediaTrackNext"
+  ]);
+
+  const previousKeys = new Set([
+    "ArrowLeft",
+    "PageUp",
+    "Backspace",
+    "p",
+    "P",
+    "MediaTrackPrevious"
+  ]);
+
+  const nextCodes = new Set([
+    "ArrowRight",
+    "PageDown",
+    "Space",
+    "Enter",
+    "KeyN"
+  ]);
+
+  const previousCodes = new Set([
+    "ArrowLeft",
+    "PageUp",
+    "Backspace",
+    "KeyP"
+  ]);
+
+  const nextKeyCodes = new Set([39, 34, 32, 13]);
+  const previousKeyCodes = new Set([37, 33, 8]);
+
+  window.addEventListener("keydown", event => {
+    const tagName = event.target?.tagName?.toLowerCase();
+
+    if (
+      ["input", "textarea", "select"].includes(tagName) ||
+      event.target?.isContentEditable
+    ) {
+      return;
+    }
+
+    const isNext =
+      nextKeys.has(event.key) ||
+      nextCodes.has(event.code) ||
+      nextKeyCodes.has(event.keyCode);
+
+    const isPrevious =
+      previousKeys.has(event.key) ||
+      previousCodes.has(event.code) ||
+      previousKeyCodes.has(event.keyCode);
+
+    if (!isNext && !isPrevious) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (isNext) nextSlide();
+    if (isPrevious) previousSlide();
+  }, true);
+
+  window.nextSlide = nextSlide;
+  window.previousSlide = previousSlide;
+
+  render();
+})();
 </script>
 </body>
 </html>
