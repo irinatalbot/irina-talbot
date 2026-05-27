@@ -278,6 +278,24 @@ html, body {
   color: var(--T); margin-right: calc(14 * var(--u));
 }
 
+/* Slide 2 : remonter la scène et créer une respiration avant la question */
+[data-slide="2"] .two-col {
+  flex: 0 0 auto;
+  margin-top: calc(46 * var(--u));
+  margin-bottom: calc(28 * var(--u));
+}
+
+[data-slide="2"] .scene {
+  margin-top: 0;
+  max-width: calc(1680 * var(--u));
+}
+
+[data-slide="2"] .scene-note {
+  margin-top: calc(30 * var(--u));
+  font-size: calc(19 * var(--u));
+  line-height: 1.25;
+}
+
 /* ---------- Slide 3 : Hofstede en barres ---------- */
 .hof-wrap {
   display: grid;
@@ -2490,10 +2508,7 @@ html, body {
 [data-slide="18"] .s17-top       { grid-column:1; grid-row:1; }
 [data-slide="18"] .s17-qr-space  { grid-column:2; grid-row:1; }
 [data-slide="18"] .s17-plateau   { grid-column:1; grid-row:2; align-self:end; }
-[data-slide="18"] .s17-qr-img   {
-  grid-column:2; grid-row:2;
-  display:flex; flex-direction:column; justify-content:flex-end;
-}
+[data-slide="18"] .s17-qr-img    { grid-column:2; grid-row:2; display:flex; flex-direction:column; justify-content:flex-end;}
 [data-slide="18"] .s17-qr-img img,
 [data-slide="18"] .s17-qr-img .qr-placeholder-s17 {
   width: calc(440 * var(--u)); height: calc(440 * var(--u)); display:block;
@@ -2898,25 +2913,35 @@ html, body {
      ============================================================ -->
 <section class="slide" data-slide="2">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">02</span><span class="sep">/</span>19<span class="sep">·</span> Intro<span class="sep">·</span>Paradoxe</div>
+    <div class="slide-chip"><span class="num">02</span><span class="sep">/</span>18<span class="sep">·</span> Intro<span class="sep">·</span>Paradoxe</div>
   </div>
-  <h1 class="h h-m">On a les rituels.<br>Il nous <em>manque</em> le courage.</h1>
+
+  <h1 class="h h-m">On demande de parler.<br>Et parfois, on le <em>fait payer.</em></h1>
+
   <div class="two-col">
     <div class="col-have">
-      <div class="col-label have">Ce qu'on a</div>
-      <div class="col-item">La rétrospective.</div>
-      <div class="col-item">La code review.</div>
-      <div class="col-item">Le 1:1.</div>
+      <div class="col-label have">Ce qu'on attend</div>
+      <div class="col-item">Dire les vrais sujets.</div>
+      <div class="col-item">Challenger les arbitrages.</div>
+      <div class="col-item">Protéger l'équipe.</div>
     </div>
+
     <div class="col-avoid">
-      <div class="col-label avoid">Ce qu'on évite</div>
-      <div class="col-item">Nommer <em>ce qui ne va pas.</em></div>
-      <div class="col-item">Remettre en cause <em>une approche.</em></div>
-      <div class="col-item">Le feedback <em>qui fâche.</em></div>
+      <div class="col-label avoid">Ce qui peut revenir</div>
+      <div class="col-item">« Perçu comme <em>négatif.</em> »</div>
+      <div class="col-item">« Je te trouve <em>démotivé.</em> »</div>
+      <div class="col-item">« Tu contestes <em>l'autorité.</em> »</div>
     </div>
   </div>
-  <div class="scene"><span class="scene-tag">Scène</span>Rétro de sprint. Le ticket critique a glissé pour la troisième fois. Tout le monde sait pourquoi : des changements arrivent après le planning. Personne ne nomme le sujet. On écrit : « mieux cadrer les priorités ». Action item votée. Même problème au sprint suivant.</div>
-  <div class="scene-note">Le rituel a eu lieu. Le feedback, lui, est resté dans la gorge.</div>
+
+  <div class="scene">
+    <span class="scene-tag">Scène</span>
+    <br>- Petite équipe produit. Gros périmètre, specs instables, délai court. L'équipe absorbe, demande du renfort, livre quand même. 
+    <br>- En rétro, les juniors se taisent. Un développeur senior nomme la pression, la capacité intenable, les arbitrages impossibles. 
+    <br>- Quelques mois plus tard, en entretien annuel : « Tu peux être perçu comme négatif. »
+  </div>
+
+  <div class="scene-note">Comment parler à quelqu'un qui peut ensuite t'évaluer ?</div>
 </section>
 
 <!-- ============================================================
@@ -3005,29 +3030,29 @@ html, body {
       <div class="dial-arrow">→</div>
       <div class="dial-bubble meant">
         <span class="dial-tag">Ce qu'on pense</span>
-        «&nbsp;Cette demande fait <em>exploser la <span class="nobr">roadmap.</span></em>&nbsp;<span class="nobr">Il faut arbitrer maintenant.&nbsp;»</span>
+        «&nbsp;L'équipe est déjà au taquet... <em><span class="nobr">Mais c'est un gros client.</span></em><span class="nobr">Il faut préserver la relation.&nbsp;»</span>
       </div>
     </div>
     <div class="dial-row">
       <div class="dial-bubble said">
-        <span class="dial-tag">En pull request</span>
-        «&nbsp;Intéressant comme approche, peut-être qu'on pourrait voir d'autres options&nbsp;?&nbsp;»
+        <span class="dial-tag">En daily</span>
+        «&nbsp;Je suis encore sur le ticket, ça avance...&nbsp;»
+      </div>
+      <div class="dial-arrow">→</div>
+      <div class="dial-bubble meant">
+        <span class="dial-tag">Ce qu'on aimerait dire</span>
+        «&nbsp;Je suis bloqué depuis trois jours, <em>mais je n’ose pas dire </em><span class="nobr">que j'ai besoin d'aide.&nbsp;»</span>
+      </div>
+    </div>
+    <div class="dial-row">
+      <div class="dial-bubble said">
+        <span class="dial-tag">En refinement</span>
+        «&nbsp;Il manque peut-être quelques précisions sur cette story...&nbsp;»
       </div>
       <div class="dial-arrow">→</div>
       <div class="dial-bubble meant">
         <span class="dial-tag">En vrai</span>
-        «&nbsp;Ce code va <em>casser en <span class="nobr">prod.</span></em>&nbsp;<span class="nobr">À refaire.&nbsp;»</span>
-      </div>
-    </div>
-    <div class="dial-row">
-      <div class="dial-bubble said">
-        <span class="dial-tag">En entretien annuel</span>
-        «&nbsp;Bon trimestre dans l'ensemble, continue comme ça.&nbsp;»
-      </div>
-      <div class="dial-arrow">→</div>
-      <div class="dial-bubble meant">
-        <span class="dial-tag">Six mois plus tard</span>
-        «&nbsp;Le client a demandé&nbsp;<span class="nobr"><em>qu'on te remplace.</em>&nbsp;»</span>
+        «&nbsp;Cette story n’est pas prête.&nbsp; <em>Si on la prend en sprint, </em><span class="nobr">on va improviser pendant deux semaines.&nbsp;»</span>
       </div>
     </div>
     <div class="dial-conclusion">Les Français savent critiquer. En évaluation formelle, ils peuvent être très directs.<br>Ici, on parle des rituels informels&nbsp;: quand le silence devient de l'<em>empathie&nbsp;dévastatrice.</em></div>
@@ -3394,7 +3419,7 @@ html, body {
   </div>
   <div class="example-block">
     <span class="example-tag">Variante ascendante</span>
-    <div class="example-text">"J'aimerais te partager quelque chose sur la gestion des changements de périmètre. <em>Tu peux m'accorder 10 minutes cette semaine ?</em>"</div>
+    <div class="example-text">"J’ai un retour sur les changements de périmètre. <em>On peut prendre 10 minutes cette semaine ?</em>"</div>
   </div>
 </section>
 
@@ -3437,8 +3462,10 @@ html, body {
     </div>
   </div>
   <div class="example-block">
-    <span class="example-tag">En pratique · ascendant : équipe → manager</span>
-    <div class="example-text">"Sur les deux derniers sprints, tu as ajouté des tickets après le planning. Je finis par livrer les stories principales en retard. <em>J'ai besoin qu'on arbitre ensemble avant d'ajouter en cours de sprint.</em> On en parle demain en fin de daily ?"</div>
+    <span class="example-tag">En pratique · ascendant : managé → manager</span>
+    <div class="example-text">“Sur nos trois derniers 1:1, tu es arrivé avec 20 à 30 minutes de retard.
+      <em>Comme on garde la même heure de fin, je n’arrive pas à traiter mes sujets de fond. J’ai besoin que ce temps soit fiable.
+      </em>Est-ce qu’on peut le sanctuariser, ou le déplacer à un moment où tu es plus disponible ?"</div>
   </div>
   <div class="bug-formula">
     <div class="bug-formula-lead">Un bon feedback ressemble à un bon bug report :</div>
