@@ -237,7 +237,7 @@ html, body {
 .two-col {
   display: grid; grid-template-columns: 1fr 1fr;
   gap: calc(100 * var(--u));
-  margin-top: calc(60 * var(--u)); flex: 1;
+  margin-top: calc(50 * var(--u)); flex: 1;
   align-items: start;
 }
 .col-label {
@@ -246,13 +246,13 @@ html, body {
   font-weight: 700;
   letter-spacing: calc(4 * var(--u));
   text-transform: uppercase;
-  margin-bottom: calc(36 * var(--u));
+  margin-bottom: calc(30 * var(--u));
 }
 .col-label.avoid { color: var(--T); }
 .col-label.have { color: var(--N2); }
 .col-item {
   font-family: 'Cormorant Garamond', serif;
-  font-weight: 400; font-size: calc(56 * var(--u));
+  font-weight: 400; font-size: calc(48 * var(--u));
   line-height: 1.15;
   padding: calc(22 * var(--u)) 0;
   border-top: calc(2 * var(--u)) solid var(--N);
@@ -274,7 +274,7 @@ html, body {
   text-transform: uppercase;
   font-family: 'DM Sans', sans-serif;
   font-style: normal; font-weight: 700;
-  font-size: calc(16 * var(--u)); letter-spacing: calc(3 * var(--u));
+  font-size: calc(22 * var(--u)); letter-spacing: calc(3 * var(--u));
   color: var(--T); margin-right: calc(14 * var(--u));
 }
 
@@ -286,14 +286,15 @@ html, body {
 }
 
 [data-slide="2"] .scene {
-  margin-top: 0;
+  margin-top: calc(36 * var(--u));
   max-width: calc(1680 * var(--u));
 }
 
 [data-slide="2"] .scene-note {
   margin-top: calc(30 * var(--u));
-  font-size: calc(19 * var(--u));
+  font-size: calc(40 * var(--u));
   line-height: 1.25;
+  em { font-style: normal; color: var(--N); font-weight: 700; }
 }
 
 /* ---------- Slide 3 : Hofstede en barres ---------- */
@@ -681,13 +682,28 @@ html, body {
 .qmap-side .side-label {
   font-family: 'DM Sans', sans-serif;
   font-weight: 700;
-  font-size: calc(16 * var(--u));
+  font-size: calc(25 * var(--u));
   letter-spacing: calc(4 * var(--u));
   text-transform: uppercase;
   color: var(--T);
   font-style: normal;
   display: block;
   margin-bottom: calc(20 * var(--u));
+}
+
+/* Slide 6 : inversion texte / quadrant */
+[data-slide="6"] .qmap-wrap {
+  grid-template-columns: 1.05fr 1.45fr;
+  gap: calc(48 * var(--u));
+  margin-top: calc(8 * var(--u));
+}
+
+[data-slide="6"] .qmap-side {
+  order: 1;
+}
+
+[data-slide="6"] .qmap {
+  order: 2;
 }
 
 /* ---------- Slide 7 : matrice 4 quadrants avec chats ---------- */
@@ -774,58 +790,6 @@ html, body {
 .q-axes .ko { color: var(--N2); opacity: 0.5; }
 
 /* ---------- Slide 8 : focus Empathie dévastatrice ---------- */
-.focus {
-  display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: calc(80 * var(--u));
-  margin-top: calc(28 * var(--u)); flex: 1;
-  align-items: center;
-}
-.silence-list {
-  display: flex; flex-direction: column;
-  gap: calc(8 * var(--u));
-  margin-bottom: calc(28 * var(--u));
-}
-.silence-item {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 400; font-style: italic;
-  font-size: calc(40 * var(--u));
-  line-height: 1.15;
-  color: var(--N);
-  letter-spacing: calc(-1 * var(--u));
-  padding-left: calc(24 * var(--u));
-  border-left: calc(3 * var(--u)) solid var(--T);
-}
-.silence-item em { color: var(--T); font-style: italic; font-weight: 500; }
-.focus-body {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: calc(28 * var(--u));
-  line-height: 1.3;
-  color: var(--N);
-  font-weight: 400;
-}
-.focus-body em { color: var(--T); font-style: italic; font-weight: 500; }
-.focus-body strong { font-weight: 700; }
-.focus-img {
-  border-radius: calc(8 * var(--u));
-  overflow: hidden;
-  align-self: stretch;
-  min-height: calc(560 * var(--u));
-  display: flex; align-items: center; justify-content: center;
-  padding: 0;
-  overflow: hidden;
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: calc(24 * var(--u));
-  color: var(--N2);
-  text-align: center;
-}
-.focus-img img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  object-position: center center;
-  display: block;
-}
 
 /* ---------- Slide 9 : biais de genre ---------- */
 .gender-intro {
@@ -1329,54 +1293,6 @@ html, body {
   line-height: 1.35;
 }
 
-/* Geste 03 : comparaison fréquence vs intensité */
-.compare {
-  display: grid;
-  grid-template-columns: 1fr calc(120 * var(--u)) 1fr;
-  align-items: stretch;
-  gap: calc(24 * var(--u));
-  margin-bottom: calc(28 * var(--u));
-}
-.compare-side {
-  background: var(--W);
-  padding: calc(36 * var(--u)) calc(36 * var(--u));
-  border-radius: calc(8 * var(--u));
-  display: flex; flex-direction: column; gap: calc(14 * var(--u));
-}
-.compare-side.good { border-top: calc(8 * var(--u)) solid var(--T); }
-.compare-side.bad { border-top: calc(8 * var(--u)) solid var(--N2); opacity: 0.92; }
-.compare-tag {
-  font-family: 'DM Sans', sans-serif;
-  font-size: calc(14 * var(--u));
-  font-weight: 700;
-  letter-spacing: calc(3 * var(--u));
-  text-transform: uppercase;
-}
-.compare-side.good .compare-tag { color: var(--T); }
-.compare-side.bad .compare-tag { color: var(--N2); }
-.compare-when {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 700;
-  font-size: calc(48 * var(--u));
-  letter-spacing: calc(-1 * var(--u));
-  color: var(--N);
-  line-height: 1;
-}
-.compare-side.bad .compare-when { color: var(--N2); }
-.compare-desc {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: calc(28 * var(--u));
-  color: var(--N2);
-  line-height: 1.3;
-}
-.compare-vs {
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: calc(64 * var(--u));
-  color: var(--T);
-}
 
 /* --- Slide 5 : citation Kim Scott --- */
 .kim-quote {
@@ -1429,31 +1345,13 @@ html, body {
   gap: calc(16 * var(--u));
 }
 
-/* --- Slide 16 : CTA feedback visible --- */
-.qr-zone .qr-cap {
-  font-size: calc(28 * var(--u));
-  font-weight: 700;
-  color: var(--T);
-  text-align: center;
-  letter-spacing: calc(1 * var(--u));
-}
-.qr-cta-label {
-  font-family: 'DM Sans', sans-serif;
-  font-size: calc(14 * var(--u));
-  font-weight: 700;
-  letter-spacing: calc(3 * var(--u));
-  text-transform: uppercase;
-  color: var(--N2);
-  text-align: center;
-  margin-bottom: calc(8 * var(--u));
-}
 
 /* --- Slide 2 : note de scène --- */
 .scene-note {
-  margin-top: calc(10 * var(--u));
+  margin-top: calc(5 * var(--u));
   font-family: 'DM Sans', sans-serif;
-  font-size: calc(17 * var(--u));
-  font-weight: 700;
+  font-size: calc(28 * var(--u));
+  font-weight: 600;
   letter-spacing: calc(2 * var(--u));
   text-transform: uppercase;
   color: var(--T);
@@ -1472,85 +1370,7 @@ html, body {
 }
 .dial-conclusion em { color: var(--T); font-style: italic; font-weight: 500; }
 
-/* --- Slide 8 : texte décomposé --- */
-.focus-intro {
-  font-family: 'DM Sans', sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: calc(24 * var(--u));
-  color: var(--N2);
-  margin-bottom: calc(12 * var(--u));
-  line-height: 1.2;
-}
-.focus-reasons {
-  display: flex;
-  flex-direction: column;
-  gap: calc(6 * var(--u));
-  margin-bottom: calc(16 * var(--u));
-}
-.focus-reason {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: calc(26 * var(--u));
-  color: var(--N2);
-  padding-left: calc(20 * var(--u));
-  border-left: calc(3 * var(--u)) solid var(--C3);
-  line-height: 1.25;
-}
-.focus-punchline {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: calc(30 * var(--u));
-  font-weight: 400;
-  color: var(--N);
-  line-height: 1.3;
-  padding-top: calc(14 * var(--u));
-  border-top: calc(2 * var(--u)) solid var(--C2);
-}
-.focus-punchline em { color: var(--T); font-weight: 500; }
 
-/* --- Slide 13 : callout fréquence --- */
-.freq-callout {
-  margin-top: calc(32 * var(--u));
-  padding: calc(28 * var(--u)) calc(40 * var(--u));
-  border-left: calc(8 * var(--u)) solid var(--T);
-  background: var(--W);
-}
-.freq-head {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 700;
-  font-style: italic;
-  font-size: calc(46 * var(--u));
-  line-height: 1;
-  margin-bottom: calc(16 * var(--u));
-}
-.freq-head .fh-word { color: var(--N); }
-.freq-head .fh-op { color: var(--T); margin: 0 calc(8 * var(--u)); }
-.freq-head .fh-accent { color: var(--T); }
-.freq-body {
-  font-family: 'DM Sans', sans-serif;
-  font-size: calc(22 * var(--u));
-  color: var(--N2);
-  line-height: 1;
-  display: flex;
-  flex-direction: column;
-  gap: calc(10 * var(--u));
-}
-.freq-line {
-  display: block;
-  line-height: 1.3;
-}
-
-/* --- Slide 14 : attribution --- */
-.quote-author {
-  margin-top: calc(28 * var(--u));
-  font-family: 'DM Sans', sans-serif;
-  font-size: calc(22 * var(--u));
-  font-weight: 600;
-  letter-spacing: calc(3 * var(--u));
-  text-transform: uppercase;
-  color: var(--N2);
-}
 
 /* ---------- Slide 14 : citation ---------- */
 .quote-slide {
@@ -1612,106 +1432,6 @@ html, body {
 }
 .cta-item .cta-text em { font-style: italic; color: var(--T); font-weight: 500; }
 
-/* ---------- Slide 16 : merci/QR ---------- */
-.thanks-wrap {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: calc(80 * var(--u));
-  margin-top: calc(20 * var(--u)); flex: 1;
-  align-items: center;
-}
-.thanks-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 700;
-  font-size: calc(220 * var(--u));
-  line-height: 0.9;
-  letter-spacing: calc(-10 * var(--u));
-  color: var(--N);
-}
-.thanks-title em { color: var(--T); font-style: italic; font-weight: 400; }
-.thanks-sub {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: calc(44 * var(--u));
-  color: var(--N2);
-  margin: calc(20 * var(--u)) 0 calc(28 * var(--u));
-  letter-spacing: calc(-0.5 * var(--u));
-  max-width: calc(900 * var(--u));
-  line-height: 1.25;
-}
-.thanks-plateau {
-  background: var(--W);
-  border-left: calc(6 * var(--u)) solid var(--T);
-  padding: calc(22 * var(--u)) calc(28 * var(--u));
-  margin-bottom: calc(28 * var(--u));
-  border-radius: 0 calc(8 * var(--u)) calc(8 * var(--u)) 0;
-  max-width: calc(900 * var(--u));
-}
-.thanks-plateau .plateau-tag {
-  font-family: 'DM Sans', sans-serif;
-  font-size: calc(15 * var(--u));
-  font-weight: 700;
-  letter-spacing: calc(3 * var(--u));
-  text-transform: uppercase;
-  color: var(--T);
-  display: block;
-  margin-bottom: calc(8 * var(--u));
-}
-.thanks-plateau .plateau-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: calc(24 * var(--u));
-  color: var(--N);
-  line-height: 1.35;
-}
-.thanks-contact {
-  font-family: 'DM Sans', sans-serif;
-  font-size: calc(22 * var(--u));
-  line-height: 1.6;
-  color: var(--N);
-}
-.thanks-contact .name {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 700;
-  font-size: calc(48 * var(--u));
-  letter-spacing: calc(-1 * var(--u));
-  color: var(--N);
-  margin-bottom: calc(8 * var(--u));
-  display: block;
-}
-.thanks-contact .link {
-  color: var(--T); text-decoration: none; font-weight: 500;
-}
-.thanks-contact .label {
-  color: var(--N2); font-weight: 500; margin-right: calc(10 * var(--u));
-  text-transform: uppercase;
-  font-size: calc(15 * var(--u));
-  letter-spacing: calc(2 * var(--u));
-}
-.qr-zone {
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  gap: calc(20 * var(--u));
-}
-.qr-zone .qr-img {
-  display: block;
-}
-.qr-zone .qr-img img {
-  width: calc(440 * var(--u));
-  height: calc(440 * var(--u));
-  display: block;
-}
-.qr-zone .qr-cap {
-  font-family: 'DM Sans', sans-serif;
-  font-size: calc(18 * var(--u));
-  color: var(--N);
-  letter-spacing: calc(2 * var(--u));
-  text-transform: uppercase;
-  font-weight: 600;
-  text-align: center;
-  max-width: calc(440 * var(--u));
-  line-height: 1.3;
-}
 
 /* ---------- Slide 17 : bibliographie ---------- */
 .biblio-list {
@@ -1941,18 +1661,7 @@ html, body {
 }
 .qmap-cell.target .qmap-cell-en { color: rgba(255,255,255,0.7); }
 
-/* Slide 8 : structure deux colonnes */
-.focus-2col {
-  display: grid; grid-template-columns: 1fr calc(64 * var(--u)) 1fr;
-  gap: calc(16 * var(--u)); flex: 1; margin-top: calc(20 * var(--u)); align-items: start;
-}
-.focus-col-label {
-  font-family: 'DM Sans', sans-serif; font-size: calc(16 * var(--u));
-  font-weight: 700; letter-spacing: calc(3 * var(--u)); text-transform: uppercase;
-  color: var(--T); margin-bottom: calc(16 * var(--u));
-}
-.focus-col-label.cost { color: var(--N); }
-.focus-col-items { display: flex; flex-direction: column; gap: calc(16 * var(--u)); }
+/* Slide 8 : items de la grille */
 .focus-col-item {
   background: var(--W); padding: calc(20 * var(--u)) calc(24 * var(--u));
   border-radius: calc(8 * var(--u)); font-family: 'Cormorant Garamond', serif;
@@ -1961,19 +1670,6 @@ html, body {
 }
 .focus-col-item.cost { border-left-color: var(--T); color: var(--N); background: var(--C2); }
 .focus-col-item em { color: var(--T); font-style: italic; font-weight: 500; }
-.focus-col-transition {
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  padding-top: calc(48 * var(--u)); font-family: 'Cormorant Garamond', serif;
-  font-size: calc(52 * var(--u)); color: var(--T);
-}
-.focus-2col-punchline {
-  grid-column: 1 / -1; margin-top: calc(16 * var(--u));
-  font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: calc(34 * var(--u)); font-weight: 700; color: var(--N);
-  line-height: 1.3; text-align: center;
-  border-top: calc(2 * var(--u)) solid var(--C2); padding-top: calc(18 * var(--u));
-}
-.focus-2col-punchline em { color: var(--T); }
 
 /* Slide 9 : stat source + signal */
 .gs-source-line {
@@ -1994,6 +1690,7 @@ html, body {
 [data-slide="17"] {
   justify-content: flex-start;
   padding-bottom: calc(60 * var(--u));
+  background: var(--W);
 }
 [data-slide="17"] .h-m {
   font-size: calc(74 * var(--u));
@@ -2056,6 +1753,9 @@ html, body {
   grid-template-columns: repeat(3, 1fr);
   gap: calc(18 * var(--u));
 }
+[data-slide="17"] .sp-tile {
+  border: none;
+}
 
 /* Slide 18 : plateau agrandi */
 [data-slide="18"] .thanks-plateau {
@@ -2068,40 +1768,6 @@ html, body {
 [data-slide="18"] .thanks-plateau .plateau-text { font-size: calc(28 * var(--u)); line-height: 1.55; }
 [data-slide="18"] .thanks-sub { font-size: calc(40 * var(--u)); margin-bottom: calc(32 * var(--u)); }
 
-/* Slide 18 : kit post-talk */
-.kit-zone {
-  background: var(--W); border-left: calc(8 * var(--u)) solid var(--T);
-  padding: calc(22 * var(--u)) calc(30 * var(--u)); margin-bottom: calc(20 * var(--u));
-  border-radius: 0 calc(8 * var(--u)) calc(8 * var(--u)) 0;
-  display: grid; grid-template-columns: 1fr calc(130 * var(--u));
-  gap: calc(28 * var(--u)); align-items: center;
-}
-.kit-tag {
-  font-family: 'DM Sans', sans-serif; font-size: calc(13 * var(--u));
-  font-weight: 700; letter-spacing: calc(3 * var(--u)); text-transform: uppercase;
-  color: var(--T); display: block; margin-bottom: calc(8 * var(--u));
-}
-.kit-title {
-  font-family: 'Cormorant Garamond', serif; font-weight: 700;
-  font-size: calc(34 * var(--u)); color: var(--N);
-  letter-spacing: calc(-0.5 * var(--u)); margin-bottom: calc(6 * var(--u)); line-height: 1.1;
-}
-.kit-promise { font-family: 'DM Sans', sans-serif; font-size: calc(16 * var(--u)); color: var(--N2); line-height: 1.45; }
-.kit-qr { display: flex; flex-direction: column; align-items: center; gap: calc(8 * var(--u)); }
-.kit-qr-placeholder {
-  width: calc(110 * var(--u)); height: calc(110 * var(--u));
-  border: calc(2 * var(--u)) dashed var(--T);
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'DM Sans', sans-serif; font-size: calc(10 * var(--u));
-  color: var(--T); text-align: center; line-height: 1.3;
-  padding: calc(8 * var(--u)); box-sizing: border-box;
-}
-.kit-url-label {
-  font-family: 'DM Sans', sans-serif; font-size: calc(10 * var(--u));
-  color: var(--N2); text-align: center; font-weight: 700;
-  letter-spacing: calc(0.5 * var(--u)); text-transform: uppercase;
-  max-width: calc(130 * var(--u)); line-height: 1.3;
-}
 
 /* =========================================================
    PREMIUM V3 — ADDITIONS
@@ -2136,28 +1802,21 @@ html, body {
 /* Slide 6 : labels axes + cellules */
 [data-slide="6"] .qmap-axis-x,
 [data-slide="6"] .qmap-axis-y {
-  font-size: calc(16 * var(--u)); letter-spacing: calc(2 * var(--u));
+  font-size: calc(20 * var(--u)); letter-spacing: calc(2 * var(--u));
 }
 [data-slide="6"] .qmap-cell-en {
-  font-size: calc(13 * var(--u)); letter-spacing: calc(1.5 * var(--u));
+  font-size: calc(20 * var(--u)); letter-spacing: calc(1.5 * var(--u));
   color: var(--N2); margin-bottom: calc(8 * var(--u)); line-height: 1.2;
 }
 [data-slide="6"] .qmap-cell.target .qmap-cell-en { color: rgba(255,255,255,0.78); }
 [data-slide="6"] .qmap-cell .qmap-cell-fr {
-  font-size: calc(28 * var(--u)); display: block;
+  font-size: calc(35 * var(--u)); display: block;
   margin-top: calc(2 * var(--u)); line-height: 1.1; font-weight: 500;
 }
 [data-slide="6"] .qmap-cell.target .qmap-cell-fr { color: var(--W); }
 
-/* Slide 8 : colonnes pleine hauteur + micro-scene */
-[data-slide="8"] .focus-2col { align-items: stretch; margin-top: calc(26 * var(--u)); }
-[data-slide="8"] .focus-col-items { flex: 1; gap: calc(18 * var(--u)); }
+/* Slide 8 : items pleine hauteur */
 [data-slide="8"] .focus-col-item { flex: 1; display: flex; align-items: center; }
-[data-slide="8"] .focus-col-transition {
-  padding-top: 0; flex-direction: column;
-  justify-content: center; gap: calc(6 * var(--u));
-  font-size: calc(26 * var(--u)); color: var(--N2);
-}
 .focus-micro-scene {
   grid-column: 1 / -1;
   font-family: 'Cormorant Garamond', serif; font-style: italic;
@@ -2196,48 +1855,6 @@ html, body {
   background: var(--C2);
 }
 
-/* Slide 17 : plateau compact */
-.plateau-strong {
-  display: block; font-family: 'Cormorant Garamond', serif;
-  font-weight: 700; font-style: normal;
-  font-size: calc(30 * var(--u)); color: var(--N);
-  margin-bottom: calc(10 * var(--u));
-}
-.plateau-desc {
-  display: block; font-family: 'DM Sans', sans-serif;
-  font-size: calc(18 * var(--u)); color: var(--N2);
-  line-height: 1.45; margin-bottom: calc(10 * var(--u));
-}
-.plateau-punch {
-  display: block; font-family: 'Cormorant Garamond', serif;
-  font-style: italic; font-size: calc(23 * var(--u));
-  color: var(--T); font-weight: 500;
-}
-
-/* Slide 18 : CTA compact + 7 references visibles */
-.kit-compact {
-  display: flex; align-items: center; gap: calc(20 * var(--u));
-  padding: calc(12 * var(--u)) calc(20 * var(--u));
-  background: var(--W); border-left: calc(4 * var(--u)) solid var(--T);
-  border-radius: 0 calc(6 * var(--u)) calc(6 * var(--u)) 0;
-  margin-bottom: calc(12 * var(--u));
-}
-.kit-compact-label {
-  font-family: 'DM Sans', sans-serif; font-size: calc(12 * var(--u));
-  font-weight: 700; letter-spacing: calc(2.5 * var(--u));
-  text-transform: uppercase; color: var(--T); white-space: nowrap;
-}
-.kit-compact-url {
-  font-family: 'DM Sans', sans-serif; font-size: calc(16 * var(--u));
-  color: var(--N2); flex: 1;
-}
-.kit-compact-qr {
-  width: calc(60 * var(--u)); height: calc(60 * var(--u));
-  border: calc(2 * var(--u)) dashed var(--T);
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'DM Sans', sans-serif; font-size: calc(9 * var(--u));
-  color: var(--T); text-align: center; line-height: 1.3; flex-shrink: 0;
-}
 [data-slide="19"] .biblio-list {
   margin-top: calc(14 * var(--u));
   gap: calc(12 * var(--u)) calc(44 * var(--u));
@@ -2410,7 +2027,7 @@ html, body {
 }
 .focus-s8-label {
   font-family: 'DM Sans', sans-serif;
-  font-size: calc(15 * var(--u));
+  font-size: calc(18 * var(--u));
   font-weight: 700;
   letter-spacing: calc(3 * var(--u));
   text-transform: uppercase;
@@ -2462,14 +2079,10 @@ html, body {
 }
 .focus-s8-cost {
   font-family: 'DM Sans', sans-serif; font-weight: 700;
-  font-size: calc(14 * var(--u)); letter-spacing: calc(2.5 * var(--u));
+  font-size: calc(18 * var(--u)); letter-spacing: calc(2.5 * var(--u));
   text-transform: uppercase; color: var(--T); text-align: center; line-height: 1.4;
 }
-.focus-s8-mech-note {
-  font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: calc(17 * var(--u)); color: var(--N2);
-  text-align: center; margin-top: calc(6 * var(--u)); line-height: 1.35;
-}
+
 .focus-s8-callout {
   margin-top: calc(12 * var(--u));
   padding: calc(18 * var(--u)) calc(28 * var(--u));
@@ -2481,7 +2094,7 @@ html, body {
 .focus-s8-punchline {
   margin-top: calc(10 * var(--u));
   font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-weight: 700; font-size: calc(44 * var(--u)); color: var(--N);
+  font-weight: 500; font-size: calc(44 * var(--u)); color: var(--N);
   text-align: center; line-height: 1.2;
   border-top: calc(2 * var(--u)) solid var(--C2);
   padding-top: calc(10 * var(--u)); flex-shrink: 0;
@@ -2496,28 +2109,6 @@ html, body {
   .focus-s8-arrow { font-size: calc(32 * var(--u)); }
 }
 
-/* --- Slide 17 v5 : grille 3×2 — bas plateau aligné bas QR --- */
-[data-slide="18"] .thanks-wrap {
-  display: grid;
-  grid-template-columns: 1fr calc(460 * var(--u));
-  grid-template-rows: auto 1fr auto;
-  gap: calc(0 * var(--u)) calc(80 * var(--u));
-  align-items: stretch;
-  margin-top: calc(16 * var(--u));
-}
-[data-slide="18"] .s17-top       { grid-column:1; grid-row:1; }
-[data-slide="18"] .s17-qr-space  { grid-column:2; grid-row:1; }
-[data-slide="18"] .s17-plateau   { grid-column:1; grid-row:2; align-self:end; }
-[data-slide="18"] .s17-qr-img    { grid-column:2; grid-row:2; display:flex; flex-direction:column; justify-content:flex-end;}
-[data-slide="18"] .s17-qr-img img,
-[data-slide="18"] .s17-qr-img .qr-placeholder-s17 {
-  width: calc(440 * var(--u)); height: calc(440 * var(--u)); display:block;
-}
-[data-slide="18"] .s17-contact   { grid-column:1; grid-row:3; margin-top:calc(28 * var(--u)); }
-[data-slide="18"] .s17-qr-cap   { grid-column:2; grid-row:3; margin-top:calc(16 * var(--u)); }
-[data-slide="18"] .s17-qr-cap .qr-cta-label { font-family:'DM Sans',sans-serif; font-size:calc(14 * var(--u)); font-weight:700; letter-spacing:calc(3 * var(--u)); text-transform:uppercase; color:var(--N2); text-align:center; }
-[data-slide="18"] .s17-qr-cap .qr-cap { font-family:'DM Sans',sans-serif; font-size:calc(28 * var(--u)); font-weight:700; color:var(--T); text-align:center; letter-spacing:calc(1 * var(--u)); margin-top:calc(8 * var(--u)); line-height:1.2; }
-[data-slide="18"] .qr-placeholder-s17 { border:calc(2 * var(--u)) dashed var(--T); display:flex; align-items:center; justify-content:center; font-family:'DM Sans',sans-serif; font-size:calc(16 * var(--u)); color:var(--T); text-align:center; padding:calc(20 * var(--u)); box-sizing:border-box; }
 
 /* --- Slide 18 v5 : bibliographie lisible en projection --- */
 [data-slide="19"] .biblio-list {
@@ -2537,7 +2128,7 @@ html, body {
 [data-slide="19"] .biblio-text .b-title { font-size: calc(28 * var(--u)); margin: calc(3 * var(--u)) 0 calc(2 * var(--u)); }
 [data-slide="19"] .biblio-text .b-meta { font-size: calc(17 * var(--u)); color: var(--N2); line-height: 1.35; }
 
-/* Mobile : slide 18 v5 */
+/* Mobile : slide 19 bibliographie */
 @media (max-aspect-ratio: 4/5) {
   [data-slide="19"] .biblio-list { grid-template-columns: 1fr; gap: calc(14 * var(--u)); }
   [data-slide="19"] .biblio-num { font-size: calc(56 * var(--u)); }
@@ -2546,13 +2137,6 @@ html, body {
   [data-slide="19"] .biblio-text .b-title { font-size: calc(34 * var(--u)); }
   [data-slide="19"] .biblio-text .b-meta { font-size: calc(24 * var(--u)); }
   [data-slide="19"] { padding-bottom: calc(130 * var(--u)); overflow-y: auto; }
-  [data-slide="18"] .thanks-wrap { grid-template-columns: 1fr !important; grid-template-rows: auto auto auto auto auto auto; }
-  [data-slide="18"] .s17-top     { grid-column:1; grid-row:1; }
-  [data-slide="18"] .s17-qr-space{ display:none; }
-  [data-slide="18"] .s17-plateau { grid-column:1; grid-row:2; align-self:auto; }
-  [data-slide="18"] .s17-qr-img  { grid-column:1; grid-row:3; justify-content:center; }
-  [data-slide="18"] .s17-contact { grid-column:1; grid-row:4; }
-  [data-slide="18"] .s17-qr-cap  { grid-column:1; grid-row:5; text-align:center; }
 }
 
 /* =========================================================
@@ -2595,39 +2179,6 @@ html, body {
   margin-top: calc(10 * var(--u));
 }
 
-/* --- Slide 17 v6 : grille réquilibrée, QR et plateau alignés en bas --- */
-[data-slide="18"] .thanks-title {
-  font-size: calc(180 * var(--u));
-}
-[data-slide="18"] .thanks-sub {
-  font-size: calc(36 * var(--u));
-  margin-bottom: calc(16 * var(--u));
-  margin-top: calc(12 * var(--u));
-}
-[data-slide="18"] .thanks-contact {
-  font-size: calc(18 * var(--u));
-}
-[data-slide="18"] .thanks-contact .name {
-  font-size: calc(40 * var(--u));
-  margin-bottom: calc(6 * var(--u));
-}
-[data-slide="18"] .s17-contact {
-  margin-top: calc(18 * var(--u));
-}
-[data-slide="18"] .s17-qr-img img,
-[data-slide="18"] .s17-qr-img .qr-placeholder-s17 {
-  width: calc(380 * var(--u));
-  height: calc(380 * var(--u));
-}
-[data-slide="18"] .s17-qr-cap {
-  margin-top: calc(14 * var(--u));
-}
-[data-slide="18"] .s17-qr-cap .qr-cap {
-  font-size: calc(24 * var(--u));
-}
-[data-slide="18"] .thanks-wrap {
-  margin-top: calc(10 * var(--u));
-}
 
 /* --- Slide 18 v6 : bibliographie aérée, espace distribué --- */
 [data-slide="19"] .biblio-list {
@@ -2663,7 +2214,6 @@ html, body {
 /* Mobile v6 overrides */
 @media (max-aspect-ratio: 4/5) {
   [data-slide="19"] .biblio-list { align-content: start; }
-  [data-slide="18"] .thanks-title { font-size: calc(140 * var(--u)); }
 }
 
 /* =========================================================
@@ -2701,25 +2251,6 @@ html, body {
   color: var(--N2);
 }
 
-/* --- Slide 17 v7 : contact agrandi --- */
-[data-slide="18"] .thanks-contact .name {
-  font-size: calc(56 * var(--u)) !important;
-  margin-bottom: calc(14 * var(--u));
-}
-[data-slide="18"] .thanks-contact {
-  font-size: calc(26 * var(--u)) !important;
-  line-height: 1.6;
-}
-[data-slide="18"] .thanks-contact .label {
-  font-size: calc(16 * var(--u));
-  letter-spacing: calc(3 * var(--u));
-}
-[data-slide="18"] .thanks-contact .link {
-  font-size: calc(26 * var(--u));
-}
-[data-slide="18"] .s17-contact {
-  margin-top: calc(24 * var(--u)) !important;
-}
 
 /* --- Slide 08 (task ref. "slide 11") : séquence centrale lisible --- */
 .focus-s8-silence {
@@ -2727,55 +2258,15 @@ html, body {
   letter-spacing: calc(3 * var(--u));
 }
 .focus-s8-cost {
-  font-size: calc(20 * var(--u)) !important;
+  font-size: calc(24 * var(--u)) !important;
   letter-spacing: calc(2 * var(--u));
 }
-.focus-s8-mech-note {
-  font-size: calc(22 * var(--u)) !important;
-  line-height: 1.45;
-  margin-top: calc(8 * var(--u));
-}
+
 .focus-s8-card {
   padding: calc(22 * var(--u)) calc(28 * var(--u)) !important;
   line-height: 1.4 !important;
 }
 
-/* --- Slide 17 : Kit post-talk interactif --- */
-.s17-kit {
-  display: flex;
-  flex-direction: column;
-  gap: calc(8 * var(--u));
-  padding: calc(26 * var(--u)) calc(32 * var(--u));
-  background: var(--W);
-  border-left: calc(6 * var(--u)) solid var(--T);
-  border-radius: 0 calc(10 * var(--u)) calc(10 * var(--u)) 0;
-  max-width: calc(920 * var(--u));
-  cursor: default;
-}
-.s17-kit-tag {
-  font-family: 'DM Sans', sans-serif;
-  font-size: calc(14 * var(--u));
-  font-weight: 700;
-  letter-spacing: calc(4 * var(--u));
-  text-transform: uppercase;
-  color: var(--T);
-}
-.s17-kit-label {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 700;
-  font-size: calc(34 * var(--u));
-  color: var(--N);
-  line-height: 1.1;
-  letter-spacing: calc(-0.5 * var(--u));
-}
-.s17-kit-url {
-  font-family: 'DM Sans', sans-serif;
-  font-size: calc(20 * var(--u));
-  color: var(--T);
-  font-weight: 500;
-  letter-spacing: calc(0.5 * var(--u));
-  margin-top: calc(4 * var(--u));
-}
 
 /* --- Slide 18 : item 8 kit mis en avant --- */
 .biblio-item--kit {
@@ -2799,97 +2290,573 @@ html, body {
 }
 
 /* =========================================================
-   PREMIUM V8 — SLIDE 17 : PLATEAU AGRANDI + DISPOSITION
+   PREMIUM V8 — SLIDE 06 : QUADRANT (actif)
    ========================================================= */
 
-/* Bloc blanc plateau : polices projetables */
-[data-slide="18"] .plateau-strong {
-  font-size: calc(42 * var(--u)) !important;
-  margin-bottom: calc(18 * var(--u));
-  line-height: 1.1;
-}
-[data-slide="18"] .plateau-desc {
-  font-size: calc(28 * var(--u)) !important;
-  line-height: 1.5;
-  margin-bottom: calc(18 * var(--u));
-}
-[data-slide="18"] .plateau-punch {
-  font-size: calc(28 * var(--u)) !important;
-  line-height: 1.4;
-}
-[data-slide="18"] .thanks-plateau {
-  padding: calc(36 * var(--u)) calc(44 * var(--u)) !important;
-  max-width: 100% !important;
-}
-[data-slide="18"] .thanks-plateau .plateau-tag {
-  font-size: calc(18 * var(--u)) !important;
-  margin-bottom: calc(22 * var(--u)) !important;
-}
-
-/* Grille : colonne gauche + QR (QR légèrement réduit pour aérer) */
-[data-slide="18"] .thanks-wrap {
-  grid-template-columns: 1fr calc(400 * var(--u)) !important;
-  gap: calc(0 * var(--u)) calc(64 * var(--u)) !important;
+/* Slide 6 : version miroir de l'ancienne composition */
+[data-slide="6"] .qmap-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) !important;
+  grid-template-areas: "texte quadrant";
+  gap: calc(48 * var(--u)) !important;
   margin-top: calc(8 * var(--u)) !important;
-}
-[data-slide="18"] .s17-qr-img img,
-[data-slide="18"] .s17-qr-img .qr-placeholder-s17 {
-  width: calc(360 * var(--u)) !important;
-  height: calc(360 * var(--u)) !important;
+  align-items: center !important;
 }
 
-/* --- Slide 17 v7 : modifications finales --- */
-[data-slide="18"] .plateau-desc {
-  font-size: calc(15 * var(--u)) !important;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  line-height: 1.3;
-  margin-bottom: calc(14 * var(--u));
+[data-slide="6"] .qmap-side {
+  grid-area: texte;
+  order: initial !important;
+  justify-self: start !important;
+  max-width: calc(800 * var(--u)) !important;
 }
-[data-slide="18"] .plateau-punch {
-  font-size: calc(44 * var(--u)) !important;
-  line-height: 1.25;
+
+[data-slide="6"] .qmap {
+  grid-area: quadrant;
+  order: initial !important;
+  justify-self: stretch !important;
+
+  /* Reprise du comportement d'origine */
+  width: 100% !important;
+  max-width: none !important;
+  max-height: calc(760 * var(--u)) !important;
+  margin: 0 auto !important;
+
+  /* Important : on annule les anciens essais */
+  transform: none !important;
 }
-[data-slide="18"] .s17-plateau {
-  align-self: stretch !important;
-  display: flex;
-  flex-direction: column;
+
+/* =========================================================
+   SLIDE 14 — Geste 03 : ritualiser pour désacraliser
+   ========================================================= */
+
+[data-slide="14"].s14-ritual {
+  padding-bottom: calc(82 * var(--u));
 }
-[data-slide="18"] .thanks-plateau {
-  flex: 1;
-  height: 100%;
-  box-sizing: border-box;
-  margin-bottom: 0 !important;
+
+[data-slide="14"] .s14-head {
+  margin-bottom: calc(20 * var(--u));
 }
-[data-slide="18"] .s17-qr-img {
-  align-self: stretch !important;
-  justify-content: center !important;
-  background: var(--W);
-  border-radius: calc(8 * var(--u));
-  padding: calc(24 * var(--u)) calc(20 * var(--u));
+
+[data-slide="14"] .gest-num-big {
+  font-size: calc(132 * var(--u));
 }
-[data-slide="18"] .s17-qr-img img,
-[data-slide="18"] .s17-qr-img .qr-placeholder-s17 {
-  width: auto !important;
-  height: auto !important;
-  max-width: 85% !important;
-  max-height: calc(290 * var(--u)) !important;
+
+[data-slide="14"] .gest-title {
+  font-size: calc(92 * var(--u));
 }
-[data-slide="18"] .s17-qr-cap .qr-cta-label {
-  display: none !important;
-}
-.s17-qr-punchline {
+
+.s14-sub {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  font-size: calc(24 * var(--u));
+  font-size: calc(34 * var(--u));
+  line-height: 1.25;
+  color: var(--N2);
+  margin-bottom: calc(34 * var(--u));
+  letter-spacing: calc(-0.5 * var(--u));
+}
+
+.s14-compare {
+  display: grid;
+  grid-template-columns: 1fr calc(96 * var(--u)) 1fr;
+  gap: calc(26 * var(--u));
+  align-items: stretch;
+  margin-bottom: calc(32 * var(--u));
+}
+
+.s14-card {
+  background: var(--W);
+  border-radius: calc(8 * var(--u));
+  padding: calc(34 * var(--u)) calc(38 * var(--u));
+  min-height: calc(250 * var(--u));
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.s14-card-event {
+  border-top: calc(8 * var(--u)) solid var(--N2);
+  opacity: 0.94;
+}
+
+.s14-card-ritual {
+  border-top: calc(8 * var(--u)) solid var(--T);
+}
+
+.s14-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(14 * var(--u));
+  font-weight: 700;
+  letter-spacing: calc(3 * var(--u));
+  text-transform: uppercase;
+  color: var(--T);
+  margin-bottom: calc(18 * var(--u));
+}
+
+.s14-card-event .s14-tag {
+  color: var(--N2);
+}
+
+.s14-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: calc(50 * var(--u));
+  line-height: 1;
+  color: var(--N);
+  letter-spacing: calc(-1 * var(--u));
+  margin-bottom: calc(22 * var(--u));
+}
+
+.s14-card-event .s14-card-title {
+  color: var(--N2);
+}
+
+.s14-chain {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(10 * var(--u)) calc(18 * var(--u));
+  margin-bottom: calc(24 * var(--u));
+}
+
+.s14-chain span {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(32 * var(--u));
+  line-height: 1.1;
+  color: var(--N);
+}
+
+.s14-card-ritual .s14-chain span {
+  color: var(--T);
+  font-weight: 500;
+}
+
+.s14-card-note {
+  margin-top: auto;
+  padding-top: calc(18 * var(--u));
+  border-top: calc(1 * var(--u)) solid var(--C2);
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(21 * var(--u));
+  line-height: 1.35;
+  color: var(--N2);
+}
+
+.s14-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(78 * var(--u));
+  color: var(--T);
+}
+
+.s14-bottom {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: calc(28 * var(--u));
+  align-items: stretch;
+  margin-bottom: calc(22 * var(--u));
+}
+
+.s14-safety,
+.s14-practice {
+  background: var(--C2);
+  border-left: calc(7 * var(--u)) solid var(--T);
+  border-radius: calc(8 * var(--u));
+  padding: calc(26 * var(--u)) calc(32 * var(--u));
+}
+
+.s14-practice {
+  background: var(--W);
+}
+
+.s14-box-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(13 * var(--u));
+  font-weight: 700;
+  letter-spacing: calc(3 * var(--u));
+  text-transform: uppercase;
+  color: var(--T);
+  margin-bottom: calc(12 * var(--u));
+}
+
+.s14-safety-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(30 * var(--u));
+  line-height: 1.3;
+  color: var(--N);
+}
+
+.s14-safety-text em {
+  color: var(--T);
+  font-weight: 500;
+}
+
+.s14-question {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: calc(34 * var(--u));
+  line-height: 1.15;
+  color: var(--N);
+  letter-spacing: calc(-0.5 * var(--u));
+  margin-bottom: calc(14 * var(--u));
+}
+
+.s14-practice-note {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(18 * var(--u));
+  line-height: 1.4;
+  color: var(--N2);
+}
+
+.s14-punchline {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: calc(46 * var(--u));
+  line-height: 1.2;
+  color: var(--N);
+  text-align: center;
+}
+
+.s14-punchline span {
+  color: var(--T);
+  font-weight: 500;
+}
+
+/* Slide 14 : cartes du bas alignées sur les cartes du haut */
+[data-slide="14"] .s14-bottom {
+  display: grid;
+  grid-template-columns: 1fr calc(96 * var(--u)) 1fr !important;
+  gap: calc(26 * var(--u)) !important;
+  align-items: stretch;
+  margin-bottom: calc(25 * var(--u));
+}
+
+[data-slide="14"] .s14-safety {
+  grid-column: 1;
+}
+
+[data-slide="14"] .s14-practice {
+  grid-column: 3;
+}
+
+[data-slide="14"] .s14-safety-text {
+  font-size: calc(28 * var(--u));
+  line-height: 1.32;
+}
+
+/* =========================================================
+   SLIDE 18 — Merci + Kit post-talk
+   ========================================================= */
+
+[data-slide="18"].s18-kit-slide {
+  padding-bottom: calc(76 * var(--u));
+}
+
+.s18-hero {
+  margin-top: calc(4 * var(--u));
+  margin-bottom: calc(34 * var(--u));
+  max-width: calc(1320 * var(--u));
+}
+
+.s18-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: calc(156 * var(--u));
+  line-height: 0.82;
+  letter-spacing: calc(-7 * var(--u));
+  color: var(--T);
+  margin-bottom: calc(22 * var(--u));
+}
+
+.s18-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--T);
+}
+
+.s18-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(40 * var(--u));
+  line-height: 1.25;
+  color: var(--N2);
+  letter-spacing: calc(-0.5 * var(--u));
+  max-width: calc(1120 * var(--u));
+}
+
+.s18-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(52 * var(--u));
+  align-items: stretch;
+  min-height: calc(430 * var(--u));
+}
+
+.s18-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(15 * var(--u));
+  font-weight: 700;
+  letter-spacing: calc(4 * var(--u));
+  text-transform: uppercase;
+  color: var(--T);
+  margin-bottom: calc(22 * var(--u));
+}
+
+.s18-tag-center {
+  text-align: center;
+  margin-bottom: calc(20 * var(--u));
+}
+
+
+.s18-qr-card {
+  background: var(--W);
+  border-radius: calc(12 * var(--u));
+  box-shadow: 0 calc(2 * var(--u)) 0 var(--C2);
+  border-top: calc(8 * var(--u)) solid var(--T);
+  padding: calc(34 * var(--u)) calc(44 * var(--u));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.s18-qr-frame {
+  width: 100%;
+  max-width: calc(620 * var(--u));
+  height: calc(300 * var(--u));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--W);
+  border-radius: calc(8 * var(--u));
+  overflow: hidden;
+}
+
+.s18-qr-frame img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.s18-qr-placeholder {
+  width: 100%;
+  height: 100%;
+  border: calc(2 * var(--u)) dashed var(--T);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(18 * var(--u));
+  font-weight: 700;
   color: var(--T);
   text-align: center;
-  font-weight: 500;
   line-height: 1.3;
-  margin-top: calc(10 * var(--u));
-  max-width: calc(380 * var(--u));
+  text-transform: uppercase;
+  letter-spacing: calc(2 * var(--u));
 }
+
+.s18-qr-punchline {
+  margin-top: calc(30 * var(--u));
+  max-width: calc(600 * var(--u));
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: calc(34 * var(--u));
+  line-height: 1.2;
+  color: var(--N2);
+  text-align: center;
+  letter-spacing: calc(-0.4 * var(--u));
+}
+
+.s18-qr-punchline em {
+  color: var(--T);
+  font-weight: 500;
+}
+
+.s18-contact {
+  margin-top: calc(30 * var(--u));
+  padding-top: calc(22 * var(--u));
+  border-top: calc(1 * var(--u)) solid var(--C3);
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: calc(12 * var(--u));
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(20 * var(--u));
+  color: var(--N2);
+}
+
+.s18-contact .s18-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: calc(36 * var(--u));
+  color: var(--N);
+  letter-spacing: calc(-0.5 * var(--u));
+}
+
+.s18-contact a {
+  color: var(--N2);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.s18-dot {
+  color: var(--C3);
+  font-weight: 700;
+}
+
+/* Mobile */
+@media (max-aspect-ratio: 4/5) {
+  .s18-main {
+    grid-template-columns: 1fr;
+  }
+
+  .s18-qr-frame {
+    height: calc(360 * var(--u));
+  }
+
+  .s18-contact {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: calc(8 * var(--u));
+  }
+
+  .s18-dot {
+    display: none;
+  }
+}
+
+/* Carte Kit post-talk — Slide 18 */
+.s18-takeaway-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: calc(420 * var(--u));
+  padding: calc(44 * var(--u)) calc(54 * var(--u));
+  background: var(--W);
+  border-left: calc(8 * var(--u)) solid var(--T);
+  border-radius: 0 calc(14 * var(--u)) calc(14 * var(--u)) 0;
+  color: var(--N);
+  text-decoration: none;
+  box-shadow: 0 calc(2 * var(--u)) 0 var(--C2);
+}
+
+.s18-takeaway-card:hover {
+  text-decoration: none;
+}
+
+.s18-takeaway-card * {
+  text-decoration: none;
+}
+
+
+.s18-takeaway-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: calc(70 * var(--u));
+  line-height: 0.92;
+  letter-spacing: calc(-2.5 * var(--u));
+  color: var(--N);
+  margin: 0;
+}
+
+.s18-takeaway-kicker {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(22 * var(--u));
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: calc(3 * var(--u));
+  text-transform: uppercase;
+  color: var(--T);
+  margin-bottom: calc(14 * var(--u));
+}
+
+.s18-takeaway-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--T);
+}
+
+.s18-takeaway-line {
+  width: calc(140 * var(--u));
+  height: calc(5 * var(--u));
+  background: var(--T);
+  margin: calc(34 * var(--u)) 0 calc(28 * var(--u));
+}
+
+.s18-takeaway-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: calc(23 * var(--u));
+  line-height: 1.35;
+  color: var(--N2);
+  margin: 0 0 calc(28 * var(--u));
+}
+
+.s18-takeaway-proof {
+  display: flex;
+  align-items: center;
+  gap: calc(24 * var(--u));
+  margin-top: auto;
+  padding-top: calc(28 * var(--u));
+  border-top: calc(1 * var(--u)) solid var(--C2);
+}
+
+.s18-takeaway-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: calc(96 * var(--u));
+  line-height: 0.85;
+  color: var(--T);
+  letter-spacing: calc(-3 * var(--u));
+}
+
+.s18-takeaway-proof-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: calc(38 * var(--u));
+  line-height: 1.05;
+  color: var(--N);
+  letter-spacing: calc(-0.8 * var(--u));
+}
+
+.s18-takeaway-proof-text em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--T);
+}
+
+/* =========================================================
+   CORRECTIONS SLIDES 17 & 18
+   ========================================================= */
+
+/* Slide 17 : fond blanc étendu au letterbox (body + deck) */
+body:has([data-slide="17"].active),
+.deck:has([data-slide="17"].active) {
+  background: var(--W);
+}
+
+/* Slide 18 : "KIT POST-TALK :" et "VOTRE FEEDBACK" alignés en haut */
+[data-slide="18"] .s18-qr-card {
+  justify-content: flex-start;
+  padding-top: calc(36 * var(--u));
+}
+
+/* Slide 18 : ligne de contact sur sa propre ligne, sous le nom */
+[data-slide="18"] .s18-contact .s18-name {
+  flex-basis: 100%;
+}
+[data-slide="18"] .s18-contact br {
+  display: none;
+}
+
 </style>
 </head>
 <body>
@@ -2918,7 +2885,14 @@ html, body {
 
   <h1 class="h h-m">On demande de parler.<br>Et parfois, on le <em>fait payer.</em></h1>
 
-  <div class="two-col">
+  <div class="scene">
+    <span class="scene-tag">Scène :</span>
+    <br>- Petite équipe produit. Gros périmètre, specs instables, délai court. L'équipe absorbe, demande du renfort, livre quand même. 
+    <br>- En rétro, les juniors se taisent. Un développeur senior nomme la pression, la capacité intenable, les arbitrages impossibles. 
+    <br>- Quelques mois plus tard, en entretien annuel : « Tu peux être perçu comme négatif. »
+  </div>
+
+    <div class="two-col">
     <div class="col-have">
       <div class="col-label have">Ce qu'on attend</div>
       <div class="col-item">Dire les vrais sujets.</div>
@@ -2934,14 +2908,7 @@ html, body {
     </div>
   </div>
 
-  <div class="scene">
-    <span class="scene-tag">Scène</span>
-    <br>- Petite équipe produit. Gros périmètre, specs instables, délai court. L'équipe absorbe, demande du renfort, livre quand même. 
-    <br>- En rétro, les juniors se taisent. Un développeur senior nomme la pression, la capacité intenable, les arbitrages impossibles. 
-    <br>- Quelques mois plus tard, en entretien annuel : « Tu peux être perçu comme négatif. »
-  </div>
-
-  <div class="scene-note">Comment parler à quelqu'un qui peut ensuite t'évaluer ?</div>
+  <div class="scene-note">Comment parler à quelqu'un <em>qui DOIT ensuite t'évaluer ?</em></div>
 </section>
 
 <!-- ============================================================
@@ -3010,7 +2977,7 @@ html, body {
     </div>
     <div class="hof-c3-note-hidden">Scores indicatifs : tendance, pas destin.</div>
   </div>
-  <div class="fn-foot"><span><span class="fn-ref">1</span>voir bibliographie</span><span style="font-style:italic;">Scores indicatifs&nbsp;: tendance, pas destin.</span></div>
+  <div class="fn-foot"><span><span class="fn-ref">1</span>voir bibliographie</span></div>
 </section>
 
 <!-- ============================================================
@@ -3106,7 +3073,7 @@ html, body {
       <div class="flow-temp">Tabou · risqué</div>
     </div>
     <div class="flow-question">Dans une culture à forte distance hiérarchique, quelle direction coûte le plus&nbsp;?</div>
-    <div class="kim-quote">"If you find you cannot be Radically Candid with your boss, I recommend that you consider finding a new job with a new boss." <span class="kim-attr">, Kim Scott</span></div>
+    <div class="kim-quote">"If you find you cannot be Radically Candid with your boss, I recommend that you consider finding a new job with a new boss."<span class="kim-attr">, Kim Scott</span></div>
   </div>
 </section>
 
@@ -3146,10 +3113,6 @@ html, body {
     <div class="qmap-side">
       <span class="side-label">L'idée centrale</span>
       Les meilleurs managers que Kim Scott a croisés avaient deux choses en commun : <em>ils se souciaient</em> vraiment des personnes, et <em>ils leur disaient</em> ce qu'ils pensaient.<br><br>Pas l'un ou l'autre. <em>Les deux.</em>
-      <div class="s6-kim-quote">
-        <div class="s6-kim-text">"From the moment we open our mouths, we are taught that if you don't have anything nice to say, don't say anything at all."</div>
-        <div class="s6-kim-attr">Kim Scott, <em>Radical Candor</em></div>
-      </div>
     </div>
   </div>
   <div class="fn-foot"><span><span class="fn-ref">3</span>voir bibliographie</span></div>
@@ -3222,7 +3185,6 @@ html, body {
     <div class="fgs8-mech">répétition</div>
     <div class="focus-col-item cost">Il répète <em>le même comportement.</em></div>
   </div>
-  <div class="focus-micro-scene">Je pourrais lui dire. Je choisis de gérer ses erreurs à sa place. : <em>Le rituel remplace le courage.</em></div>
   <div class="focus-2col-punchline-s8">Se taire, c’est <em>confortable pour moi.</em> Rarement utile pour l’autre.</div>
   <div class="focus-s8-wrap">
     <div class="focus-s8-col">
@@ -3237,7 +3199,6 @@ html, body {
       <div class="focus-s8-silence">Silence</div>
       <div class="focus-s8-arrow">&#8595;</div>
       <div class="focus-s8-cost">Coût<br>différé</div>
-      <div class="focus-s8-mech-note">Je repousse<br>l’information.</div>
     </div>
     <div class="focus-s8-col">
       <div class="focus-s8-label right">Ce que l’autre perd</div>
@@ -3248,7 +3209,6 @@ html, body {
       </div>
     </div>
   </div>
-  <div class="focus-s8-callout">Je pourrais lui dire. Je choisis de gérer ses erreurs à sa place.</div>
   <div class="focus-s8-punchline">Se taire, c’est <em>confortable pour moi.</em> Rarement utile pour l’autre.</div>
   <div class="fn-foot"><span><span class="fn-ref">3</span>voir bibliographie</span></div>
 </section>
@@ -3302,7 +3262,6 @@ html, body {
         <span class="gs-nl">occurrences de «&nbsp;abrasive&nbsp;» («&nbsp;cassante&nbsp;»)&nbsp;: femmes / hommes</span>
       </div>
     </div>
-    <div class="gs-signal-note">Signal fort. Pas une prévalence universelle.</div>
   </div>
   <div class="fn-foot"><span><span class="fn-ref">4</span>voir bibliographie</span></div>
 </section>
@@ -3434,11 +3393,7 @@ html, body {
     <div class="gest-num-big">02</div>
     <h1 class="gest-title">Ancrer dans le <em>fait.</em></h1>
   </div>
-  <div class="gest-sub">Une adaptation CNV + SBI pour parler de <em>comportements,</em> pas de personnalités.</div>
-  <div class="method-note">
-    <div class="method-chip"><span class="method-title">CNV · Rosenberg</span>Observer sans juger. Nommer le besoin. Formuler une demande claire.</div>
-    <div class="method-chip"><span class="method-title">SBI · Center for Creative Leadership</span>Situer la situation. Décrire le comportement. Expliciter l'impact.</div>
-  </div>
+  <div class="gest-sub">Parler de <em>comportements,</em> pas de personnalités.</div>
   <div class="flow-steps">
     <div class="flow-step">
       <div class="flow-step-num">Étape 01</div>
@@ -3464,12 +3419,12 @@ html, body {
   <div class="example-block">
     <span class="example-tag">En pratique · ascendant : managé → manager</span>
     <div class="example-text">“Sur nos trois derniers 1:1, tu es arrivé avec 20 à 30 minutes de retard.
-      <em>Comme on garde la même heure de fin, je n’arrive pas à traiter mes sujets de fond. J’ai besoin que ce temps soit fiable.
-      </em>Est-ce qu’on peut le sanctuariser, ou le déplacer à un moment où tu es plus disponible ?"</div>
+      <em> → Comme on garde la même heure de fin, je n’arrive pas à traiter mes sujets de fond.<br> → J’ai besoin que ce temps soit fiable.
+      </em> → Est-ce qu’on peut le sanctuariser, ou le déplacer à un moment où tu es plus disponible ?"</div>
   </div>
   <div class="bug-formula">
     <div class="bug-formula-lead">Un bon feedback ressemble à un bon bug report :</div>
-    <div class="bug-formula-parts"><span>contexte</span><span class="plus">+</span><span>reproduction</span><span class="plus">+</span><span>impact</span></div>
+    <div class="bug-formula-parts"><span>Contexte</span><span class="plus">+</span><span>Reproduction</span><span class="plus">+</span><span>Impact</span></div>
   </div>
   <div class="fn-foot"><span><span class="fn-ref">6-7</span>voir bibliographie</span></div>
 </section>
@@ -3477,65 +3432,104 @@ html, body {
 <!-- ============================================================
      SLIDE 14 : GESTE 03 - RITUALISER
      ============================================================ -->
-<section class="slide" data-slide="14">
+<section class="slide s14-ritual" data-slide="14">
   <div class="top-band">
     <div class="slide-chip"><span class="num">14</span><span class="sep">/</span>19 <span class="sep">·</span> Geste 03</div>
   </div>
-  <div class="gest-head-row">
+
+  <div class="gest-head-row s14-head">
     <div class="gest-num-big">03</div>
     <h1 class="gest-title"><em>Ritualiser</em> pour désacraliser.</h1>
   </div>
-  <div class="gest-sub">Un feedback ordinaire n'est plus une menace.</div>
-  <div class="compare">
-    <div class="compare-side good">
-      <span class="compare-tag">Ce qui fonctionne</span>
-      <div class="compare-when">Chaque semaine.</div>
-      <div class="compare-desc">Une petite conversation, intégrée au 1:1 ou à la rétro. Cinq minutes suffisent.</div>
+
+  <div class="s14-sub">
+    Un feedback rare devient un événement. Un feedback régulier devient un outil.
+  </div>
+
+  <div class="s14-compare">
+    <div class="s14-card s14-card-event">
+      <div class="s14-tag">Feedback ponctuel</div>
+      <div class="s14-card-title">Un événement.</div>
+      <div class="s14-chain">
+        <span>Anticipation.</span>
+        <span>Anxiété.</span>
+        <span>Dramatisation.</span>
+      </div>
+      <div class="s14-card-note">
+        La grande conversation qu'on repousse encore.
+      </div>
     </div>
-    <div class="compare-vs">&gt;</div>
-    <div class="compare-side bad">
-      <span class="compare-tag">Ce qui échoue</span>
-      <div class="compare-when">Tous les six mois.</div>
-      <div class="compare-desc">Une grande conversation que personne n'ose avoir, et qu'on repousse encore.</div>
+
+    <div class="s14-arrow">→</div>
+
+    <div class="s14-card s14-card-ritual">
+      <div class="s14-tag">Feedback ritualisé</div>
+      <div class="s14-card-title">Un usage ordinaire.</div>
+      <div class="s14-chain">
+        <span>Prévisible.</span>
+        <span>Normal.</span>
+        <span>Moins menaçant.</span>
+      </div>
+      <div class="s14-card-note">
+        Cinq minutes intégrées au flux de travail.
+      </div>
     </div>
   </div>
-  <div class="freq-callout">
-    <div class="freq-head"><span class="fh-word">Fréquence</span><span class="fh-op">&gt;</span><span class="fh-accent">Intensité.</span></div>
-    <div class="freq-body">
-      <span class="freq-line">Elle ne se construit pas dans l'outil de performance qu'on ouvre deux fois par an.</span>
-      <span class="freq-line">Dans le multi-projets, les accomplissements s'oublient. Les feedbacks constructifs s'effacent.</span>
-      <span class="freq-line">Ce qui reste : la régularité des petits gestes.</span>
+
+  <div class="s14-bottom">
+    <div class="s14-safety">
+      <div class="s14-box-tag">Amy Edmondson · sécurité psychologique</div>
+      <div class="s14-safety-text">
+        La croyance partagée qu'on peut prendre un <em>risque interpersonnel</em>
+        - signaler une erreur, exprimer un désaccord -
+        <em>sans être humilié.</em>
+      </div>
+    </div>
+
+    <div class="s14-practice">
+      <div class="s14-box-tag">Rituel concret</div>
+      <div class="s14-question">
+        “Qu’est-ce que j’aurais pu mieux faire cette semaine ?”
+      </div>
+      <div class="s14-practice-note">
+        Pas de 1:1 ? Pendant une réunion d'équipe ou une rétro qui tourne en rond.
+      </div>
     </div>
   </div>
+
+  <div class="s14-punchline">
+    Fréquence <span>bat</span> intensité.<br>Le feedback est un muscle, <span>pas un formulaire annuel.</span>
+  </div>
+
   <div class="fn-foot"><span><span class="fn-ref">5</span>voir bibliographie</span></div>
 </section>
 
 <!-- ============================================================
-     SLIDE 15 : CITATION
+     SLIDE 15 : CTA
      ============================================================ -->
-<section class="slide quote-slide" data-slide="15">
-  <div class="top-band" style="position: absolute; top: calc(72 * var(--u)); right: calc(96 * var(--u)); width: auto;">
-    <div class="slide-chip"><span class="num">15</span><span class="sep">/</span>19</div>
-  </div>
-  <div class="quote">
-    "La responsabilité collective se construit aussi dans les conversations <em>qu'on accepte d'avoir.</em>"
-  </div>
-  <div class="quote-rule"></div>
-</section>
-
-<!-- ============================================================
-     SLIDE 16 : CTA
-     ============================================================ -->
-<section class="slide" data-slide="16">
+<section class="slide" data-slide="15">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">16</span><span class="sep">/</span>19 <span class="sep">·</span> Call to action</div>
+    <div class="slide-chip"><span class="num">15</span><span class="sep">/</span>19 <span class="sep">·</span> Call to action</div>
   </div>
-  <h1 class="h h-xl">Cette <em>semaine.</em></h1>
+  <h1 class="h h-l">Cette <em>semaine.</em></h1>
   <div class="cta-list">
     <div class="cta-item"><div class="cta-text">Identifiez <em>une</em> conversation<br>que vous évitez.</div></div>
     <div class="cta-item"><div class="cta-text">Choisissez <em>le geste</em> :<br>conditions, fait, ou rituel.</div></div>
     <div class="cta-item"><div class="cta-text">N'attendez pas le bon moment. <em>Créez-le !</em></div></div>
   </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 16 : CITATION
+     ============================================================ -->
+<section class="slide quote-slide" data-slide="16">
+  <div class="top-band" style="position: absolute; top: calc(72 * var(--u)); right: calc(96 * var(--u)); width: auto;">
+    <div class="slide-chip"><span class="num">16</span><span class="sep">/</span>19</div>
+  </div>
+  <div class="quote">
+    "La responsabilité collective se construit aussi dans les conversations <em>qu'on accepte d'avoir.</em>"
+  </div>
+  <div class="quote-rule"></div>
 </section>
 
 <!-- ============================================================
@@ -3546,7 +3540,7 @@ html, body {
     <div class="slide-chip"><span class="num">17</span><span class="sep">/</span>19 <span class="sep">·</span> Sponsors<span class="sep">·</span>Partenaires</div>
   </div>
   <h1 class="h h-m">Un grand merci aux <em>sponsors.</em></h1>
-  <div class="sp-lead">Agile Tour Rennes 2026 . Sans eux, ni la sc&egrave;ne, ni le replay.</div>
+  <div class="sp-lead">Agile Tour Rennes 2026. Sans eux, ni la sc&egrave;ne, ni le replay.</div>
 
   <div class="sp-tier sp-tier--acteur">
     <div class="sp-tier-label">Sponsor acteur</div>
@@ -3574,48 +3568,68 @@ html, body {
 </section>
 
 <!-- ============================================================
-     SLIDE 18 : MERCI / Q&A / PLATEAU
+     SLIDE 18 : MERCI / KIT POST-TALK
      ============================================================ -->
-<section class="slide" data-slide="18">
+<section class="slide s18-kit-slide" data-slide="18">
   <div class="top-band">
     <div class="slide-chip"><span class="num">18</span><span class="sep">/</span>19 <span class="sep">·</span> Merci<span class="sep">·</span>Q&amp;A</div>
   </div>
-  <!-- Grille 3 lignes × 2 colonnes pour aligner bas plateau / bas QR -->
-  <div class="thanks-wrap">
-    <!-- Ligne 1 : titre + sous-titre | espaceur invisible -->
-    <div class="s17-top">
-      <div class="thanks-title"><em>Merci.</em></div>
-      <div class="thanks-sub">Pour ma première conférence, vos questions valent encore plus que mes réponses.</div>
-    </div>
-    <div class="s17-qr-space"></div>
-    <!-- Ligne 2 : plateau captation (aligné en bas) | QR (aligné en bas) -->
-    <div class="s17-plateau">
-      <div class="thanks-plateau">
-        <span class="plateau-tag">À revisionner · Plateau vidéo</span>
-        <div class="plateau-text">
-          <span class="plateau-strong">Feedback et courage relationnel</span>
-          <span class="plateau-desc">Session d'approfondissement enregistrée en amont du talk. Disponible en replay sur les réseaux sociaux.</span>
-          <span class="plateau-punch">Le feedback est un muscle, pas un formulaire annuel.</span>
-        </div>
-      </div>
-    </div>
-    <div class="s17-qr-img">
-      <img src="./img/qr-feedback.png" alt="QR vers le formulaire de feedback Sessionize du talk" onerror="this.style.display='none';this.parentNode.innerHTML='<div class=&quot;qr-placeholder-s17&quot;>QR<br>feedback</div>';">
-    </div>
-    <!-- Ligne 3 : contact | légende QR -->
-    <div class="s17-contact">
-      <div class="thanks-contact">
-        <span class="name">Irina Talbot</span>
-        <div><span class="label">Email</span><a class="link" href="mailto:irina.talbot.35@gmail.com">irina.talbot.35@gmail.com</a></div>
-        <div><span class="label">LinkedIn</span><a class="link" href="https://www.linkedin.com/in/irinatalbot35/">linkedin.com/in/irinatalbot35</a></div>
-        <div><span class="label">Sessionize</span><a class="link" href="https://sessionize.com/irina-talbot/">sessionize.com/irina-talbot</a></div>
-      </div>
-    </div>
-    <div class="s17-qr-cap">
-      <div class="s17-qr-punchline">Ne pas scanner, ce serait de l'empathie dévastatrice.</div>
+
+  <div class="s18-hero">
+    <h1 class="s18-title"><em>Merci.</em></h1>
+    <div class="s18-sub">
+      Pour ma première conférence, vos questions valent encore plus que mes réponses.
     </div>
   </div>
+
+  <div class="s18-main">
+   
+    <a class="s18-takeaway-card" href="./kit_post_talk.html" aria-label="Ouvrir le kit post-talk Radical Candor en contexte français">
+      <span class="s18-tag s18-tag-center">Kit post-talk :</span>
+      <h2 class="s18-takeaway-title">
+        Radical Candor<br>
+        <em>en contexte français</em>
+      </h2>
+
+      <div class="s18-takeaway-line"></div>
+
+      <p class="s18-takeaway-text">
+        Ressources pour pratiquer après le talk :
+      </p>
+
+      <div class="s18-takeaway-proof">
+        <span class="s18-takeaway-number">13</span>
+        <span class="s18-takeaway-proof-text">
+          fiches-outils<br>
+          <em>immédiatement actionnables.</em>
+        </span>
+      </div>
+    </a>
+
+    <aside class="s18-qr-card">
+      <div class="s18-tag s18-tag-center">Votre feedback</div>
+
+      <div class="s18-qr-frame">
+        <img src="./img/qr-feedback.png" alt="QR code vers le feedback" onerror="this.style.display='none';this.parentNode.innerHTML='<div class=&quot;s18-qr-placeholder&quot;>QR<br>Kit post-talk</div>';">
+      </div>
+
+      <div class="s18-qr-punchline">
+        Ne pas scanner, ce serait de l’<em>empathie dévastatrice.</em>
+      </div>
+    </aside>
+  </div>
+
+  <div class="s18-contact">
+    <span class="s18-name">Irina Talbot</span>
+    <br>
+    <a href="mailto:irina.talbot.35@gmail.com">irina.talbot.35@gmail.com</a>
+    <span class="s18-dot">·</span>
+    <a href="https://www.linkedin.com/in/irinatalbot35/">linkedin.com/in/irinatalbot35</a>
+    <span class="s18-dot">·</span>
+    <a href="https://sessionize.com/irina-talbot/">sessionize.com/irina-talbot</a>
+  </div>
 </section>
+
 
 <!-- ============================================================
      SLIDE 19 : BIBLIOGRAPHIE
