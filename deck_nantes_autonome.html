@@ -2894,6 +2894,7 @@ body:has([data-slide="17"].active),
 [data-slide="22"] {
   padding: 0;
   background: #FFFFFF;
+  box-shadow: 0 0 0 100vmax #FFFFFF;
   align-items: center;
   justify-content: center;
 }
@@ -2904,6 +2905,170 @@ body:has([data-slide="17"].active),
   display: block;
 }
 
+
+/* ---------- Slide 23 (position 17) : Et si ça se passe mal ---------- */
+[data-slide="23"] { justify-content: flex-start; }
+[data-slide="23"] .s23-cases { display: flex; flex-direction: column; gap: calc(22 * var(--u)); flex: 1; justify-content: center; }
+[data-slide="23"] .s23-case { background: var(--C2); border-left: calc(4 * var(--u)) solid var(--T); padding: calc(24 * var(--u)) calc(36 * var(--u)); }
+[data-slide="23"] .s23-label { font-family: 'DM Sans', sans-serif; font-size: calc(16 * var(--u)); font-weight: 700; letter-spacing: calc(3 * var(--u)); text-transform: uppercase; color: var(--T); margin-bottom: calc(10 * var(--u)); }
+[data-slide="23"] .s23-phrase { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: calc(38 * var(--u)); line-height: 1.25; color: var(--N); }
+[data-slide="23"] .s23-foot { margin-top: calc(28 * var(--u)); font-family: 'Cormorant Garamond', serif; font-size: calc(32 * var(--u)); color: var(--N); text-align: center; }
+[data-slide="23"] .s23-foot em { color: var(--T); font-style: italic; }
+
+/* ===== Corrections du 24 oct. 2026 (audit visuel) ===== */
+body { font-variant-numeric: lining-nums; }
+.nav { opacity: 0; transition: opacity .3s ease; }
+.nav:hover { opacity: 1; }
+.slide.revealed .flow-reveal { visibility: hidden; transition: opacity .5s ease, visibility 0s linear .5s; }
+[data-slide="20"] .gs-n.rose, [data-slide="21"] .gs-n.rose { color: var(--T); }
+.gs-nl { font-size: calc(22 * var(--u)); }
+/* slide 4 : répartir le contenu sur la hauteur */
+[data-slide="20"] { justify-content: flex-start; }
+[data-slide="20"] .gender-stat { margin-top: calc(70 * var(--u)); }
+[data-slide="20"] .gs-n { font-size: calc(104 * var(--u)); }
+[data-slide="20"] .example-block { margin-top: calc(80 * var(--u)); padding: calc(34 * var(--u)) calc(44 * var(--u)); }
+[data-slide="20"] .example-text { font-size: calc(40 * var(--u)); }
+/* slide 5 : question finale dans le style des phrases de conclusion */
+[data-slide="2"] .scene-note { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; text-transform: none; letter-spacing: 0; font-size: calc(42 * var(--u)); color: var(--N); }
+[data-slide="2"] .scene-note em { color: var(--T); font-weight: 500; font-style: italic; }
+/* slide 8 : air entre les blocs */
+[data-slide="21"] .gender-stat { margin-top: calc(48 * var(--u)); }
+[data-slide="21"] .punch { margin-top: calc(48 * var(--u)); }
+/* slide 10 : textes lisibles du fond de la salle */
+[data-slide="7"] .q-cap { font-size: calc(24 * var(--u)); line-height: 1.25; }
+[data-slide="7"] .q-axes { font-size: calc(16 * var(--u)); }
+/* slide 17 : grille des gestes */
+[data-slide="23"] { justify-content: flex-start; }
+[data-slide="23"] .gest-sub { margin: calc(8 * var(--u)) 0 calc(36 * var(--u)); }
+/* slide 21 : deux cartes QR jumelles */
+[data-slide="18"] .s18-qr-card { align-items: flex-start; }
+[data-slide="18"] .s18-qr-frame { justify-content: flex-start; height: calc(290 * var(--u)); }
+[data-slide="18"] .s18-qr-punchline { margin-top: calc(24 * var(--u)); }
+
+[data-slide="20"] .gs-n { font-size: calc(120 * var(--u)); }
+[data-slide="20"] .gender-stat { margin-top: auto; }
+[data-slide="20"] .example-block { margin-top: calc(70 * var(--u)); margin-bottom: auto; }
+[data-slide="20"] .example-text { font-size: calc(44 * var(--u)); }
+[data-slide="21"] .gs-nl, [data-slide="9"] .gs-nl { font-size: calc(22 * var(--u)); }
+[data-slide="23"] .s23-cases { flex: none; gap: calc(26 * var(--u)); }
+[data-slide="23"] .s23-case { padding: calc(30 * var(--u)) calc(40 * var(--u)); }
+[data-slide="23"] .s23-phrase { font-size: calc(42 * var(--u)); }
+[data-slide="23"] .s23-foot { margin-top: auto; padding-top: calc(30 * var(--u)); font-size: calc(36 * var(--u)); }
+[data-slide="18"] .s18-qr-card { align-items: center; text-align: center; }
+[data-slide="18"] .s18-tag { text-align: center; }
+[data-slide="18"] .s18-qr-frame { justify-content: center; height: calc(290 * var(--u)); }
+[data-slide="18"] .s18-qr-frame img { width: calc(270 * var(--u)); height: calc(270 * var(--u)); max-width: none; max-height: none; image-rendering: pixelated; }
+
+[data-slide="20"] .example-text { text-wrap: balance; }
+[data-slide="18"] .s18-qr-frame img { width: calc(260 * var(--u)); height: calc(260 * var(--u)); }
+
+/* ===== Round 2 (24 oct. 2026) ===== */
+.cover { padding-left: calc(96 * var(--u)); padding-right: calc(96 * var(--u)); }
+.hof-c-sep { display: none; }
+/* slide 4 */
+[data-slide="20"] .gender-stat { margin-top: calc(90 * var(--u)); }
+[data-slide="20"] .gs-n { font-size: calc(136 * var(--u)); }
+[data-slide="20"] .example-block { margin-top: calc(80 * var(--u)); margin-bottom: auto; max-width: calc(1400 * var(--u)); }
+[data-slide="20"] .example-text { font-size: calc(48 * var(--u)); }
+/* slide 7 */
+.flow-question { font-size: calc(46 * var(--u)); color: var(--N); font-weight: 500; }
+.flow-question em { color: var(--T); }
+/* slide 10 */
+[data-slide="7"] .q-cap { font-family: 'Cormorant Garamond', serif; font-size: calc(30 * var(--u)); line-height: 1.15; }
+/* slide 13 */
+[data-slide="10"] .bug-formula { align-items: flex-start; text-align: left; }
+/* gestes 15 a 18 : meme grille d'en-tete */
+[data-slide="12"] .gest-head-row, [data-slide="13"] .gest-head-row, [data-slide="14"] .gest-head-row, [data-slide="23"] .gest-head-row { margin: 0 0 calc(4 * var(--u)); }
+[data-slide="12"] .gest-num-big, [data-slide="13"] .gest-num-big, [data-slide="14"] .gest-num-big { font-size: calc(108 * var(--u)); }
+[data-slide="12"] .gest-title, [data-slide="13"] .gest-title, [data-slide="14"] .gest-title, [data-slide="23"] .gest-title { font-size: calc(96 * var(--u)); }
+[data-slide="12"] .gest-sub, [data-slide="13"] .gest-sub, [data-slide="23"] .gest-sub, [data-slide="14"] .s14-sub { font-size: calc(36 * var(--u)); margin: calc(10 * var(--u)) 0 calc(28 * var(--u)); }
+[data-slide="23"] .gest-head-row { margin-top: calc(30 * var(--u)); }
+/* slide 15 */
+[data-slide="12"] .pillar-desc { font-size: calc(24 * var(--u)); line-height: 1.3; }
+/* slide 16 : fleches dans l'ecart */
+[data-slide="13"] .flow-steps { gap: calc(48 * var(--u)); }
+[data-slide="13"] .flow-step + .flow-step::before { left: calc(-24 * var(--u)); transform: translate(-50%, -50%); }
+/* slide 17 */
+[data-slide="23"] .s23-foot { margin-top: calc(44 * var(--u)); }
+[data-slide="23"] .s23-case { padding-right: calc(56 * var(--u)); }
+/* slide 18 */
+.s14-practice-note { font-size: calc(24 * var(--u)); }
+
+[data-slide="12"], [data-slide="13"], [data-slide="14"], [data-slide="23"] { justify-content: flex-start; padding-bottom: calc(72 * var(--u)); }
+[data-slide="23"] .gest-head-row { margin-top: 0; }
+[data-slide="12"] .pillars, [data-slide="13"] .flow-steps { margin-bottom: calc(32 * var(--u)); }
+[data-slide="12"] .example-block, [data-slide="13"] .example-block { margin-bottom: calc(20 * var(--u)); }
+
+.hof-conclusion-strip .hof-c-sep { display: none !important; }
+[data-slide="20"] .gender-stat { margin-top: calc(110 * var(--u)); }
+[data-slide="20"] .example-block { margin-top: calc(110 * var(--u)); }
+[data-slide="13"] .example-text { font-size: calc(36 * var(--u)); line-height: 1.35; }
+[data-slide="13"] .example-block { padding-top: calc(26 * var(--u)) !important; padding-bottom: calc(26 * var(--u)) !important; margin-bottom: calc(24 * var(--u)) !important; }
+
+/* ===== Passe design du 24 oct. 2026 : remplissage, espacements égaux, tailles minimales ===== */
+/* tailles minimales des libellés */
+.dial-tag, .flow-direction, .s14-box-tag, .s14-tag { font-size: calc(15 * var(--u)) !important; }
+[data-slide="13"] .flow-step-desc { font-size: calc(20 * var(--u)) !important; }
+/* slide 4 */
+[data-slide="20"] .gender-stat { padding-top: calc(34 * var(--u)); padding-bottom: calc(34 * var(--u)); }
+[data-slide="20"] .example-text { font-size: calc(52 * var(--u)) !important; }
+[data-slide="20"] .example-block { padding: calc(40 * var(--u)) calc(52 * var(--u)) !important; }
+/* slide 6 */
+[data-slide="3"] .hof-bar-row { margin-bottom: calc(40 * var(--u)) !important; }
+/* slide 13 : 3 écarts égaux entre les blocs */
+[data-slide="10"] .example-block { margin-top: 0 !important; margin-bottom: calc(52 * var(--u)) !important; }
+[data-slide="10"] .bug-formula { margin: 0 0 calc(52 * var(--u)) !important; }
+/* slide 15 */
+[data-slide="12"] .pillars { margin-bottom: calc(46 * var(--u)) !important; }
+[data-slide="12"] .example-block { margin-bottom: calc(46 * var(--u)) !important; }
+/* slide 16 */
+[data-slide="13"] .flow-steps { margin-bottom: calc(47 * var(--u)) !important; }
+[data-slide="13"] .example-block { margin-bottom: calc(47 * var(--u)) !important; }
+/* slide 17 */
+[data-slide="23"] .s23-cases { gap: calc(40 * var(--u)) !important; }
+[data-slide="23"] .s23-case { padding-top: calc(32 * var(--u)) !important; padding-bottom: calc(32 * var(--u)) !important; }
+[data-slide="23"] .s23-foot { margin-top: calc(56 * var(--u)) !important; }
+
+[data-slide="3"] .hof-bar-row { margin-bottom: calc(34 * var(--u)) !important; }
+[data-slide="20"] .gender-stat { margin-top: calc(140 * var(--u)) !important; }
+[data-slide="20"] .example-block { margin-top: calc(140 * var(--u)) !important; }
+[data-slide="23"] .s23-cases { gap: calc(48 * var(--u)) !important; }
+[data-slide="23"] .s23-case { padding-top: calc(38 * var(--u)) !important; padding-bottom: calc(38 * var(--u)) !important; }
+[data-slide="14"] .s14-compare { margin-bottom: calc(30 * var(--u)) !important; }
+[data-slide="14"] .s14-bottom { margin-bottom: calc(30 * var(--u)) !important; }
+
+/* slide 6 : bandeau de conclusion sur toute la largeur (séparateurs masqués) */
+.hof-conclusion-strip { grid-template-columns: 1fr 1fr 1fr !important; }
+/* slide 9 : la matrice reste au-dessus de la note de bas de page */
+[data-slide="6"] .qmap { max-height: calc(560 * var(--u)) !important; }
+[data-slide="6"] .qmap-wrap { flex: 0 1 auto !important; margin-top: calc(36 * var(--u)) !important; }
+/* slide 4 : citation à la même largeur que le bandeau de chiffres */
+[data-slide="20"] .example-block { max-width: none !important; }
+/* slide 5 : espacements égaux */
+[data-slide="2"] .scene-note { margin-top: calc(40 * var(--u)) !important; }
+[data-slide="2"] .two-col { margin-top: calc(40 * var(--u)) !important; }
+/* slide 15 : remplir sans carte vide */
+[data-slide="12"] .pillar-desc { font-size: calc(26 * var(--u)) !important; }
+[data-slide="12"] .example-text { font-size: calc(36 * var(--u)) !important; }
+[data-slide="12"] .example-block { padding: calc(28 * var(--u)) calc(36 * var(--u)) !important; }
+
+[data-slide="6"] .qmap { max-height: calc(660 * var(--u)) !important; }
+[data-slide="2"] .two-col { margin-bottom: 0 !important; }
+[data-slide="21"] .gender-stat { margin-top: calc(44 * var(--u)) !important; }
+[data-slide="21"] .punch { margin-top: calc(44 * var(--u)) !important; }
+[data-slide="9"] .gender-table { margin-top: calc(28 * var(--u)) !important; }
+[data-slide="9"] .gender-stat { margin-top: calc(28 * var(--u)) !important; }
+.example-tag, .gs-source-line { font-size: calc(15 * var(--u)) !important; }
+
+[data-slide="21"] .gender-stat { margin-top: calc(38 * var(--u)) !important; }
+[data-slide="8"] .focus-s8-punchline { margin-top: calc(24 * var(--u)) !important; }
+[data-slide="8"] .focus-s8-card { min-height: 0 !important; padding-top: calc(18 * var(--u)) !important; padding-bottom: calc(18 * var(--u)) !important; }
+
+[data-slide="21"] .gender-stat { margin-top: calc(54 * var(--u)) !important; }
+[data-slide="21"] .punch { margin-top: calc(60 * var(--u)) !important; }
+
+/* slide 3 : bulles plus lisibles, rangées moins espacées */
+[data-slide="4"] .dial-bubble { font-size: calc(34 * var(--u)) !important; padding: calc(26 * var(--u)) calc(32 * var(--u)) !important; }
 </style>
 </head>
 <body>
@@ -2918,7 +3083,6 @@ body:has([data-slide="17"].active),
   <div class="sub-title">Radical Candor à la française.</div>
   <div class="rule-big"></div>
   <div class="byline">Irina Talbot</div>
-  <div class="role">AI-Driven CX Transformation Lead</div>
   <div class="speaker-bio">Dix ans de projets tech complexes à faire le <em>glue work</em> quand les équipes cessent de se parler. Ce n'est (presque) jamais le framework qui casse. C'est le silence. Et le silence, <em>il se facture à quelqu'un.</em></div>
 </section>
 
@@ -2936,41 +3100,41 @@ body:has([data-slide="17"].active),
      ============================================================ -->
 <section class="slide" data-slide="4">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">03</span><span class="sep">/</span>21<span class="sep">·</span> Intro<span class="sep">·</span>Le décalage</div>
+    <div class="slide-chip"><span class="num">03</span><span class="sep">/</span>22<span class="sep">·</span> Intro<span class="sep">·</span>Le décalage</div>
   </div>
   <h1 class="h h-m">On emballe. On <em>espère</em> que ça passe.</h1>
   <div class="dialogues">
     <div class="dial-row">
       <div class="dial-bubble said">
         <span class="dial-tag">En COPIL client</span>
-        «&nbsp;C'est noté, on va regarder comment l'intégrer au planning…&nbsp;»
+        "C'est noté, on va regarder comment l'intégrer au planning…"
       </div>
       <div class="dial-arrow">→</div>
       <div class="dial-bubble meant">
         <span class="dial-tag">Ce qu'on pense</span>
-        «&nbsp;L'équipe est déjà au taquet... <em><span class="nobr">Mais c'est un gros client.</span></em><span class="nobr">Il faut préserver la relation.&nbsp;»</span>
+        "L'équipe est déjà au taquet... <em><span class="nobr">Mais c'est un gros client.</span></em><span class="nobr">Il faut préserver la relation."</span>
       </div>
     </div>
     <div class="dial-row">
       <div class="dial-bubble said">
         <span class="dial-tag">En daily</span>
-        «&nbsp;Je suis encore sur le ticket, ça avance...&nbsp;»
+        "Je suis encore sur le ticket, ça avance..."
       </div>
       <div class="dial-arrow">→</div>
       <div class="dial-bubble meant">
-        <span class="dial-tag">Ce qu'on aimerait dire</span>
-        «&nbsp;Je suis bloqué depuis trois jours, <em>mais je n’ose pas dire </em><span class="nobr">que j'ai besoin d'aide.&nbsp;»</span>
+        <span class="dial-tag">Ce qu'on pense</span>
+        "Je suis bloqué depuis trois jours, <em>mais je n'ose pas dire </em><span class="nobr">que j'ai besoin d'aide."</span>
       </div>
     </div>
     <div class="dial-row">
       <div class="dial-bubble said">
         <span class="dial-tag">En entretien annuel</span>
-        «&nbsp;Tu as fait une très bonne année. Cette mission-là, tu l’as très bien gérée.&nbsp;»
+        "Tu as fait une très bonne année. Cette mission-là, tu l'as très bien gérée."
       </div>
       <div class="dial-arrow">→</div>
       <div class="dial-bubble meant">
         <span class="dial-tag">Ce que ça vaut</span>
-        «&nbsp;Pour la note au-dessus, <em>il aurait fallu surperformer.</em> <span class="nobr">On ne te l’avait jamais dit en début d’exercice.&nbsp;»</span>
+        "Pour la note au-dessus, <em>il aurait fallu surperformer.</em> <span class="nobr">On ne te l'avait jamais dit en début d'exercice."</span>
       </div>
     </div>
     
@@ -2982,10 +3146,10 @@ body:has([data-slide="17"].active),
      ============================================================ -->
 <section class="slide" data-slide="20">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">04</span><span class="sep">/</span>21<span class="sep">·</span> Le retour</div>
+    <div class="slide-chip"><span class="num">04</span><span class="sep">/</span>22<span class="sep">·</span> Intro<span class="sep">·</span>Le retour</div>
   </div>
   <h1 class="h h-m">Voilà ce qu'on m'a <em>répondu.</em></h1>
-  <div class="gender-stat gs-revamp" style="margin-top:calc(40 * var(--u));">
+  <div class="gender-stat gs-revamp">
     <div class="gs-source-line">Agile Tour Rennes · 3 juin 2026 · 14 retours sur 16 présents</div>
     <div class="gs-numbers">
       <div class="gs-num-block">
@@ -2998,13 +3162,13 @@ body:has([data-slide="17"].active),
       </div>
       <div class="gs-num-block">
         <span class="gs-n rose">11 / 4</span>
-        <span class="gs-nl">repartis <em>inspirés</em> / repartis <em>outillés</em></span>
+        <span class="gs-nl"><em>inspirés</em> / <em>outillés</em></span>
       </div>
     </div>
   </div>
-  <div class="example-block" style="margin-top:calc(44 * var(--u));">
+  <div class="example-block">
     <span class="example-tag">Un retour, parmi les quatorze</span>
-    <div class="example-text">«&nbsp;Les 4 profils et l'envie d'être plus honnête, <em>mais très franchement, je ne sais toujours pas trop comment faire.</em>&nbsp;»</div>
+    <div class="example-text">"Les 4 profils et l'envie d'être plus honnête, <em>mais très franchement, je ne sais toujours pas trop comment faire."</em></div>
   </div>
 </section>
 
@@ -3013,7 +3177,7 @@ body:has([data-slide="17"].active),
      ============================================================ -->
 <section class="slide" data-slide="2">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">05</span><span class="sep">/</span>21<span class="sep">·</span> Intro<span class="sep">·</span>Paradoxe</div>
+    <div class="slide-chip"><span class="num">05</span><span class="sep">/</span>22<span class="sep">·</span> Intro<span class="sep">·</span>Paradoxe</div>
   </div>
 
   <h1 class="h h-m">On demande de parler.<br>Et parfois, on le <em>fait payer.</em></h1>
@@ -3022,7 +3186,7 @@ body:has([data-slide="17"].active),
     <span class="scene-tag">Scène :</span>
     <br>- Petite équipe produit. Gros périmètre, specs instables, délai court. L'équipe absorbe, demande du renfort, livre quand même. 
     <br>- En rétro, les juniors se taisent. Un développeur senior nomme la pression, la capacité intenable, les arbitrages impossibles. 
-    <br>- Quelques mois plus tard, en entretien annuel : « Tu peux être perçu comme négatif. »
+    <br>- Quelques mois plus tard, en entretien annuel : "Tu peux être perçu comme négatif."
   </div>
 
     <div class="two-col">
@@ -3035,9 +3199,9 @@ body:has([data-slide="17"].active),
 
     <div class="col-avoid">
       <div class="col-label avoid">Ce qui peut revenir</div>
-      <div class="col-item">« Perçu comme <em>négatif.</em> »</div>
-      <div class="col-item">« Je te trouve <em>démotivé.</em> »</div>
-      <div class="col-item">« Tu contestes <em>l'autorité.</em> »</div>
+      <div class="col-item">"Perçu comme <em>négatif."</em></div>
+      <div class="col-item">"Je te trouve <em>démotivé."</em></div>
+      <div class="col-item">"Tu contestes <em>l'autorité."</em></div>
     </div>
   </div>
 
@@ -3049,7 +3213,7 @@ body:has([data-slide="17"].active),
      ============================================================ -->
 <section class="slide" data-slide="3">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">06</span><span class="sep">/</span>21<span class="sep">·</span> Contexte culturel</div>
+    <div class="slide-chip"><span class="num">06</span><span class="sep">/</span>22<span class="sep">·</span> Contexte culturel</div>
   </div>
   <h1 class="h h-m">Dans ce comparatif,<br>la France <em>ressort.</em></h1>
   <div class="hof-wrap">
@@ -3123,7 +3287,7 @@ body:has([data-slide="17"].active),
      ============================================================ -->
 <section class="slide" data-slide="5">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">07</span><span class="sep">/</span>21<span class="sep">·</span> Toutes directions</div>
+    <div class="slide-chip"><span class="num">07</span><span class="sep">/</span>22<span class="sep">·</span> Toutes directions</div>
   </div>
   <h1 class="h h-m">Le feedback ne circule pas<br>dans <em>un seul sens.</em></h1>
   <div class="flow">
@@ -3152,7 +3316,6 @@ body:has([data-slide="17"].active),
     <div class="flow-card hot">
       <div class="flow-reveal">
         <div class="mark">?</div>
-        <div class="hint">cliquez pour révéler</div>
       </div>
       <div class="flow-direction">Ascendant</div>
       <div class="flow-arrow-block">
@@ -3161,11 +3324,11 @@ body:has([data-slide="17"].active),
         <span class="actor">Manager</span>
       </div>
       <div class="flow-name">Le plus<br>bloqué.</div>
-      <div class="flow-context">Signal au manager, retour sur une pratique, demande d'ajustement.</div>
+      <div class="flow-context">Signal, retour de pratique, ajustement.</div>
       <div class="flow-temp">Tabou · risqué</div>
     </div>
-    <div class="flow-question">Dans une culture à forte distance hiérarchique, quelle direction coûte le plus&nbsp;?</div>
-    <div class="kim-quote">"If you find you cannot be Radically Candid with your boss, I recommend that you consider finding a new job with a new boss."<span class="kim-attr">, Kim Scott</span></div>
+    <div class="flow-question">Dans une culture à forte distance hiérarchique, quelle direction <em>coûte le plus</em>&nbsp;?</div>
+    <div class="kim-quote">"If you find you cannot be Radically Candid with your boss, I recommend that you consider finding a new job with a new boss."<span class="kim-attr">- Kim Scott</span></div>
   </div>
 </section>
 
@@ -3174,24 +3337,24 @@ body:has([data-slide="17"].active),
      ============================================================ -->
 <section class="slide" data-slide="21">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">08</span><span class="sep">/</span>21<span class="sep">·</span> L&rsquo;écart d&rsquo;âge</div>
+    <div class="slide-chip"><span class="num">08</span><span class="sep">/</span>22<span class="sep">·</span> L'écart d'âge</div>
   </div>
 
-  <h1 class="h h-m">&laquo;&nbsp;Et s&rsquo;il a vingt ans de métier<br><em>de plus que moi&nbsp;?</em>&nbsp;&raquo;</h1>
+  <h1 class="h h-m">Et s'il a vingt ans de métier<br><em>de plus que moi&nbsp;?</em></h1>
 
   <div class="two-col">
     <div class="col-have">
-      <div class="col-label have">Ce qu&rsquo;on croit</div>
+      <div class="col-label have">Ce qu'on croit</div>
       <div class="col-item">Il va mal le prendre.</div>
-      <div class="col-item">Je n&rsquo;ai pas la légitimité.</div>
-      <div class="col-item">On ne m&rsquo;écoutera pas.</div>
+      <div class="col-item">Je n'ai pas la légitimité.</div>
+      <div class="col-item">On ne m'écoutera pas.</div>
     </div>
 
     <div class="col-avoid">
       <div class="col-label avoid">Ce qui est mesuré</div>
       <div class="col-item">Les plus âgés écoutent <em>autant</em> que les autres.</div>
       <div class="col-item">Celui qui parle <em>sous-estime</em> son impact.</div>
-      <div class="col-item">Les &laquo;&nbsp;générations&nbsp;&raquo;, <em>ça ne tient pas.</em></div>
+      <div class="col-item">Les "générations", <em>ça ne tient pas.</em></div>
     </div>
   </div>
 
@@ -3212,7 +3375,7 @@ body:has([data-slide="17"].active),
     </div>
   </div>
 
-  <div class="punch">Le blocage n&rsquo;est pas chez celui qui écoute.<br>Il est chez <em>celui qui parle.</em></div>
+  <div class="punch">Le blocage n'est pas chez celui qui écoute.<br>Il est chez <em>celui qui parle.</em></div>
 </section>
 
 <!-- ============================================================
@@ -3220,7 +3383,7 @@ body:has([data-slide="17"].active),
      ============================================================ -->
 <section class="slide" data-slide="6">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">09</span><span class="sep">/</span>21<span class="sep">·</span> Radical Candor</div>
+    <div class="slide-chip"><span class="num">09</span><span class="sep">/</span>22<span class="sep">·</span> Radical Candor</div>
   </div>
   <h1 class="h h-m">Deux axes.<br><em>Quatre réalités.</em></h1>
   <div class="qmap-wrap">
@@ -3261,9 +3424,9 @@ body:has([data-slide="17"].active),
      ============================================================ -->
 <section class="slide" data-slide="7">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">10</span><span class="sep">/</span>21<span class="sep">·</span> Les 4 quadrants</div>
+    <div class="slide-chip"><span class="num">10</span><span class="sep">/</span>22<span class="sep">·</span> Les 4 quadrants</div>
   </div>
-  <h1 class="h h-m"><em>Où</em> êtes-vous ?</h1>
+  <h1 class="h h-m">Personne n'habite <em>un seul quadrant.</em></h1>
   <div class="matrix">
     <div class="q">
       <div class="q-cat">
@@ -3306,31 +3469,31 @@ body:has([data-slide="17"].active),
      ============================================================ -->
 <section class="slide" data-slide="8">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">11</span><span class="sep">/</span>21<span class="sep">·</span> Focus</div>
+    <div class="slide-chip"><span class="num">11</span><span class="sep">/</span>22<span class="sep">·</span> Empathie dévastatrice</div>
   </div>
-  <h1 class="h h-m">La bienveillance sans franchise n’est pas de la gentillesse.<br><em>C’est du confort déguisé.</em></h1>
+  <h1 class="h h-m">La bienveillance sans franchise n'est pas de la gentillesse.<br><em>C'est du confort déguisé.</em></h1>
   <div class="focus-grid-s8">
     <div class="fgs8-h">Ce que je me raconte</div>
     <div class="fgs8-h fgs8-h-mid">Mécanisme</div>
-    <div class="fgs8-h fgs8-h-right">Ce que l’autre perd</div>
-    <div class="focus-col-item">« Je ne veux pas <em>le blesser.</em> »</div>
+    <div class="fgs8-h fgs8-h-right">Ce que l'autre perd</div>
+    <div class="focus-col-item">" Je ne veux pas <em>le blesser.</em> "</div>
     <div class="fgs8-mech">silence</div>
     <div class="focus-col-item cost">Il découvre le problème <em>trop tard.</em></div>
-    <div class="focus-col-item">« Je ne me sens pas <em>légitime.</em> »</div>
+    <div class="focus-col-item">" Je ne me sens pas <em>légitime.</em> "</div>
     <div class="fgs8-mech">coût différé</div>
-    <div class="focus-col-item cost">L’équipe porte <em>le coût en silence.</em></div>
-    <div class="focus-col-item">« Ce n’est pas <em>mon rôle.</em> »</div>
+    <div class="focus-col-item cost">L'équipe porte <em>le coût en silence.</em></div>
+    <div class="focus-col-item">" Ce n'est pas <em>mon rôle.</em> "</div>
     <div class="fgs8-mech">répétition</div>
     <div class="focus-col-item cost">Il répète <em>le même comportement.</em></div>
   </div>
-  <div class="focus-2col-punchline-s8">Se taire, c’est <em>confortable pour moi.</em> Rarement utile pour l’autre.</div>
+  <div class="focus-2col-punchline-s8">Se taire, c'est <em>confortable pour moi.</em> Rarement utile pour l'autre.</div>
   <div class="focus-s8-wrap">
     <div class="focus-s8-col">
       <div class="focus-s8-label">Ce que je me raconte</div>
       <div class="focus-s8-cards">
-        <div class="focus-s8-card"><span>&#171;&#160;Je ne veux pas <span class="nobr">le blesser.&#160;&#187;</span></span></div>
-        <div class="focus-s8-card"><span>&#171;&#160;Je ne me sens pas <span class="nobr">légitime.&#160;&#187;</span></span></div>
-        <div class="focus-s8-card"><span>&#171;&#160;Ce n’est pas <span class="nobr">mon rôle.&#160;&#187;</span></span></div>
+        <div class="focus-s8-card"><span>"Je ne veux pas <span class="nobr">le blesser."</span></span></div>
+        <div class="focus-s8-card"><span>"Je ne me sens pas <span class="nobr">légitime."</span></span></div>
+        <div class="focus-s8-card"><span>"Ce n'est pas <span class="nobr">mon rôle."</span></span></div>
       </div>
     </div>
     <div class="focus-s8-center">
@@ -3339,15 +3502,15 @@ body:has([data-slide="17"].active),
       <div class="focus-s8-cost">Coût<br>différé</div>
     </div>
     <div class="focus-s8-col">
-      <div class="focus-s8-label right">Ce que l’autre perd</div>
+      <div class="focus-s8-label right">Ce que l'autre perd</div>
       <div class="focus-s8-cards">
         <div class="focus-s8-card focus-s8-card--cost"><span>Il découvre le problème <span class="nobr">trop tard.</span></span></div>
-        <div class="focus-s8-card focus-s8-card--cost"><span>L’équipe porte <span class="nobr">le coût.</span></span></div>
+        <div class="focus-s8-card focus-s8-card--cost"><span>L'équipe porte <span class="nobr">le coût.</span></span></div>
         <div class="focus-s8-card focus-s8-card--cost"><span>Il répète le même <span class="nobr">comportement.</span></span></div>
       </div>
     </div>
   </div>
-  <div class="focus-s8-punchline">Se taire, c’est <em>confortable pour moi.</em> Rarement utile pour l’autre.</div>
+  <div class="focus-s8-punchline">Se taire, c'est <em>confortable pour moi.</em> Rarement utile pour l'autre.</div>
   <div class="fn-foot"><span><span class="fn-ref">3</span>voir bibliographie</span></div>
 </section>
 
@@ -3356,7 +3519,7 @@ body:has([data-slide="17"].active),
      ============================================================ -->
 <section class="slide" data-slide="9">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">12</span><span class="sep">/</span>21<span class="sep">·</span> Biais de genre</div>
+    <div class="slide-chip"><span class="num">12</span><span class="sep">/</span>22<span class="sep">·</span> Biais de genre</div>
   </div>
   <div class="gender-intro">
     <span class="gender-pill"><span class="gp-w">♀</span><span class="gp-eq">≠</span><span class="gp-m">♂</span></span>
@@ -3377,7 +3540,7 @@ body:has([data-slide="17"].active),
     <div class="gcell gman">posé, humble, solide</div>
 
     <div class="gcell gbehav">Montrer de l'émotion</div>
-    <div class="gcell gwoman">«&nbsp;hystérique&nbsp;», excessive, peu maîtrisée</div>
+    <div class="gcell gwoman">"hystérique", excessive, peu maîtrisée</div>
     <div class="gcell gman">passionné, engagé</div>
 
     <div class="gcell gbehav">S'imposer comme leader</div>
@@ -3397,7 +3560,7 @@ body:has([data-slide="17"].active),
       </div>
       <div class="gs-num-block">
         <span class="gs-n rose">17 / 0</span>
-        <span class="gs-nl">occurrences de «&nbsp;abrasive&nbsp;» («&nbsp;cassante&nbsp;»)&nbsp;: femmes / hommes</span>
+        <span class="gs-nl">occurrences de "abrasive" ("cassante")&nbsp;: femmes&nbsp;/&nbsp;hommes</span>
       </div>
     </div>
   </div>
@@ -3409,28 +3572,28 @@ body:has([data-slide="17"].active),
      ============================================================ -->
 <section class="slide" data-slide="10">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">13</span><span class="sep">/</span>21<span class="sep">·</span> Ce que ça implique</div>
+    <div class="slide-chip"><span class="num">13</span><span class="sep">/</span>22<span class="sep">·</span> Ce que ça implique</div>
   </div>
   <div class="gest-head-row" style="margin-bottom:calc(20 * var(--u));">
     <div class="gest-num-big">1</div>
     <h1 class="gest-title">test. <em>Dix secondes.</em></h1>
   </div>
   <div class="gest-sub">Avant d'envoyer une évaluation, <em>remplacez le prénom.</em></div>
-  <div class="example-block" style="background:transparent;border:1px dashed rgba(90,81,72,.45);margin-bottom:calc(10 * var(--u));">
+  <div class="example-block" style="background:transparent;border:1px dashed rgba(90,81,72,.45);margin-bottom:calc(28 * var(--u));">
     <span class="example-tag">Ce que vous avez écrit</span>
-    <div class="example-text" style="opacity:.85;">«&nbsp;<em>Marie</em> est cassante en réunion. Elle manque de diplomatie.&nbsp;»</div>
+    <div class="example-text" style="opacity:.85;">"<em>Marie</em> est cassante en réunion. Elle manque de diplomatie."</div>
   </div>
-  <div class="example-block" style="margin-bottom:calc(10 * var(--u));">
+  <div class="example-block" style="margin-bottom:calc(28 * var(--u));">
     <span class="example-tag">Relisez avec un autre prénom</span>
-    <div class="example-text">«&nbsp;<em>Marc</em> est cassant en réunion. Il manque de diplomatie.&nbsp;»</div>
+    <div class="example-text">"<em>Marc</em> est cassant en réunion. Il manque de diplomatie."</div>
   </div>
   <div class="bug-formula">
-    <div class="bug-formula-lead">Si ça sonne différemment, vous ne parlez pas d'un comportement.</div>
-    <div class="bug-formula-parts"><span>Vous parlez d'une personne.</span></div>
+    <div class="bug-formula-lead">Si ça sonne différemment, vous ne jugez pas un comportement.</div>
+    <div class="bug-formula-parts"><span>Vous jugez un prénom.</span></div>
   </div>
-  <div class="example-block" style="margin-top:calc(14 * var(--u));">
+  <div class="example-block" style="margin-top:calc(28 * var(--u));">
     <span class="example-tag">Le seul remède</span>
-    <div class="example-text">«&nbsp;En sprint review, <em>elle a coupé la parole trois fois.</em> Deux sujets ne sont pas passés.&nbsp;»</div>
+    <div class="example-text">"En sprint review, <em>elle a coupé la parole trois fois.</em> Deux sujets ne sont pas passés."</div>
   </div>
   <div class="fn-foot"><span><span class="fn-ref">4</span>voir bibliographie</span></div>
 </section>
@@ -3440,7 +3603,7 @@ body:has([data-slide="17"].active),
      ============================================================ -->
 <section class="slide interlude-slide" data-slide="11">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">14</span><span class="sep">/</span>21</div>
+    <div class="slide-chip"><span class="num">14</span><span class="sep">/</span>22 <span class="sep">·</span> Les gestes</div>
   </div>
   <div class="interlude-inner">
     <div class="interlude-eyebrow">De la posture aux actes</div>
@@ -3457,7 +3620,7 @@ body:has([data-slide="17"].active),
      ============================================================ -->
 <section class="slide" data-slide="12">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">15</span><span class="sep">/</span>21 <span class="sep">·</span> Geste 01</div>
+    <div class="slide-chip"><span class="num">15</span><span class="sep">/</span>22 <span class="sep">·</span> Geste 01</div>
   </div>
   <div class="gest-head-row">
     <div class="gest-num-big">01</div>
@@ -3489,11 +3652,11 @@ body:has([data-slide="17"].active),
   </div>
   <div class="example-block">
     <span class="example-tag">À dire</span>
-    <div class="example-text">"J'ai une observation que j'aimerais partager avec toi - <em>tu es disponible là, ou je repasse plus tard ?</em>"</div>
+    <div class="example-text">"J'ai une observation que j'aimerais partager avec toi - <em>tu es disponible là, ou je repasse plus tard ?"</em></div>
   </div>
   <div class="example-block">
     <span class="example-tag">Variante ascendante</span>
-    <div class="example-text">"J’ai un retour sur les changements de périmètre. <em>On peut prendre 10 minutes cette semaine ?</em>"</div>
+    <div class="example-text">"J'ai un retour sur les changements de périmètre. <em>On peut prendre 10 minutes cette semaine ?"</em></div>
   </div>
 </section>
 
@@ -3502,7 +3665,7 @@ body:has([data-slide="17"].active),
      ============================================================ -->
 <section class="slide" data-slide="13">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">16</span><span class="sep">/</span>21 <span class="sep">·</span> Geste 02</div>
+    <div class="slide-chip"><span class="num">16</span><span class="sep">/</span>22 <span class="sep">·</span> Geste 02</div>
   </div>
   <div class="gest-head-row">
     <div class="gest-num-big">02</div>
@@ -3533,19 +3696,41 @@ body:has([data-slide="17"].active),
   </div>
   <div class="example-block" style="background:transparent;border:1px dashed rgba(90,81,72,.45);padding-top:calc(12 * var(--u));padding-bottom:calc(12 * var(--u));margin-bottom:calc(6 * var(--u));">
     <span class="example-tag">Avant · ce que tout le monde dit</span>
-    <div class="example-text" style="opacity:.8;">“Il faut que tu sois plus proactif.”</div>
+    <div class="example-text" style="opacity:.8;">"Il faut que tu sois plus visible."</div>
   </div>
   <div class="example-block">
     <span class="example-tag">Après · le même feedback, réparé</span>
-    <div class="example-text">“Sur les deux derniers sprints, tu as attendu le daily pour dire que tu étais bloqué.
-      <em> → On a perdu une demi-journée à chaque fois avant de pouvoir t’aider.<br> → J’ai besoin qu’on voie les blocages plus tôt.
-      </em> → Est-ce que tu peux me pinguer dès que tu es coincé plus d’une heure ?"</div>
-  </div>
-  <div class="bug-formula">
-    <div class="bug-formula-lead">Un bon feedback ressemble à un bon bug report :</div>
-    <div class="bug-formula-parts"><span>Contexte</span><span class="plus">+</span><span>Reproduction</span><span class="plus">+</span><span>Impact</span></div>
+    <div class="example-text">"Au dernier COPIL, c'est Paul qui a présenté la migration. Ton nom n'a pas été cité.<br><em>→ Du coup, le directeur de compte ne sait pas que c'est toi qui l'as portée. Et c'est lui qui pèse sur les promotions.<br>→ J'ai besoin que ton travail te soit attribué.</em><br>→ Au prochain COPIL, tu prends les cinq minutes sur la migration ? Je te mets à l'ordre du jour."</div>
   </div>
   <div class="fn-foot"><span><span class="fn-ref">6-7</span>voir bibliographie</span></div>
+</section>
+
+<!-- ============================================================
+     SLIDE 23 : ET SI CA SE PASSE MAL (ajoutee le 24 oct. 2026, position 17)
+     ============================================================ -->
+<section class="slide" data-slide="23">
+  <div class="top-band">
+    <div class="slide-chip"><span class="num">17</span><span class="sep">/</span>22 <span class="sep">·</span> Les gestes <span class="sep">·</span> Quand ça coince</div>
+  </div>
+  <div class="gest-head-row">
+    <h1 class="gest-title">Et si ça se passe <em>mal ?</em></h1>
+  </div>
+  <div class="gest-sub">Trois cas. <em>Trois phrases à dire.</em></div>
+  <div class="s23-cases">
+    <div class="s23-case">
+      <div class="s23-label">La personne le prend mal</div>
+      <div class="s23-phrase">"Je vois que ça te touche. Je ne retire pas ce que j'ai dit. On peut en reparler demain si tu préfères."</div>
+    </div>
+    <div class="s23-case">
+      <div class="s23-label">La personne a du pouvoir sur votre évaluation</div>
+      <div class="s23-phrase">"J'aimerais qu'on parle de notre façon d'arbitrer, pas de quelqu'un."</div>
+    </div>
+    <div class="s23-case">
+      <div class="s23-label">La personne a vingt ans de métier de plus que vous</div>
+      <div class="s23-phrase">"Tu fais ça depuis bien plus longtemps que moi. Qu'est-ce que je rate, dans ma façon de faire tourner l'équipe ?"</div>
+    </div>
+  </div>
+  <div class="s23-foot">Le message reste. <em>Seule la porte d'entrée change.</em></div>
 </section>
 
 <!-- ============================================================
@@ -3553,7 +3738,7 @@ body:has([data-slide="17"].active),
      ============================================================ -->
 <section class="slide s14-ritual" data-slide="14">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">17</span><span class="sep">/</span>21 <span class="sep">·</span> Geste 03</div>
+    <div class="slide-chip"><span class="num">18</span><span class="sep">/</span>22 <span class="sep">·</span> Geste 03</div>
   </div>
 
   <div class="gest-head-row s14-head">
@@ -3599,8 +3784,7 @@ body:has([data-slide="17"].active),
     <div class="s14-safety">
       <div class="s14-box-tag">Amy Edmondson · sécurité psychologique</div>
       <div class="s14-safety-text">
-        La croyance partagée qu'on peut prendre un <em>risque interpersonnel</em>
-        - signaler une erreur, exprimer un désaccord -
+        La croyance partagée qu'on peut prendre un <em>risque interpersonnel</em>&nbsp;- signaler une erreur, exprimer un désaccord&nbsp;-
         <em>sans être humilié.</em>
       </div>
     </div>
@@ -3608,7 +3792,7 @@ body:has([data-slide="17"].active),
     <div class="s14-practice">
       <div class="s14-box-tag">Rituel concret</div>
       <div class="s14-question">
-        “Qu’est-ce que j’aurais pu mieux faire cette semaine ?”
+        "Qu'est-ce que j'aurais pu mieux faire cette semaine ?"
       </div>
       <div class="s14-practice-note">
         Pas de 1:1 ? Pendant une réunion d'équipe ou une rétro qui tourne en rond.
@@ -3628,12 +3812,12 @@ body:has([data-slide="17"].active),
      ============================================================ -->
 <section class="slide" data-slide="15">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">18</span><span class="sep">/</span>21 <span class="sep">·</span> Call to action</div>
+    <div class="slide-chip"><span class="num">19</span><span class="sep">/</span>22 <span class="sep">·</span> Passage à l'acte</div>
   </div>
   <h1 class="h h-l">Lundi <em>matin.</em></h1>
   <div class="cta-list">
     <div class="cta-item"><div class="cta-text">Identifiez <em>une</em> conversation<br>que vous évitez.</div></div>
-    <div class="cta-item"><div class="cta-text">Choisissez <em>le geste</em> :<br>conditions, fait, ou rituel.</div></div>
+    <div class="cta-item"><div class="cta-text">Préparez-la : <em>conditions, fait</em>,<br>et les 3 phrases si ça coince.</div></div>
     <div class="cta-item"><div class="cta-text">N'attendez pas le bon moment. <em>Créez-le !</em></div></div>
   </div>
 </section>
@@ -3643,10 +3827,10 @@ body:has([data-slide="17"].active),
      ============================================================ -->
 <section class="slide quote-slide" data-slide="16">
   <div class="top-band" style="position: absolute; top: calc(72 * var(--u)); right: calc(96 * var(--u)); width: auto;">
-    <div class="slide-chip"><span class="num">19</span><span class="sep">/</span>21</div>
+    <div class="slide-chip"><span class="num">20</span><span class="sep">/</span>22 <span class="sep">·</span> Citation</div>
   </div>
   <div class="quote">
-    "Vous ne protégez pas la personne.<br><em>Vous vous protégez vous.</em>"
+    Vous ne protégez pas la personne.<br><em>Vous vous protégez vous.</em>
   </div>
   <div class="quote-rule"></div>
 </section>
@@ -3656,7 +3840,7 @@ body:has([data-slide="17"].active),
      ============================================================ -->
 <section class="slide s18-kit-slide" data-slide="18">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">20</span><span class="sep">/</span>21 <span class="sep">·</span> Merci<span class="sep">·</span>Q&amp;A</div>
+    <div class="slide-chip"><span class="num">21</span><span class="sep">/</span>22 <span class="sep">·</span> Merci<span class="sep">·</span>Q&amp;A</div>
   </div>
 
   <div class="s18-hero">
@@ -3667,40 +3851,16 @@ body:has([data-slide="17"].active),
   </div>
 
   <div class="s18-main">
-   
-    <a class="s18-takeaway-card" href="./kit_post_talk.html" aria-label="Ouvrir le kit post-talk Radical Candor en contexte français">
-      <span class="s18-tag s18-tag-center">Kit post-talk :</span>
-      <h2 class="s18-takeaway-title">
-        Radical Candor<br>
-        <em>en contexte français</em>
-      </h2>
-
-      <div class="s18-takeaway-line"></div>
-
-      <p class="s18-takeaway-text">
-        Ressources pour pratiquer après le talk :
-      </p>
-
-      <div class="s18-takeaway-proof">
-        <span class="s18-takeaway-number">13</span>
-        <span class="s18-takeaway-proof-text">
-          fiches-outils<br>
-          <em>immédiatement actionnables.</em>
-        </span>
-      </div>
-    </a>
-
-    <aside class="s18-qr-card">
-      <div class="s18-tag s18-tag-center">Votre feedback</div>
-
-      <div class="s18-qr-frame">
-        <img src="data:image/png;base64,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" alt="QR code vers le feedback" onerror="this.style.display='none';this.parentNode.innerHTML='<div class=&quot;s18-qr-placeholder&quot;>QR<br>Kit post-talk</div>';">
-      </div>
-
-      <div class="s18-qr-punchline">
-        Ne pas scanner, ce serait de l’<em>empathie dévastatrice.</em>
-      </div>
-    </aside>
+    <div class="s18-qr-card">
+      <div class="s18-tag">Le kit post-talk</div>
+      <div class="s18-qr-frame"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAaQAAAGkAQAAAABWN2yYAAACpUlEQVR4nO2cTY7kIAxGn0e1Jzfo+x+rbwAn8CzMb6p7MaOkFdQfKkWQ8FSxZNnY4Jjz7638+Q8IRIn6nirWG1CHB71PMTtYp+0gl6idKDzj0VqH5J4B4iZpeeoZz8+XS9SGVBnGkGL+aVUVmyWk2DJtF7lEbU0lj6t9hPW7879EiQJ4ncaW3ICUKUeYQQNLp2jm+XKJ2ot6QTOA0Yo5WDHAy+HlAOrjMe35conaj6ph8AEQy8LZHcedddoeconah3px9rnV7hmQ3Iannqc9Xy5Re1Esps99uaYphzPNUd5G1H2Uu4drNjOSh3emmH14j6AhfPROconagWrJ6taf/W/krmnGsFrOJHso6nKKvmNSvbAvfWDcz8RQeijqaqrqYR2ktn+Xz7axu2bt64m6gaqeNzpv+8hMNnBopvRQ1NXUsIdV8VqbfXSPoNspiOfLJWovarJ4PSSZ+v1pvypvI+oGitniLfmZt/CEFlxLD0VdTb0ZPWp/sZPJV/f9fLlE7UVN0XEbMnnn5Xwsyh+Kuokah66XoDgt8fLp2IP0UNTV1LJpcoqduzbClD9UnCLqemrSN/dZ8ZZzX72MJcseirqDYl7+hUeGL3RybLtofSjqeqrWBRh4nDksRsrWHltyS5nkURoQx7N3kEvUXhRLPNIXimPr5KsDirKHoi6mxkZeX/7Rg5f5bMPy9PlyidqLWspCR5KQETgvu89Z60NRd1AvejleOYjlX/JYLtYVY7RetPLTbyjq11DjQw14xg5Ibgdx0z/NM7VSL7l/qi5A1OXUWx09UMzr7yCK6CNqjuFPv6Go30Cd9dB7xWjkEsvhUL/tkNyK+U+/oajfQJ2/9zXnas7J7Qw6fyjqFmqNl3tE3PKH4wAYTSEVL4u6njJ9D1bUA6i/IW2bOLhC578AAAAASUVORK5CYII=" alt="QR code vers le kit post-talk"></div>
+      <div class="s18-qr-punchline">13 fiches-outils, <em>à utiliser lundi matin.</em></div>
+    </div>
+    <div class="s18-qr-card">
+      <div class="s18-tag">Votre feedback</div>
+      <div class="s18-qr-frame"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAaQAAAGkAQAAAABWN2yYAAACr0lEQVR4nO2cXW7jMAyEZxZ9l2+Q+x+rN5BOMPugP8rtPuzC2VjNGEWgOPpQExiQpkiJwt9f5dc/QIApU3+8lMNYUoYykLo8kyQhaZmW72+Xqb0oKEP1ymiSkwAM+c2/Mc06NPUMqpBkHbTPJBS2r0nNPY5pu9hlahvq43yji1CAAAIEvrxD3t8uU3tTNSgjiQ+RrNG5Ocar/5cpUwvV3wkBTMkNx5h72jKnbWKXqW2oDwAnZ6dClUPlUKEA1PEy7f52mdqL+phLNPVKqnpjTU+S2J3hi57Q1HtQhTURJjnib1SdPlsS3eb8/yc09SZUX6wGQFJ5LuCQ5EN8nFziJnaZ2oaaa9R1XJ3h+FrvLF9dTzF1PTXLJbN6olbFG0n0rPe1+fe3y9Re1CzYodfylppymsXlEbutQ1NXU2fttZsZAKICY7eDdWjqaioE39w+Y0tDzJ1HqcU6NHU1Nfu+ovBi8gKEekp7e7y/Xab2ohDDMRAaDtdYHEO2dWjqair4vV5AmbE4heQF0Sve3y5Te1Fr/K1XUGN8XRyTrUNTV1M9JelKQ8igAcQA3QD7Q1PXU2EdO+4FkE4L2nF5xzo09SwqSVJvYwAAPtRaEJNQyGM2POxkl6k9qMUfLg2x49cQtbvDvL9dpnalahTm0cajrke2xrD6q/LLntDUz6XaPikm1f1QApAyUx4bBFSONgdQIQBtYJepvaglXz7vqdepjOJ1G1NPo3qjdevH7kkxD6CwSrGOK0A6TzF1OXU6qGGpKcecZa7huK5n6knUPKgBPHo5L2Os2yiDZP2Jxyue0NRbUlV4SNIn9TnV2MY3eEJTP4v6cq5IPU6kV/Hq7tGWKfecege7TO1Fnc/7OnXDjjnxpt8PTV1NrecfZgCzuPzNXhW4z8HUMyj6PFhTN6B+Axzyma14NQN2AAAAAElFTkSuQmCC" alt="QR code vers le feedback"></div>
+      <div class="s18-qr-punchline">Ne pas scanner, ce serait de l'<em>empathie dévastatrice.</em></div>
+    </div>
   </div>
 
   <div class="s18-contact">
@@ -3720,7 +3880,7 @@ body:has([data-slide="17"].active),
      ============================================================ -->
 <section class="slide" data-slide="19">
   <div class="top-band">
-    <div class="slide-chip"><span class="num">21</span><span class="sep">/</span>21 <span class="sep">·</span> Bibliographie</div>
+    <div class="slide-chip"><span class="num">22</span><span class="sep">/</span>22 <span class="sep">·</span> Bibliographie</div>
   </div>
   <h1 class="h h-m">Pour <em>aller plus loin.</em></h1>
 
